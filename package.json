@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "index.html",
     "test": "jest",
     "lint": "eslint .",
     "build": "webpack",
