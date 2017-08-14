@@ -3,14 +3,12 @@ import {connect} from 'react-redux'
 // import * as querystring from 'querystring'
 
 
-export class Landing extends React.Component{
+export class Signup extends React.Component{
   render(){
     <div className='nav'>
-      <h2>landing page</h2>
+      <h2>signup page</h2>
     </div>
 
   }
 }
-
-
-export default Landing
+export default Signup
