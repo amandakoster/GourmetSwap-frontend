@@ -1,10 +1,19 @@
 import React from 'react'
+import * as _ from 'lodash'
+import * as util from '../../lib/util.js'
 import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
-// import zipcode from 'react-zipcode'
+import zipcode from 'react-zipcode'
 import * as querystring from 'querystring'
 
+const Tooltip = (props) => {
+  return (
+    <div className='tooltip'>
+      {props.message}
+    </div>
+  )
+}
 
 class Signup extends React.Component{
   constructor(props){
@@ -20,7 +29,7 @@ class Signup extends React.Component{
       firstNameError: null,
       lastNameError: null,
       usernameError: null,
-      phoneNumberError: null,
+      phoneError: null,
       zipCodeError: null,
       emailError: null,
       passswordError: null,
@@ -29,7 +38,8 @@ class Signup extends React.Component{
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
+    this.validateChange = this.validateChange.bind(this)
+    this.usernameCheckAvailable = _.debounce(this.usernameCheckAvailable.bind(this),250)
   }
 
   usernameCheckAvailable(){
@@ -49,8 +59,68 @@ class Signup extends React.Component{
     } else {
     }
   }
-  //
-  // this.setState({[`${name}Error`]: error})
+
+  validateChange(e){
+    let {name, value} = e.target
+    let error = null
+    if(name === 'firstName'){
+      if(!value){
+        error = 'first name cannot be empty'
+      } else if (!validator.isAlphanumeric(value)) {
+        error = 'first name can only contain letters'
+      }
+    }
+
+    if(name === 'lastName'){
+      if(!value){
+        error = 'last name cannot be empty'
+      } else if (!validator.isAlphanumeric(value)) {
+        error = 'last name can only contain letters'
+      }
+    }
+
+    if(name === 'username'){
+      if(!value){
+        error = 'username cannot be empty'
+      } else if (!validator.isAlphanumeric(value)) {
+        error = 'username can only contain letters and numbers'
+      }
+    }
+
+    if(name === 'email'){
+      if(!value){
+        error = 'username cannot be empty'
+      } else if (!validator.isEmail(value)) {
+        error = 'username can only contain letters and numbers'
+      }
+    }
+
+    if(name === 'password'){
+      if(!value){
+        error = 'username cannot be empty'
+      } else if (!validator.isAlphanumeric(value)) {
+        error = 'username can only contain letters and numbers'
+      }
+    }
+
+    if(name === 'phone'){
+      if(!value){
+        error = 'username cannot be empty'
+      } else if (!validator.isMobilePhone(value)) {
+        error = 'username can only contain numbers'
+      }
+    }
+
+    if(name === 'zipCode'){
+      if(!value){
+        error = 'zip code cannot be empty'
+      } else if (!validator.isAlphanumeric(value)) {
+        error = 'username can only contain numbers'
+      }
+    }
+
+    this.setState({[`${name}Error`]: error})
+  }
 
   handleChange(e){
 
@@ -65,7 +135,7 @@ class Signup extends React.Component{
       <div className='signup'>
         <form onSubmit={this.handleSubmit}>
 
-
+          <Tooltip message={this.state.firstNameError} />
           <input
             name='firstName'
             type='text'
@@ -74,7 +144,7 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
-
+          <Tooltip message={this.state.lastNameError} />
           <input
             name='lastName'
             type='text'
@@ -83,6 +153,15 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
+          <Tooltip message={this.state.usernameError} />
+          <div className='username-feedback' >
+            {util.renderIf(this.state.username,
+              <span>
+                {this.state.username} is
+                {this.state.usernameAvailable ? ' available' : ' taken'}
+              </span>
+            )}
+          </div>
 
           <input
             name='username'
@@ -92,7 +171,7 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
-
+          <Tooltip message={this.state.passwordError} />
           <input
             name='password'
             type='password'
@@ -101,7 +180,7 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
-
+          <Tooltip message={this.state.phoneError} />
           <input
             name='phone'
             type='tel'
@@ -111,7 +190,7 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
-
+          <Tooltip message={this.state.zipCodeError} />
           <input
             name='zipcode'
             type='number'
@@ -126,5 +205,6 @@ class Signup extends React.Component{
   }
 }
 
+export const ma
 
 export default Signup

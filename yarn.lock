@@ -4841,6 +4841,12 @@ react-test-renderer@^15.6.1:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
+react-zipcode@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-zipcode/-/react-zipcode-1.0.0.tgz#58c7a42631f410549ff276fbcb72edff64caef4e"
+  dependencies:
+    zippo "~1.0.1"
+
 react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
@@ -6226,3 +6232,7 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zippo@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/zippo/-/zippo-1.0.1.tgz#b9fe75f3b5661ffff8e2ed03f06ced8bba1ffe74"
