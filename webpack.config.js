@@ -13,11 +13,11 @@ let plugins = [
   new EnvironmentPlugin(['NODE_ENV']),
   new ExtractPlugin('bundle-[hash].css'),
   new HTMLPlugin({template: `${__dirname}/src/index.html`}),
-  new DefinePlugin({
-    __DEBUG__: JSON.stringify(!production),
-    __API_URL__: JSON.stringify(process.env.API_URL),
-    __GOOGLE_CLIENT_ID__: JSON.stringify(process.env.GOOGLE_CLIENT_ID),
-  }),
+  // new DefinePlugin({
+  //   __DEBUG__: JSON.stringify(!production),
+  //   __API_URL__: JSON.stringify(process.env.API_URL),
+  //   __GOOGLE_CLIENT_ID__: JSON.stringify(process.env.GOOGLE_CLIENT_ID),
+  // }),
 ]
 
 if (production)
@@ -26,7 +26,7 @@ if (production)
 module.exports = {
   plugins,
   entry: `${__dirname}/src/main.js`,
-  devServer: { 
+  devServer: {
     historyApiFallback: true,
   },
   devtool: production ? undefined : 'cheap-module-eval-source-map',
@@ -51,10 +51,10 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true, 
+                sourceMap: true,
                 includePaths: [`${__dirname}/src/style`],
-              }
-            }
+              },
+            },
           ],
         }),
       },
