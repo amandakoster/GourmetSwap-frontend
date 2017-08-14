@@ -1,16 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { render } from 'react-dom'
-import { MemoryRouter, Route, Link, Switch } from 'react-router'
+import { MemoryRouter, Route, Switch } from 'react-router-dom'
+import * as route from '../../action/route.js'
 import Landing from '../landing'
 import Signup from '../signup'
 import Login from '../login'
 import Profile from '../profile'
 
-
-
 export class App extends React.Component{
+  componentDidMount(){
+    console.log('Comp Did Mount', this.props)
+  }
+
   render() {
+    console.log('HIT APP', this.props)
     return(
       <div className='nav'>
         <h1> Nav </h1>
@@ -25,7 +29,7 @@ export class App extends React.Component{
             <Route path='/landing' component={Landing} />
             <Route path='/signup' component={Signup} />
             <Route path='/login' component={Login} />
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile' component={() => <p> profile</p>} />
           </Switch>
         </MemoryRouter>
       </div>
@@ -38,8 +42,8 @@ let mapStateToProps = (state) => ({
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(auth.logout()),
-  login: (token) => dispatch(auth.login(token)),
+  // logout: () => dispatch(auth.logout()),
+  // login: (token) => dispatch(auth.login(token)),
   goToLanding: () => dispatch(route.switchRoute('/landing')),
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToLogin: () => dispatch(route.switchRoute('/login')),
