@@ -205,6 +205,4 @@ class Signup extends React.Component{
   }
 }
 
-export const ma
-
 export default Signup
