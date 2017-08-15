@@ -17,6 +17,7 @@ class MealForm extends React.Component{
       location: '',
       price: '',
     }
+    console.log('ninja')
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -34,7 +35,12 @@ class MealForm extends React.Component{
   render(){
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
-        <
+        <h1> Ninja </h1>
+        <input
+          name='title'
+          type='text'
+          value={this.state.title}
+          onChange={this.handleChange} />
       </form>
     )
   }

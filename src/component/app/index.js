@@ -27,7 +27,6 @@ export class App extends React.Component{
           <li><a onClick={this.props.goToSignin}>sign in</a></li>
           <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
         </ul>
-
         <MemoryRouter>
           <Switch location={{pathname: this.props.route}}>
             <Route path='/landing' component={Landing} />
