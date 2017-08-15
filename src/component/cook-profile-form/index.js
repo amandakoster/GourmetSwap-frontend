@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import superagent from'superagent'
 import validator from 'validator'
 
-class cookProfileForm extends React.Component{
+class CookProfileForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
@@ -215,4 +215,4 @@ class cookProfileForm extends React.Component{
 }
 
 
-export default cookProfileForm
+export default CookProfileForm

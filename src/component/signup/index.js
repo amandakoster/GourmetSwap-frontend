@@ -165,7 +165,7 @@ class Signup extends React.Component{
           />
 
           <Tooltip message={this.state.usernameError} />
-          <div className='username-feedback' >
+          <div className='username-feedback'>
             {util.renderIf(this.state.username,
               <span>
                 {this.state.username} is
@@ -210,7 +210,7 @@ class Signup extends React.Component{
             value={this.state.zipcode}
             onChange={this.handleChange}
           />
-          <button type='submit className='signup-form-button > signup </button>
+          <button type='submit' className='signup-form-button'> signup </button>
         </form>
       </div>
     )
