@@ -11,6 +11,7 @@ import Signin from '../signin'
 import Profile from '../profile'
 import cookProfileForm from '../cook-profile-form'
 import MealForm from '../meal-form'
+
 import CookNav from '../cook-nav'
 import auth from '../../action/auth.js'
 
@@ -61,6 +62,9 @@ let mapDispatchToProps = (dispatch) => ({
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToSignin: () => dispatch(route.switchRoute('/signin')),
   goToProfile: () => dispatch(route.switchRoute('/profile')),
+  goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
+  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
+  goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
 
   goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
   goToMealForm: () => dispatch(route.switchRoute('/meal-form')),

@@ -33,3 +33,18 @@ export const cookieFetch = (key) => {
 export const cookieDelete = (key) => {
   document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
 }
+
+export const photoToDataURL = (file) => {
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader()
+    reader.addEventListener('load', () => {
+      resolve(reader.result)
+    })
+    reader.addEventListener('error', () => {
+      reject(reader.error)
+    })
+    if(file)
+      return reader.readAsDataURL(file)
+    return reject(new Error('USAGE ERROR: requires file'))
+  })
+}

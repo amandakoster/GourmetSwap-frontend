@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {MemoryRouter, Link, Switch, Route} from 'react-router-dom'
-import reactDropdown  from 'react-simple-dropdown'
+// import reactDropdown  from 'react-simple-dropdown'
 import * as util from '../../lib/util.js'
 import * as route from  '../../action/route.js'
 import * as auth from '../../action/auth.js'
