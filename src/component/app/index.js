@@ -5,9 +5,9 @@ import { MemoryRouter, Route, Switch } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import Landing from '../landing'
 import Signup from '../signup'
-import Login from '../login'
+import Signin from '../signin'
 import Profile from '../profile'
-import cookProfileForm from '../cook-profile-form'
+import auth from '../../action/auth.js'
 
 export class App extends React.Component{
   componentDidMount(){
@@ -23,16 +23,15 @@ export class App extends React.Component{
           <li><a onClick={this.props.goToLanding}>home</a></li>
           <li><a onClick={this.props.goToSignUp}>sign up</a></li>
           <li><a onClick={this.props.goToProfile}>profile</a></li>
-          <li><a onClick={this.props.goToCookProfileForm}>cook profile form</a></li>
+          <li><a onClick={this.props.goToSignin}>sign in</a></li>
         </ul>
 
         <MemoryRouter>
           <Switch location={{pathname: this.props.route}}>
             <Route path='/landing' component={Landing} />
             <Route path='/signup' component={Signup} />
-            <Route path='/login' component={Login} />
+            <Route path='/signin' component={Signin} />
             <Route path='/profile' component={() => <p> profile</p>} />
-            <Route path='/cook-profile-form' component={cookProfileForm} />
           </Switch>
         </MemoryRouter>
       </div>
@@ -46,10 +45,10 @@ let mapStateToProps = (state) => ({
 
 let mapDispatchToProps = (dispatch) => ({
   // logout: () => dispatch(auth.logout()),
-  // login: (token) => dispatch(auth.login(token)),
+  // login: (token) => dispatch(route.login(token)),
   goToLanding: () => dispatch(route.switchRoute('/landing')),
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
-  goToLogin: () => dispatch(route.switchRoute('/login')),
+  goToSignin: () => dispatch(route.switchRoute('/signin')),
   goToProfile: () => dispatch(route.switchRoute('/profile')),
 })
 
