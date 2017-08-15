@@ -1,35 +1,55 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {MemoryRouter, Link, Switch, Route} from 'react-router-dom'
-import Dropdown from 'react-simple-dropdown'
-var DropdownTrigger = Dropdown.DropdownTrigger
-// var DropdownContent = Dropdown.DropdownContent
 
 import * as util from '../../lib/util.js'
 import * as route from  '../../action/route.js'
 import * as auth from '../../action/auth.js'
-import '../../style/main.scss'
-
+import switchRoute from '../../action/route.js'
 import CookProfileForm from '../cook-profile-form'
 import MealForm from '../meal-form'
 
-export class CookNav extends React.Component{
+class CookNav extends React.Component{
+  constructor(props){
+    super(props)
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(e) {
+    this.setState({value: event.target.value})
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+  }
+
   render(){
     return (
-      <div>
-        <h1>test1</h1>
-        <Dropdown>
-          <DropdownTrigger>test</DropdownTrigger>
-          <DropdownContent>
-            <ul>
-              <li><a href='/cook-profile-form'>Cook Profile</a></li>
-              <li><a href='meal-form'>Meal Form</a></li>
-            </ul>
-          </DropdownContent>
-        </Dropdown>
+      <div className='cook-nav'>
+        <ul
+          defaultValue="---"
+          id='event-type'
+          name='event-type'
+          onChange={this.handleChange}>
+          <li value="cook-profile-form" onClick={this.props.goToCookProfileForm}> Cook Profile </li>
+          <li value="meal-form" onClick={this.props.goToMealForm}> Meal Form </li>
+          <li value="cook-application" onClick={this.props.goCookApplication}> Cook Application </li>
+        </ul>
       </div>
     )
   }
 }
 
-export default CookNav
+let mapStateToProps = (state) => ({
+  route: state.route,
+})
+
+let mapDispatchToProps = (dispatch) => ({
+  goToCookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
+  goToCookMealForm: () => dispatch(route.switchRoute('/meal-form')),
+  goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CookNav)
