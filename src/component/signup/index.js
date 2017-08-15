@@ -134,7 +134,7 @@ class Signup extends React.Component{
 
   render(){
     return(
-      <div className='signup'>
+      <div className='signup-form'>
         <form onSubmit={this.handleSubmit}>
 
           <Tooltip message={this.state.firstNameError} />
@@ -210,7 +210,7 @@ class Signup extends React.Component{
             value={this.state.zipcode}
             onChange={this.handleChange}
           />
-          <button type='submit' > signup </button>
+          <button type='submit className='signup-form-button > signup </button>
         </form>
       </div>
     )

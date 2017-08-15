@@ -7,6 +7,7 @@ import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 import Profile from '../profile'
+import cookProfileForm from '../cook-profile-form'
 import auth from '../../action/auth.js'
 
 export class App extends React.Component{
@@ -18,12 +19,13 @@ export class App extends React.Component{
     console.log('HIT APP', this.props)
     return(
       <div className='nav'>
-        <h1> Nav </h1>
+        <h1> Nav via App.js</h1>
         <ul>
           <li><a onClick={this.props.goToLanding}>home</a></li>
           <li><a onClick={this.props.goToSignUp}>sign up</a></li>
           <li><a onClick={this.props.goToProfile}>profile</a></li>
           <li><a onClick={this.props.goToSignin}>sign in</a></li>
+          <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
         </ul>
 
         <MemoryRouter>
@@ -32,6 +34,7 @@ export class App extends React.Component{
             <Route path='/signup' component={Signup} />
             <Route path='/signin' component={Signin} />
             <Route path='/profile' component={() => <p> profile</p>} />
+            <Route path='/cook-profile-form' component={cookProfileForm} />
           </Switch>
         </MemoryRouter>
       </div>
@@ -50,6 +53,7 @@ let mapDispatchToProps = (dispatch) => ({
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToSignin: () => dispatch(route.switchRoute('/signin')),
   goToProfile: () => dispatch(route.switchRoute('/profile')),
+  goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
