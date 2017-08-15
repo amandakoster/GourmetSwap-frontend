@@ -8,6 +8,7 @@ import Signup from '../signup'
 import Signin from '../signin'
 import Profile from '../profile'
 import cookProfileForm from '../cook-profile-form'
+import MealForm from '../meal-form'
 import auth from '../../action/auth.js'
 
 export class App extends React.Component{
@@ -26,6 +27,7 @@ export class App extends React.Component{
           <li><a onClick={this.props.goToProfile}>profile</a></li>
           <li><a onClick={this.props.goToSignin}>sign in</a></li>
           <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
+          <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
         </ul>
         <MemoryRouter>
           <Switch location={{pathname: this.props.route}}>
@@ -34,6 +36,7 @@ export class App extends React.Component{
             <Route path='/signin' component={Signin} />
             <Route path='/profile' component={() => <p> profile</p>} />
             <Route path='/cook-profile-form' component={cookProfileForm} />
+            <Route path='/meal-form' component={MealForm} />
           </Switch>
         </MemoryRouter>
       </div>
@@ -53,6 +56,7 @@ let mapDispatchToProps = (dispatch) => ({
   goToSignin: () => dispatch(route.switchRoute('/signin')),
   goToProfile: () => dispatch(route.switchRoute('/profile')),
   goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
+  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
