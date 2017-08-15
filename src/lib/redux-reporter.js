@@ -12,4 +12,3 @@ export default (store) => (next) => (action) => {
     return action
   }
 }
-
