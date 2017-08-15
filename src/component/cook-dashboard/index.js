@@ -6,7 +6,7 @@ import * as util from '../../lib/util.js'
 import * as route from  '../../action/route.js'
 import * as auth from '../../action/auth.js'
 
-import CookProfileForm from '../cook-profile-form'
+import CookApplication from '../cook-application'
 import MealForm from '../meal-form'
 
 class CookDashboard extends React.Component {
@@ -16,13 +16,13 @@ class CookDashboard extends React.Component {
       <div className='cook-dashboard'>
         <h2>cook dashboard</h2>
         <ul>
-          <li><a onClick={this.props.goToCookProfileForm}>cook profile form</a></li>
+          <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
           <li><a onClick={this.prop.goToMealForm}>meal form</a></li>
         </ul>
         <MemoryRouter>
           <Switch ocation={{pathname: this.props.route}}>
-            <Route path='/cook-profile-form' component={CookProfileForm} />
-            <Route path='meal-form' component={MealForm} />
+            <Route path='/cook-application' component={CookApplication} />
+            <Route path='/meal-form' component={MealForm} />
           </Switch>
         </MemoryRouter>
       </div>
@@ -33,7 +33,7 @@ class CookDashboard extends React.Component {
 let mapStateToProps = (state) => ({route: state.route})
 
 let mapDispatchToProps = (dispatch) => ({
-  goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
+  goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
   goTomealForm: () => dispatch(route.switchRoute('/meal-form')),
 })
 
