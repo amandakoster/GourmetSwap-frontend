@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
+import moment from 'moment'
+import DatePicker from 'react-datepicker'
 
 
 class MealForm extends React.Component{
@@ -11,15 +13,17 @@ class MealForm extends React.Component{
       description: '',
       method: 'pickup',
       portions: '',
-      photos: null,
+      photo: null,
+      previewImg: '',
       ingredients: '',
-      date: null,
+      date: moment(),
       location: '',
       price: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setMethod = this.setMethod.bind(this)
+    this.handleDate = this.handleDate.bind(this)
   }
 
   setMethod(e) {
@@ -49,13 +53,25 @@ class MealForm extends React.Component{
     if(name === 'location'){
       this.setState({location: e.target.value})
     }
-    console.log('state', this.state)
+    if(name === 'photo'){
+      let {files} = e.target
+      let photo = files[0]
+      this.setState({photo})
+      util.photoToDataURL(photo)
+        .then(preview => this.setState({preview}))
+        .catch(console.error)
+    }
+  }
+
+  handleDate(e) {
+    this.setState({date: e})
+    console.log(this.state.date)
   }
 
 
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.state)
+    console.log(this.props)
     this.props.onComplete(this.state)
   }
   render(){
@@ -117,6 +133,15 @@ class MealForm extends React.Component{
           placeholder='location'
           value={this.state.location}
           onChange={this.handleChange} />
+        <DatePicker
+          selected={this.state.date}
+          onChange={this.handleDate} />
+        <input
+          type='file'
+          name='photo'
+          onChange={this.handleChange}
+        />
+        <img src={this.state.preview} />
         <button type='submit'> Submit </button>
       </form>
     )

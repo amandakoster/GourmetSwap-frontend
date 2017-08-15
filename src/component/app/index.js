@@ -65,12 +65,6 @@ let mapDispatchToProps = (dispatch) => ({
   goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
   goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
   goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
-
-  goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
-  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
-
-  goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
