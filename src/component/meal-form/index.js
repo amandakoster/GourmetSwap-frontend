@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import * as util from '../../lib/util.js'
 
 
 class MealForm extends React.Component{
@@ -45,10 +46,17 @@ class MealForm extends React.Component{
     if(name === 'price'){
       this.setState({price: e.target.value})
     }
+    if(name === 'location'){
+      this.setState({location: e.target.value})
+    }
     console.log('state', this.state)
   }
-  handleSubmit(e){
 
+
+  handleSubmit(e){
+    e.preventDefault()
+    console.log(this.state)
+    this.props.onComplete(this.state)
   }
   render(){
     const {method} = this.state
@@ -103,6 +111,13 @@ class MealForm extends React.Component{
           placeholder='price'
           value={this.state.price}
           onChange={this.handleChange} />
+        <input
+          name='location'
+          type='text'
+          placeholder='location'
+          value={this.state.location}
+          onChange={this.handleChange} />
+        <button type='submit'> Submit </button>
       </form>
     )
   }
