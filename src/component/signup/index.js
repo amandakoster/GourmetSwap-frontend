@@ -1,11 +1,13 @@
 import React from 'react'
 import * as _ from 'lodash'
 import * as util from '../../lib/util.js'
+import * as auth from '../../action/auth.js'
+import * as querystring from 'querystring'
+
 import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
-import zipcode from 'react-zipcode'
-import * as querystring from 'querystring'
+// import zipcode from 'react-zipcode'
 
 const Tooltip = (props) => {
   return (
@@ -50,7 +52,7 @@ class Signup extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    if(!this.state.usernameError && !this.set.passwordError && !this.state.emailError){
+    if(!this.state.usernameError && !this.state.passwordError && !this.state.emailError){
       return this.props.signup({
         email: this.state.email,
         username: this.state.username,
@@ -89,7 +91,7 @@ class Signup extends React.Component{
 
     if(name === 'email'){
       if(!value){
-        error = 'username cannot be empty'
+        error = 'email cannot be empty'
       } else if (!validator.isEmail(value)) {
         error = 'username can only contain letters and numbers'
       }
@@ -97,25 +99,25 @@ class Signup extends React.Component{
 
     if(name === 'password'){
       if(!value){
-        error = 'username cannot be empty'
+        error = 'password cannot be empty'
       } else if (!validator.isAlphanumeric(value)) {
-        error = 'username can only contain letters and numbers'
+        error = 'password can only contain letters and numbers'
       }
     }
 
     if(name === 'phone'){
       if(!value){
-        error = 'username cannot be empty'
+        error = 'phone cannot be empty'
       } else if (!validator.isMobilePhone(value)) {
-        error = 'username can only contain numbers'
+        error = 'phone can only contain numbers'
       }
     }
 
     if(name === 'zipCode'){
       if(!value){
         error = 'zip code cannot be empty'
-      } else if (!validator.isAlphanumeric(value)) {
-        error = 'username can only contain numbers'
+      } else if (!validator.isNumeric(value)) {
+        error = 'zip code can only contain numbers'
       }
     }
 
@@ -154,6 +156,15 @@ class Signup extends React.Component{
           />
 
           <Tooltip message={this.state.usernameError} />
+          <input
+            name='username'
+            type='text'
+            placeholder='username'
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+
+          <Tooltip message={this.state.usernameError} />
           <div className='username-feedback' >
             {util.renderIf(this.state.username,
               <span>
@@ -163,11 +174,12 @@ class Signup extends React.Component{
             )}
           </div>
 
+          <Tooltip message={this.state.emailError} />
           <input
-            name='username'
+            name='email'
             type='text'
             placeholder='email'
-            value={this.state.username}
+            value={this.state.email}
             onChange={this.handleChange}
           />
 
@@ -205,4 +217,11 @@ class Signup extends React.Component{
   }
 }
 
-export default Signup
+
+export const mapStateToProps = (state) => ({})
+
+export const mapDispatchToProps = (dispatch) => ({ signup: (user) => dispatch(auth.signupRequest(user)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+
