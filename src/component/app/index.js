@@ -9,21 +9,11 @@ import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 import Profile from '../profile'
-
-import cookProfileForm from '../cook-profile-form'
-import MealForm from '../meal-form'
-import CookNav from '../cook-nav'
-
-
 import cookProfileForm from '../cook-profile-form'
 import MealForm from '../meal-form'
 
 import CookNav from '../cook-nav'
-
 import auth from '../../action/auth.js'
-
-let DropdownTrigger = Dropdown.DropdownTrigger
-let DropdownContent = Dropdown.DropdownContent
 
 export class App extends React.Component{
   componentDidMount(){
@@ -42,14 +32,9 @@ export class App extends React.Component{
           <li><a onClick={this.props.goToSignin}>sign in</a></li>
           <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
           <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
-          <li><a onClick={this.props.goToCookNav}>cook nav</a></li>
-
-          <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
-          <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
-
-          <li><a onClick={this.props.goToCookNav}>cook nav</a></li>
-
+          <li><a onClick={this.props.goToCookNav}>cook nav - this will be a renderIf </a></li>
         </ul>
+
         <MemoryRouter>
           <Switch location={{pathname: this.props.route}}>
             <Route path='/landing' component={Landing} />
@@ -59,12 +44,6 @@ export class App extends React.Component{
             <Route path='/cook-profile-form' component={cookProfileForm} />
             <Route path='/meal-form' component={MealForm} />
             <Route path='/cook-nav' component={CookNav} />
-
-            <Route path='/cook-profile-form' component={cookProfileForm} />
-            <Route path='/meal-form' component={MealForm} />
-
-            <Route path='/cook-nav' component={CookNav} />
-
           </Switch>
         </MemoryRouter>
       </div>
