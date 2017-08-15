@@ -46,6 +46,7 @@
     "react-test-renderer": "^15.6.1",
     "react-zipcode": "^1.0.0",
     "redux": "^3.7.2",
+    "renderif": "^1.0.0",
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
     "semantic-ui-react": "^0.71.4",
