@@ -9,9 +9,17 @@ import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 import Profile from '../profile'
+
 import cookProfileForm from '../cook-profile-form'
 import MealForm from '../meal-form'
 import CookNav from '../cook-nav'
+
+
+import cookProfileForm from '../cook-profile-form'
+import MealForm from '../meal-form'
+
+import CookNav from '../cook-nav'
+
 import auth from '../../action/auth.js'
 
 let DropdownTrigger = Dropdown.DropdownTrigger
@@ -35,6 +43,12 @@ export class App extends React.Component{
           <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
           <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
           <li><a onClick={this.props.goToCookNav}>cook nav</a></li>
+
+          <li><a onClick={this.props.goTocookProfileForm}>cook profile form</a></li>
+          <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
+
+          <li><a onClick={this.props.goToCookNav}>cook nav</a></li>
+
         </ul>
         <MemoryRouter>
           <Switch location={{pathname: this.props.route}}>
@@ -45,6 +59,12 @@ export class App extends React.Component{
             <Route path='/cook-profile-form' component={cookProfileForm} />
             <Route path='/meal-form' component={MealForm} />
             <Route path='/cook-nav' component={CookNav} />
+
+            <Route path='/cook-profile-form' component={cookProfileForm} />
+            <Route path='/meal-form' component={MealForm} />
+
+            <Route path='/cook-nav' component={CookNav} />
+
           </Switch>
         </MemoryRouter>
       </div>
@@ -66,6 +86,12 @@ let mapDispatchToProps = (dispatch) => ({
   goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
   goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
   goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
+
+  goTocookProfileForm: () => dispatch(route.switchRoute('/cook-profile-form')),
+  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
+
+  goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
