@@ -33,12 +33,11 @@ export class App extends React.Component{
               </ul>
 
               <Route exact path='/landing'
-              component={Landing} />
+                component={Landing} />
               <Route exact path='/signup'
-              component={Signup} />
+                component={Signup} />
               <Route exact path='/signin'
-              component={Signin} />
-              
+                component={Signin} />
 
             </div>
 
@@ -51,11 +50,11 @@ export class App extends React.Component{
               </ul>
 
               <Route exact path='/cook-register'
-              component={CookRegister} />
+                component={CookRegister} />
               <Route exact path='/cook-application'
-              component={CookApplication} />
+                component={CookApplication} />
               <Route exact path='/meal-container'
-              component={MealContainer} />
+                component={MealContainer} />
 
             </div>
           </div>
