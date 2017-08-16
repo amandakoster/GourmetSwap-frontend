@@ -1,0 +1,107 @@
+@import "vars";
+
+
+// content
+html, body { position: relative; }
+head, script, link  { display: none; }
+p { display: inline-block; }
+span,em,strong { display: inline; }
+em { font-style: italic; }
+strong { font-weight: bold; }
+
+main-nav {
+  float:left;
+}
+
+body {
+  background: $color-white;
+  // seting the size of ems on the page
+  font-size: 16px;
+  margin: 10%;
+}
+
+h2 {
+  color: $color-primary;
+}
+
+blockquote {
+  border-left: $pad solid $color-lightgrey;
+  padding-left: $pad;
+}
+
+@for $i from 6 through 1 {
+  h#{$i} {
+    font-size: 9/($i + 2) * 1em;;
+  }
+}
+
+
+// form
+label {
+  font-size: 1.25em;
+  font-weight: bolder;
+  margin-bottom: $pad;
+}
+
+textarea, input {
+  padding: $pad;
+  border: 1px solid $color-lightgrey;
+  margin-bottom: $pad;
+  resize: none;
+
+  &:focus {
+    border: 1px solid $color-darkgrey;
+  }
+
+  &::placeholder {
+    color: $color-grey;
+  }
+}
+
+.user-nav {
+  float: left;
+  border: solid red;
+}
+
+.cook-nav {
+  float: left;
+  border: solid yellow;
+}
+
+.cook-cuisines {
+  border: solid orange;
+}
+
+.number-box {
+  border: solid pink;
+}
+
+.radio-button {
+  text-decoration: none;
+}
+
+button,input[type="submit"] {
+  background: $color-primary;
+  color: $color-white;
+  padding: $pad;
+  border-radius: 5%;
+  width: 30%;
+  border: none;
+
+  &:hover {
+    background: $color-secondary;
+  }
+
+  &:active {
+    background: $color-primary;
+  }
+}
+
+// lists
+ul,ol,li { margin-left: $pad * 2; }
+li { display: list-item; }
+ol li { list-style: decimal; }
+// ol ol li , ul ol li { list-style: lower-alpha; }
+// ol ul li , ul ul li { list-style: square; }
+
+.hide { display: none; }
