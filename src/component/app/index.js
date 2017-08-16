@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { render } from 'react-dom'
-import { MemoryRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
@@ -23,57 +22,51 @@ export class App extends React.Component{
     console.log('HIT APP', this.props)
     return(
       <div className='app'>
-        <div className='user-nav'>
-          <h1> User Nav</h1>
-          <ul>
-            <li><a onClick={this.props.goToLanding}>Home</a></li>
-            <li><a onClick={this.props.goToSignUp}>Sign Up</a></li>
-            <li><a onClick={this.props.goToSignin}>Sign In</a></li>
-          </ul>
+        <BrowserRouter>
+          <div className='browser-router'>
+            <div className='user-nav'>
+              <h1> User Nav</h1>
+              <ul>
+                <li><Link to='/landing'> Landing </Link></li>
+                <li><Link to='/signup'> Signup </Link></li>
+                <li><Link to='/signin'> Signin </Link></li>
+              </ul>
 
-          <MemoryRouter>
-            <Switch location={{pathname: this.props.route}}>
-              <Route path='/landing' component={Landing} />
-              <Route path='/signup' component={Signup} />
-              <Route path='/signin' component={Signin} />
-            </Switch>
-          </MemoryRouter>
-        </div>
+              <Route exact path='/landing'
+              component={Landing} />
+              <Route exact path='/signup'
+              component={Signup} />
+              <Route exact path='/signin'
+              component={Signin} />
 
-        <div className='cook-nav'>
-          <h1> Cook Nav </h1>
-          <ul>
-            <li><a onClick={this.props.goToCookApplication}>Apply to Cook</a></li>
-            <li><a onClick={this.props.goToCookRegister}>Register To Cook</a></li>
-            <li><a onClick={this.props.goToMealContainer}>Meal Container</a></li>
-          </ul>
+            </div>
 
-          <MemoryRouter>
-            <Switch location={{pathname: this.props.route}}>
-              <Route path='/cook-register' component={CookRegister} />
-              <Route path='/meal-container' component={MealContainer} />
-              <Route path='/cook-application' component={CookApplication} />
-            </Switch>
-          </MemoryRouter>
-        </div>
+            <div className='cook-nav'>
+              <h1> Cook Nav </h1>
+              <ul>
+                <li><Link to='/cook-register'>Register to Cook</Link></li>
+                <li><Link to='/meal-container'>Meals</Link></li>
+                <li><Link to='/cook-application'>Apply to Cook</Link></li>
+              </ul>
+
+              <Route exact path='/cook-register'
+              component={CookRegister} />
+              <Route exact path='/cook-application'
+              component={CookApplication} />
+              <Route exact path='/meal-container'
+              component={MealContainer} />
+
+            </div>
+          </div>
+        </BrowserRouter>
       </div>
     )
   }
 }
 
-let mapStateToProps = (state) => ({
-  route: state.route,
-})
+let mapStateToProps = (state) => ({})
 
 let mapDispatchToProps = (dispatch) => ({
-  // logout: () => dispatch(auth.logout()),
-  // login: (token) => dispatch(route.login(token)),
-  goToLanding: () => dispatch(route.switchRoute('/landing')),
-  goToSignUp: () => dispatch(route.switchRoute('/signup')),
-  goToSignin: () => dispatch(route.switchRoute('/signin')),
-  goToMealContainer: () => dispatch(route.switchRoute('/meal-container')),
-  goToCookRegister: () => dispatch(route.switchRoute('/cook-register')),
-  goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
