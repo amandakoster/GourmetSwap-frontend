@@ -68,9 +68,7 @@ export class App extends React.Component{
                   component={MealContainer} />
               </div>
             )}
-
           </div>
-        
         </BrowserRouter>
       </div>
 
