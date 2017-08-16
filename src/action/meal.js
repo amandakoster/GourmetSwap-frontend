@@ -5,7 +5,12 @@ export const mealCreate = (meal) => ({
   payload: meal,
 })
 
-export const mealeUpdate = (meal) => ({
+export const mealUpdate = (meal) => ({
   type: 'MEAL_UPDATE',
+  payload: meal,
+})
+
+export const mealDelete = (meal) => ({
+  type: 'MEAL_DELETE',
   payload: meal,
 })

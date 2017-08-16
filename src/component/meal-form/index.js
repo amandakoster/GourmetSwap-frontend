@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
 import DatePicker from 'react-datepicker'
+import {mealCreate} from '../../action/meal.js'
 
 
 class MealForm extends React.Component{
@@ -72,7 +73,8 @@ class MealForm extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     console.log(this.props)
-    this.props.onComplete(this.state)
+    this.props.mealCreate(this.state)
+    console.log('ninja', this.state)
   }
   render(){
     const {method} = this.state
@@ -147,4 +149,5 @@ class MealForm extends React.Component{
     )
   }
 }
+
 export default MealForm
