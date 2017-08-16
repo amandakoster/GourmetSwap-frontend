@@ -10,8 +10,9 @@ import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 import CookApplication from '../cook-application'
+import CookRegister from '../cook-register'
 import MealForm from '../meal-form'
-import CookNav from '../cook-nav'
+
 
 export class App extends React.Component{
   componentDidMount(){
@@ -21,31 +22,41 @@ export class App extends React.Component{
   render() {
     console.log('HIT APP', this.props)
     return(
-      <div className='nav'>
-        <h1> Nav via App.js</h1>
-        <ul>
-          <li><a onClick={this.props.goToLanding}>Home</a></li>
-          <li><a onClick={this.props.goToSignUp}>Sign Up</a></li>
-          <li><a onClick={this.props.goToSignin}>Sign In</a></li>
-          <li><a onClick={this.props.goToCookNav}>Cook Nav</a></li>
-        </ul>
+      <div className='app'>
+        <div className='user-nav'>
+          <h1> User Nav</h1>
+          <ul>
+            <li><a onClick={this.props.goToLanding}>Home</a></li>
+            <li><a onClick={this.props.goToSignUp}>Sign Up</a></li>
+            <li><a onClick={this.props.goToSignin}>Sign In</a></li>
+            <li><a onClick={this.props.goToCookNav}>Cook Nav</a></li>
+          </ul>
 
-        {util.renderIf(true,
-          <div className='cook-nav'>
-            <ul>
-              <li><a onClick={this.props.goToCookNav}>cook nav -  will be a renderIf </a></li>
-            </ul>
-          </div>
-        )}
+          <MemoryRouter>
+            <Switch location={{pathname: this.props.route}}>
+              <Route path='/landing' component={Landing} />
+              <Route path='/signup' component={Signup} />
+              <Route path='/signin' component={Signin} />
+            </Switch>
+          </MemoryRouter>
+        </div>
 
-        <MemoryRouter>
-          <Switch location={{pathname: this.props.route}}>
-            <Route path='/landing' component={Landing} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/signin' component={Signin} />
-            <Route path='/cook-nav' component={CookNav} />
-          </Switch>
-        </MemoryRouter>
+        <div className='cook-nav'>
+          <h1> Cook Nav </h1>
+          <ul>
+            <li><a onClick={this.props.goToCookApplication}>Apply to Cook</a></li>
+            <li><a onClick={this.props.goToCookRegister}>Register To Cook</a></li>
+            <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
+          </ul>
+
+          <MemoryRouter>
+            <Switch location={{pathname: this.props.route}}>
+              <Route path='/cook-register' component={CookRegister} />
+              <Route path='/meal-form' component={MealForm} />
+              <Route path='/cook-application' component={CookApplication} />
+            </Switch>
+          </MemoryRouter>
+        </div>
       </div>
     )
   }
@@ -61,7 +72,9 @@ let mapDispatchToProps = (dispatch) => ({
   goToLanding: () => dispatch(route.switchRoute('/landing')),
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToSignin: () => dispatch(route.switchRoute('/signin')),
-  goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
+  goToCookRegister: () => dispatch(route.switchRoute('/cook-register')),
+  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
+  goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
