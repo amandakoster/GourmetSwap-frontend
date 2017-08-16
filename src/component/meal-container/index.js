@@ -25,6 +25,7 @@ class MealContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
+  meal: state.meal,
 })
 
 let mapDispatchToProps = (dispatch) => ({

@@ -15,7 +15,10 @@ import CookForm from '../cook-container'
 
 export class App extends React.Component{
   componentDidMount(){
-    console.log('Comp Did Mount', this.props)
+    let token = util.cookieFetch('Gourmet-Swap-Token')
+    if(token){
+      this.props.login(token)
+    }
   }
 
   render() {
@@ -38,9 +41,7 @@ export class App extends React.Component{
                 component={Signup} />
               <Route exact path='/signin'
                 component={Signin} />
-            </div>
-
-            <div className='cook-nav'>
+            </div>              <div className='cook-nav'>
               <h1> Cook Nav </h1>
               <ul>
                 <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
@@ -52,6 +53,19 @@ export class App extends React.Component{
                 component={MealContainer} />
 
             </div>
+            {util.renderIf(this.props.token,
+              <div className='cook-nav'>
+                <h1> Cook Nav </h1>
+                <ul>
+                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                  <li><Link to='/meal-container'>Meals</Link></li>
+                </ul>
+                <Route exact path='/cook-form'
+                  component={CookForm} />
+                <Route exact path='/meal-container'
+                  component={MealContainer} />
+              </div>
+            )}
           </div>
         </BrowserRouter>
       </div>
