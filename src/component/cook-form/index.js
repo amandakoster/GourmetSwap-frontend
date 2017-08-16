@@ -16,6 +16,8 @@ class CookForm extends React.Component{
       otherInfo: '',
       numDishes:'',
       otherServices:'',
+      deliver: null,
+      service: null,
       describe: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -50,6 +52,15 @@ class CookForm extends React.Component{
     }
     if(name === 'numDishes'){
       this.setState({numDishes: e.target.value})
+    }
+    if(name === 'service'){
+      this.setState({service: e.target.value})
+    }
+    if(name === 'cuisine'){
+      this.setState({cuisine: e.target.value})
+    }
+    if(name === 'deliver'){
+      this.setState({deliver: e.target.value})
     }
   }
 
@@ -177,16 +188,46 @@ class CookForm extends React.Component{
             onChange={this.handleChange} />
         </div>
 
-
-        <div className='cook-nav'>
-          <ul
-            defaultValue="---"
-            id='event-type'
-            name='event-type'
+        <div className='dropdown'>
+          <p> Would you like to deliver your own food to customers to earn extra cash? </p>
+          <select
+            name='service'
             onChange={this.handleChange}>
-            <li value="meal form" onClick={this.props.goToCookProfileForm}> cusine2</li>
-            <li value="meal form" onClick={this.props.goToCookProfileForm}> cusine1</li>
-          </ul>
+            <option value="meal-prep"> meal-prep </option>
+            <option value="meal-prep recipes"> meal-prep recipes </option>
+            <option value="baked goods"> baked goods </option>
+            <option value="catering"> catering </option>
+            <option value="cooking classes"> cooking classes </option>
+            <option value="personal chefs"> personal chefs </option>
+            <option value="special diets"> special diets </option>
+            <option value="free food experience"> free food experience </option>
+            <option value="event chefs"> event chefs </option>
+
+          </select>
+        </div>
+
+        <div className='dropdown'>
+          <p> Would you like to deliver your own food to customers to earn extra cash? </p>
+          <select
+            name='cuisine'
+            onChange={this.handleChange}>
+            <option value="cuisine1"> cuisine1. </option>
+            <option value="cuisine2"> cuisine2. </option>
+            <option value="cuisine3"> cuisine3. </option>
+            <option value="cuisine4"> cuisine4. </option>
+            <option value="cuisine5"> cuisine5. </option>
+            <option value="cuisine6"> cuisine6. </option>
+          </select>
+        </div>
+
+        <div className='dropdown'>
+          <p> Would you like to deliver your own food to customers to earn extra cash? </p>
+          <select
+            name='deliver'
+            onChange={this.handleChange}>
+            <option value="deliverYes"> Yes, I do. </option>
+            <option value="deliverNo"> No, I do not. </option>
+          </select>
         </div>
 
         <button type='submit'> Submit </button>
