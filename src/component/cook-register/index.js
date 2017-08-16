@@ -18,7 +18,7 @@ class CookRegister extends React.Component{
       numDishes:'',
       otherServices:'',
       chooseCuisines:'',
-      deliver:false,
+      describe: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -46,19 +46,24 @@ class CookRegister extends React.Component{
         <h1>register-cooking</h1>
 
         <div className='cook-cuisines'>
-          <lable> Signature Dishes:
-            <textarea value={this.state.sigDishes}
-              onChange={this.handleChange} />
-          </lable>
-          <input type='submit' value="Submit" />
-          <p> Tell us about your cooking! </p>
+          <h2> Tell us about your cooking! </h2>
+          <label>
+            List your your three favorite signature dishes or cuisines. These are the type of dishes your friends or family beg for when there is a party or a family gathering.
+            <textarea value={this.state.value} onChange={this.setMethod} />
+            <textarea value={this.state.value} onChange={this.handleChange} />
+            <textarea value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+
 
           <div className='drop-down'>
+            <h2> Tell us about your cooking experience! </h2>
+            <p> How many resturants have you cooked in? </p>
             <select
               defaultValue="---"
               id='event-type'
               name='event-type'
-              onChange={this.handleChange}>
+              onChange={this.setMethod}>
               <option value="---"> --- </option>
               <option value="0-2"> 0-2 </option>
               <option value="3-5"> 3-5 </option>
@@ -71,11 +76,12 @@ class CookRegister extends React.Component{
         <label>
           <input
             name='method'
+            title='entrepreneur'
             type='radio'
             checked={method == 'entrepreneur'}
             onChange={this.setMethod}
             value='entrepreneur'
-          /> Pickup
+          /> Food Entrepreneur looking to build a brand?
         </label>
 
         <label>
@@ -85,7 +91,7 @@ class CookRegister extends React.Component{
             checked={method == 'professional'}
             onChange={this.setMethod}
             value='professional'
-          /> Delivery
+          /> Food Professional looking to make money on own terms?
         </label>
 
         <label>
@@ -95,7 +101,7 @@ class CookRegister extends React.Component{
             checked={method == 'flexible'}
             onChange={this.setMethod}
             value='flexible'
-          /> Pickup
+          /> Stay at home parent &sol person looking for flexible work?
         </label>
 
         <label>
@@ -105,7 +111,7 @@ class CookRegister extends React.Component{
             checked={method == 'student'}
             onChange={this.setMethod}
             value='student'
-          /> Delivery
+          /> Cullinary arts student looking to hone your craft?
         </label>
 
         <label>
@@ -115,7 +121,7 @@ class CookRegister extends React.Component{
             checked={method == 'selling'}
             onChange={this.setMethod}
             value='selling'
-          /> Delivery
+          /> Already selling food to local community via social media?
         </label>
 
         <input
@@ -125,16 +131,8 @@ class CookRegister extends React.Component{
           value={this.state.otherInfo}
           onChange={this.handleChange}/>
 
-        <div className='num-dish'>
-          <lable> Signature Dishes:
-            <textarea value={this.state.sigDishes}
-              onChange={this.handleChange} />
-          </lable>
-          <input type='submit' value="Submit" />
+        <div className='num-dish-drop-down'>
           <p> How many dishes do you plan on preparing a week? </p>
-        </div>
-
-        <div className='drop-down'>
           <select
             defaultValue="---"
             id='event-type'
