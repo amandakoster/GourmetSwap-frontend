@@ -69,11 +69,18 @@ class MealForm extends React.Component{
     console.log(this.state.date)
   }
 
+
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.props)
-    this.props.mealCreate(this.state)
-    console.log('ninja', this.state)
+    let {onComplete} = this.props
+    let result = onComplete(this.state)
+    if(result instanceof Promise){
+      result.then(() => this.setState({error:null}))
+        .catch(error => {
+          util.log('ShipForm Error:', error)
+          this.setState({error})
+        })
+    }
   }
   render(){
     const {method} = this.state

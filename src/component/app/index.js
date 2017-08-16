@@ -10,8 +10,8 @@ import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 import CookApplication from '../cook-application'
+import MealContainer from '../meal-container'
 import CookRegister from '../cook-register'
-import MealForm from '../meal-form'
 
 
 export class App extends React.Component{
@@ -29,7 +29,6 @@ export class App extends React.Component{
             <li><a onClick={this.props.goToLanding}>Home</a></li>
             <li><a onClick={this.props.goToSignUp}>Sign Up</a></li>
             <li><a onClick={this.props.goToSignin}>Sign In</a></li>
-            <li><a onClick={this.props.goToCookNav}>Cook Nav</a></li>
           </ul>
 
           <MemoryRouter>
@@ -53,6 +52,7 @@ export class App extends React.Component{
             <Switch location={{pathname: this.props.route}}>
               <Route path='/cook-register' component={CookRegister} />
               <Route path='/meal-form' component={MealForm} />
+              <Route path='/meal-container' component={MealContainer} />
               <Route path='/cook-application' component={CookApplication} />
             </Switch>
           </MemoryRouter>
@@ -72,6 +72,7 @@ let mapDispatchToProps = (dispatch) => ({
   goToLanding: () => dispatch(route.switchRoute('/landing')),
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToSignin: () => dispatch(route.switchRoute('/signin')),
+  goToMealContainer: () => dispatch(route.switchRoute('/meal-container')),
   goToCookRegister: () => dispatch(route.switchRoute('/cook-register')),
   goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
   goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
