@@ -3,19 +3,19 @@ import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
 import * as _ from 'lodash'
-import {cookCreate} from '../../action/cook-register.js'
+import {cookCreate} from '../../action/cook-form.js'
 
-class CookRegister extends React.Component{
+class CookForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      sigDishes:'',
-      numberOfResturants:'',
+      dishOne:'',
+      dishTwo:'',
+      dishThree:'',
       method: 'entrepreneur',
       otherInfo: '',
       numDishes:'',
       otherServices:'',
-      chooseCuisines:'',
       describe: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -33,41 +33,46 @@ class CookRegister extends React.Component{
   handleChange(e){
     let {type, name, checked, value} = e.target
 
-    if(name === 'dish one'){
-      this.setState({title: e.target.value})
+    if(name === 'dish-one'){
+      this.setState({dishOne: e.target.value})
     }
-    if(name === 'dish two'){
-      this.setState({description: e.target.value})
+    if(name === 'dish-two'){
+      this.setState({dishTwo: e.target.value})
     }
-    if(name === 'dish three'){
-      this.setState({portions: e.target.value})
+    if(name === 'dish-three'){
+      this.setState({dishThree: e.target.value})
     }
-    if(name === 'other?'){
-      this.setState({ingredients: e.target.value})
-
+    if(name === 'other-info'){
+      this.setState({otherInfo: e.target.value})
+    }
+    if(name === 'numResturants'){
+      this.setState({numResturants: e.target.value})
+    }
+    if(name === 'numDishes'){
+      this.setState({numDishes: e.target.value})
     }
   }
 
   handleSubmit(e){
     e.preventDefault()
     let {onComplete} = this.props
+    console.log(this.state, 'COOK FORM STATE')
     let result = onComplete(this.state)
+    console.log(result, 'cookForm result')
     if(result instanceof Promise){
       result.then(() => this.setState({error:null}))
         .catch(error => {
-          util.log('CookRegsiter Error', error)
+          util.log('CookForm Error', error)
           this.setState({error})
         })
     }
   }
 
   render(){
-    const {method} = this.state
+    let {method} = this.state
     return(
 
       <form onSubmit={this.handleSubmit}>
-        <h1>register-cooking</h1>
-
         <div className='cook-cuisines'>
           <h2> Tell us about your cooking! </h2>
           <p> List your three favorite signature dishes or cuisines. These are the type of dishes your friends and family beg for when there is a party or family gathering.</p>
@@ -75,7 +80,7 @@ class CookRegister extends React.Component{
             name='dish-one'
             type='text'
             placeholder='dish one'
-            value={this.state.title}
+            value={this.state.dishOne}
             onChange={this.handleChange} />
           <input
             name='dish-two'
@@ -91,23 +96,18 @@ class CookRegister extends React.Component{
             onChange={this.handleChange} />
         </div>
 
-        <div className='drop-down'>
+        <div className='number-box'>
           <h2> Tell us about your cooking experience! </h2>
           <p> How many resturants have you cooked in? </p>
-          <select
-            defaultValue="---"
-            id='event-type'
-            name='event-type'
-            onChange={this.setMethod}>
-            <option value="---"> --- </option>
-            <option value="0-2"> 0-2 </option>
-            <option value="3-5"> 3-5 </option>
-            <option value="6-9"> 6-9 </option>
-            <option value="10+"> 10+ </option>
-          </select>
+          <input
+            name='numResturants'
+            type='number'
+            placeholder='number of resturants'
+            value={this.state.numResturants}
+            onChange={this.handleChange} />
         </div>
 
-        <div className='drop-down'>
+        <div className='radio-button'>
           <label>
             <input
               name='method'
@@ -164,28 +164,36 @@ class CookRegister extends React.Component{
           name='other-info'
           type='text'
           placeholder='other info?'
-          value={this.state.title}
+          value={this.state.otherInfo}
           onChange={this.handleChange} />
 
-        <div className='num-dish-drop-down'>
+        <div className='num-dish'>
           <p> How many dishes do you plan on preparing a week? </p>
-          <select
+          <input
+            name='numDishes'
+            type='number'
+            placeholder='number of dishes'
+            value={this.state.numDishes}
+            onChange={this.handleChange} />
+        </div>
+
+
+        <div className='cook-nav'>
+          <ul
             defaultValue="---"
             id='event-type'
             name='event-type'
             onChange={this.handleChange}>
-            <option value="---"> --- </option>
-            <option value="0-2"> 0-2 </option>
-            <option value="3-5"> 3-5 </option>
-            <option value="6-9"> 6-9 </option>
-            <option value="10+"> 10+ </option>
-          </select>
-          <button type='submit'> Submit </button>
+            <li value="meal form" onClick={this.props.goToCookProfileForm}> cusine2</li>
+            <li value="meal form" onClick={this.props.goToCookProfileForm}> cusine1</li>
+          </ul>
         </div>
+
+        <button type='submit'> Submit </button>
       </form>
     )
   }
 }
 
 
-export default CookRegister
+export default CookForm
