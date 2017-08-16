@@ -6,6 +6,11 @@ export const login = (token) => ({
   payload: token,
 })
 
+export const setCook = (cook) => ({
+  type: 'SET_COOK',
+  payload: cook,
+})
+
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
   return { type: 'LOGOUT' }
@@ -15,7 +20,10 @@ export const userFetch = (token) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/users/auth`)
   .set('Authorization', `Bearer ${token}`)
   .then(res => {
-    console.log('userFetch res', res)
+    console.log('userFetch res', res.text)
+    if(res.text === 'true') {
+      dispatch(setCook(true))
+    }
   })
 }
 
