@@ -45,13 +45,12 @@ export class App extends React.Component{
           <ul>
             <li><a onClick={this.props.goToCookApplication}>Apply to Cook</a></li>
             <li><a onClick={this.props.goToCookRegister}>Register To Cook</a></li>
-            <li><a onClick={this.props.goToMealForm}>Meal Form</a></li>
+            <li><a onClick={this.props.goToMealContainer}>Meal Container</a></li>
           </ul>
 
           <MemoryRouter>
             <Switch location={{pathname: this.props.route}}>
               <Route path='/cook-register' component={CookRegister} />
-              <Route path='/meal-form' component={MealForm} />
               <Route path='/meal-container' component={MealContainer} />
               <Route path='/cook-application' component={CookApplication} />
             </Switch>
@@ -74,7 +73,6 @@ let mapDispatchToProps = (dispatch) => ({
   goToSignin: () => dispatch(route.switchRoute('/signin')),
   goToMealContainer: () => dispatch(route.switchRoute('/meal-container')),
   goToCookRegister: () => dispatch(route.switchRoute('/cook-register')),
-  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
   goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
 })
 

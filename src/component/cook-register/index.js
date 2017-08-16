@@ -2,8 +2,9 @@ import React from 'react'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
 import * as _ from 'lodash'
-
 import {connect} from 'react-redux'
+
+import {cookCreate} from '../../action/cook-register.js'
 import superagent from'superagent'
 import validator from 'validator'
 
@@ -24,18 +25,49 @@ class CookRegister extends React.Component{
     this.handleChange = this.handleChange.bind(this)
     this.setMethod = this.setMethod.bind(this)
   }
+
   handleSubmit(e){
     e.preventDefault()
+    let {onComplete} = this.props
+    let result = onComplete(this.state)
+    if(result instanceof Promise){
+      result.then(() => this.setState({error:null}))
+        .catch(error => {
+          util.log('MealForm Error', error)
+          this.setState({error})
+        })
+    }
   }
+
   setMethod(e) {
     this.setState({
       method: e.currentTarget.value,
     })
     console.log(this.state.method)
   }
+  //CHANAGE THIS TO THIS FORM
   handleChange(e){
     let {name, value} = e.target
     this.setState({[name]: value})
+
+    if(name === 'title'){
+      this.setState({title: e.target.value})
+    }
+    if(name === 'description'){
+      this.setState({description: e.target.value})
+    }
+    if(name === 'portions'){
+      this.setState({portions: e.target.value})
+    }
+    if(name === 'ingredients'){
+      this.setState({ingredients: e.target.value})
+    }
+    if(name === 'price'){
+      this.setState({price: e.target.value})
+    }
+    if(name === 'location'){
+      this.setState({location: e.target.value})
+    }
   }
 
   render(){
