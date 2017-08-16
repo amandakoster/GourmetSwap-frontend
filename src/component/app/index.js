@@ -21,40 +21,38 @@ export class App extends React.Component{
   render() {
     console.log('HIT APP', this.props)
     return(
-      <div className='app'>
-        <BrowserRouter>
-          <div className='browser-router'>
-            <div className='user-nav'>
-              <h1> User Nav</h1>
-              <ul>
-                <li><Link to='/landing'> Landing </Link></li>
-                <li><Link to='/signup'> Signup </Link></li>
-                <li><Link to='/signin'> Signin </Link></li>
-              </ul>
 
-              <Route exact path='/landing'
-                component={Landing} />
-              <Route exact path='/signup'
-                component={Signup} />
-              <Route exact path='/signin'
-                component={Signin} />
-            </div>
+      <BrowserRouter>
+        <div className='nav'>
+          <div className='user-nav'>
+            <ul>
+              <li><Link to='/landing'> Landing </Link></li>
+              <li><Link to='/signup'> Signup </Link></li>
+              <li><Link to='/signin'> Signin </Link></li>
+            </ul>
 
-            <div className='cook-nav'>
-              <h1> Cook Nav </h1>
-              <ul>
-                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
-                <li><Link to='/meal-container'>Meals</Link></li>
-              </ul>
-              <Route exact path='/cook-form'
-                component={CookForm} />
-              <Route exact path='/meal-container'
-                component={MealContainer} />
-
-            </div>
+            <Route exact path='/landing'
+              component={Landing} />
+            <Route exact path='/signup'
+              component={Signup} />
+            <Route exact path='/signin'
+              component={Signin} />
           </div>
-        </BrowserRouter>
-      </div>
+
+          <div className='cook-nav'>
+            <ul>
+              <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+              <li><Link to='/meal-container'>Meals</Link></li>
+            </ul>
+            <Route exact path='/cook-form'
+              component={CookForm} />
+            <Route exact path='/meal-container'
+              component={MealContainer} />
+
+          </div>
+        </div>
+      </BrowserRouter>
+
     )
   }
 }

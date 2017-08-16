@@ -17,6 +17,11 @@ body {
   background: $color-white;
   // seting the size of ems on the page
   font-size: 16px;
+  margin: 10%;
+}
+
+h2 {
+  color: $color-primary;
 }
 
 blockquote {
@@ -49,30 +54,54 @@ textarea, input {
   }
 
   &::placeholder {
-    color: $color-lightgrey;
+    color: $color-grey;
   }
 }
 
+.user-nav {
+  float: left;
+  border: solid red;
+}
+
+.cook-nav {
+  float: left;
+  border: solid yellow;
+}
+
+.cook-cuisines {
+  border: solid orange;
+}
+
+.number-box {
+  border: solid pink;
+}
+
+.radio-button {
+  text-decoration: none;
+}
+
 button,input[type="submit"] {
-  background: $color-lightgrey;
+  background: $color-primary;
+  color: $color-white;
   padding: $pad;
+  border-radius: 5%;
+  width: 30%;
   border: none;
 
   &:hover {
-    background: $color-grey;
+    background: $color-secondary;
   }
 
   &:active {
-    background: $color-darkgrey;
+    background: $color-primary;
   }
 }
 
 // lists
 ul,ol,li { margin-left: $pad * 2; }
 li { display: list-item; }
-ul li { list-style: disc; }
 ol li { list-style: decimal; }
-ol ol li , ul ol li { list-style: lower-alpha; }
-ol ul li , ul ul li { list-style: square; }
+// ol ol li , ul ol li { list-style: lower-alpha; }
+// ol ul li , ul ul li { list-style: square; }
 
 .hide { display: none; }
