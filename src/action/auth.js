@@ -11,6 +11,14 @@ export const logout = () => {
   return { type: 'LOGOUT' }
 }
 
+export const userFetch = (token) => (dispatch) => {
+  return superagent.get(`${__API_URL__}/api/users/auth`)
+  .set('Authorization', `Bearer ${token}`)
+  .then(res => {
+    console.log('userFetch res', res)
+  })
+}
+
 export const loginRequest = (user) => (dispatch) => {
   return superagent.get(`${__API_URL__}/login`)
     .withCredentials()

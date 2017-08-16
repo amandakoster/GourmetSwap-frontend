@@ -14,8 +14,21 @@ import CookForm from '../cook-container'
 
 
 export class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      token: '',
+      cook: false,
+    }
+  }
   componentDidMount(){
     console.log('Comp Did Mount', this.props)
+    let token = util.cookieFetch('Gourmet-Swap-Token')
+    if(token){
+      console.log(token)
+      this.props.login(token)
+      this.props.userFetch(token)
+    }
   }
 
   render() {
@@ -60,10 +73,14 @@ export class App extends React.Component{
   }
 }
 
-let mapStateToProps = (state) => ({})
+let mapStateToProps = (state) => ({
+  token: state.token,
+})
 
 let mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(auth.logout()),
+  login: (token) => dispatch(auth.login(token)),
+  userFetch: (token) => dispatch(auth.userFetch(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
