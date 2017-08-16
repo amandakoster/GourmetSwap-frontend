@@ -8,7 +8,7 @@ import * as auth from '../../action/auth.js'
 
 import CookApplication from '../cook-application'
 import MealForm from '../meal-form'
-import CookRegister from '../cook-register'
+import CookForm from '../cook-form'
 
 class CookDashboard extends React.Component {
   render(){
