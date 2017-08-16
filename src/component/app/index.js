@@ -8,9 +8,9 @@ import auth from '../../action/auth.js'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
-import CookApplication from '../cook-application'
+
 import MealContainer from '../meal-container'
-import CookRegister from '../cook-register'
+import CookForm from '../cook-container'
 
 
 export class App extends React.Component{
@@ -33,28 +33,23 @@ export class App extends React.Component{
               </ul>
 
               <Route exact path='/landing'
-              component={Landing} />
+                component={Landing} />
               <Route exact path='/signup'
-              component={Signup} />
+                component={Signup} />
               <Route exact path='/signin'
-              component={Signin} />
-
+                component={Signin} />
             </div>
 
             <div className='cook-nav'>
               <h1> Cook Nav </h1>
               <ul>
-                <li><Link to='/cook-register'>Register to Cook</Link></li>
+                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
                 <li><Link to='/meal-container'>Meals</Link></li>
-                <li><Link to='/cook-application'>Apply to Cook</Link></li>
               </ul>
-
-              <Route exact path='/cook-register'
-              component={CookRegister} />
-              <Route exact path='/cook-application'
-              component={CookApplication} />
+              <Route exact path='/cook-form'
+                component={CookForm} />
               <Route exact path='/meal-container'
-              component={MealContainer} />
+                component={MealContainer} />
 
             </div>
           </div>
