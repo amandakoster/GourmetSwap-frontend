@@ -68,7 +68,6 @@ class MealForm extends React.Component{
     console.log(this.state.date)
   }
 
-
   handleSubmit(e){
     e.preventDefault()
     console.log(this.props)

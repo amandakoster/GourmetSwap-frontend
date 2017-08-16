@@ -37,6 +37,7 @@
     "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "react": "^15.6.1",
+    "react-datepicker": "^0.53.0",
     "react-dom": "^15.6.1",
     "react-menu-list": "^3.4.0",
     "react-redux": "^5.0.5",

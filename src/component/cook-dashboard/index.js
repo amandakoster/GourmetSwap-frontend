@@ -8,6 +8,7 @@ import * as auth from '../../action/auth.js'
 
 import CookApplication from '../cook-application'
 import MealForm from '../meal-form'
+import CookRegister from '../cook-register'
 
 class CookDashboard extends React.Component {
   render(){
@@ -17,8 +18,10 @@ class CookDashboard extends React.Component {
         <h2>cook dashboard</h2>
         <ul>
           <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
-          <li><a onClick={this.prop.goToMealForm}>meal form</a></li>
+          <li><a onClick={this.prop.goToMealForm}>meal form</a></li
+                <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
         </ul>
+
         <MemoryRouter>
           <Switch ocation={{pathname: this.props.route}}>
             <Route path='/cook-application' component={CookApplication} />
