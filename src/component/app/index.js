@@ -63,6 +63,18 @@ export class App extends React.Component{
             <Route exact path='/signin'
               component={Signin} />
           </div>
+
+
+          <div className='cook-nav'>
+            <ul>
+              <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+              <li><Link to='/meal-container'>Meals</Link></li>
+            </ul>
+            <Route exact path='/cook-form'
+              component={CookForm} />
+            <Route exact path='/meal-container'
+              component={MealContainer} />
+
             {util.renderIf(this.state.cook,
               <div className='cook-nav'>
                 <h1> Cook Nav </h1>
@@ -76,6 +88,7 @@ export class App extends React.Component{
                   component={MealContainer} />
               </div>
             )}
+
           </div>
         </div>
       </BrowserRouter>
