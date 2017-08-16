@@ -90,7 +90,7 @@ class CookApplication extends React.Component{
           <input
             name='numberOfResturants'
             type='text'
-            placeholder='number of resturants'
+            placeholder='number of resturants you have worked'
             value={this.state.numberOfResturants}
             onChange={this.handleChange}
           />

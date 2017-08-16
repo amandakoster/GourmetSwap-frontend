@@ -24,11 +24,11 @@ export class App extends React.Component{
       <div className='nav'>
         <h1> Nav via App.js</h1>
         <ul>
-          <li><a onClick={this.props.goToLanding}>home</a></li>
-          <li><a onClick={this.props.goToSignUp}>sign up</a></li>
-          <li><a onClick={this.props.goToSignin}>sign in</a></li>
-          <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
-          <li><a onClick={this.props.goToMealForm}>Meal Form</a></li></ul>
+          <li><a onClick={this.props.goToLanding}>Home</a></li>
+          <li><a onClick={this.props.goToSignUp}>Sign Up</a></li>
+          <li><a onClick={this.props.goToSignin}>Sign In</a></li>
+          <li><a onClick={this.props.goToCookNav}>Cook Nav</a></li>
+        </ul>
 
         {util.renderIf(true,
           <div className='cook-nav'>
@@ -43,8 +43,6 @@ export class App extends React.Component{
             <Route path='/landing' component={Landing} />
             <Route path='/signup' component={Signup} />
             <Route path='/signin' component={Signin} />
-            <Route path='/cook-application' component={CookApplication} />
-            <Route path='/meal-form' component={MealForm} />
             <Route path='/cook-nav' component={CookNav} />
           </Switch>
         </MemoryRouter>
@@ -63,8 +61,6 @@ let mapDispatchToProps = (dispatch) => ({
   goToLanding: () => dispatch(route.switchRoute('/landing')),
   goToSignUp: () => dispatch(route.switchRoute('/signup')),
   goToSignin: () => dispatch(route.switchRoute('/signin')),
-  goToCookApplication: () => dispatch(route.switchRoute('/cook-application')),
-  goToMealForm: () => dispatch(route.switchRoute('/meal-form')),
   goToCookNav: () => dispatch(route.switchRoute('/cook-nav')),
 })
 
