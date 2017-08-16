@@ -69,7 +69,6 @@ class MealForm extends React.Component{
     console.log(this.state.date)
   }
 
-
   handleSubmit(e){
     e.preventDefault()
     let {onComplete} = this.props
@@ -77,7 +76,7 @@ class MealForm extends React.Component{
     if(result instanceof Promise){
       result.then(() => this.setState({error:null}))
         .catch(error => {
-          util.log('ShipForm Error:', error)
+          util.log('MealForm Error', error)
           this.setState({error})
         })
     }

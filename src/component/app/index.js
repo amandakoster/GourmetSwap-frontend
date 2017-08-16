@@ -45,7 +45,7 @@ export class App extends React.Component{
           <ul>
             <li><a onClick={this.props.goToCookApplication}>Apply to Cook</a></li>
             <li><a onClick={this.props.goToCookRegister}>Register To Cook</a></li>
-            <li><a onClick={this.props.goToMealContainer}>Meal Form</a></li>
+            <li><a onClick={this.props.goToMealContainer}>Meal Container</a></li>
           </ul>
 
           <MemoryRouter>
