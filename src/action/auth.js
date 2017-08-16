@@ -7,7 +7,7 @@ export const login = (token) => ({
 })
 
 export const logout = () => {
-  util.cookieDelete('X-GourmetSwap-Token')
+  util.cookieDelete('Gourmet-Swap-Token')
   return { type: 'LOGOUT' }
 }
 

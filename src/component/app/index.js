@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
-import auth from '../../action/auth.js'
+import * as auth from '../../action/auth.js'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
@@ -30,6 +30,7 @@ export class App extends React.Component{
                 <li><Link to='/landing'> Landing </Link></li>
                 <li><Link to='/signup'> Signup </Link></li>
                 <li><Link to='/signin'> Signin </Link></li>
+                <li><a onClick={this.props.logout}> Logout </a></li>
               </ul>
 
               <Route exact path='/landing'
@@ -67,6 +68,7 @@ export class App extends React.Component{
 let mapStateToProps = (state) => ({})
 
 let mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(auth.logout()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
