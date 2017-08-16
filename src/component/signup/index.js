@@ -27,7 +27,7 @@ class Signup extends React.Component{
       email:'',
       password:'',
       phone:'',
-      zipCode:'',
+      zipCode: '',
       firstNameError: null,
       lastNameError: null,
       usernameError: null,
@@ -125,7 +125,6 @@ class Signup extends React.Component{
   }
 
   handleChange(e){
-
     let {name, value} = e.target
     this.setState({[name]: value})
     if(name === 'username')
@@ -204,10 +203,10 @@ class Signup extends React.Component{
 
           <Tooltip message={this.state.zipCodeError} />
           <input
-            name='zipcode'
+            name='zipCode'
             type='number'
             placeholder='zipcode'
-            value={this.state.zipcode}
+            value={this.state.zipCode}
             onChange={this.handleChange}
           />
           <button type='submit' className='signup-form-button'> signup </button>
