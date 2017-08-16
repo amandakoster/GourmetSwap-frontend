@@ -1,15 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MealForm from '../meal-form'
-import {mealCreate} from '../../action/meal.js'
+import {mealCreateRequest} from '../../action/meal.js'
 
 class MealContainer extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleMealCreate = this.handleMealCreate.bind(this)
+  }
+
+  handleMealCreate(meal){
+    return this.props.mealCreate(meal)
+      .catch(console.error)
+  }
   render(){
     return(
       <div className='meal-container'>
         <h1>Your Meals</h1>
         <MealForm
-          onComplete={(data) => { this.props.mealCreate(data)}} />
+          onComplete={this.handleMealCreate} />
       </div>
     )
   }
@@ -19,7 +28,7 @@ let mapStateToProps = (state) => ({
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  mealCreate: (meal) => dispatch(mealCreate(meal)),
+  mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MealContainer)
