@@ -8,7 +8,6 @@ import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
 
-
 const Tooltip = (props) => {
   return (
     <div className='tooltip'>
@@ -16,7 +15,8 @@ const Tooltip = (props) => {
     </div>
   )
 }
-class Signin extends React.Component{
+  
+class SignInForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
@@ -34,11 +34,13 @@ class Signin extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     if(!this.state.passwordError && !this.state.emailError){
-      return this.props.login({
+      return this.props.signup({
+        email: this.state.email,
         username: this.state.username,
         password: this.state.password,
       })
-    }
+    } else {
+}
   }
   
   validateChange(e){
@@ -72,27 +74,14 @@ class Signin extends React.Component{
     if(name === 'username')
       this.usernameCheckAvailable()
   }
+  
   render(){
-    console.log('login', this.props)
-    let googleLoginBaseURL='https://accounts.google.com/o/oauth2/v2/auth'
-    let googleLoginQuery = querystring.stringify({
-      client_id: __GOOGLE_CLIENT_ID__,
-      response_type: 'code',
-      redirect_uri:`${__API_URL__}/oauth/google/code`,
-      scope: 'openid profile email',
-      prompt: __DEBUG__ ? 'consent' : undefined,
-    })
-
-    let googleLoginURL = `${googleLoginBaseURL}?${googleLoginQuery}`
     return(
-      <div className='login'>
-        <a className='login-with-google' href={googleLoginURL} > login with google </a>
-     
-      
-        <form className='sign-in-form' onSubmit={this.handleSubmit}>
-
-        
-
+      <div className='signin-form'>
+        <form onSubmit={this.handleSubmit}>
+  
+            
+  
           <Tooltip message={this.state.emailError} />
           <input
             name='email'
@@ -101,7 +90,7 @@ class Signin extends React.Component{
             value={this.state.email}
             onChange={this.handleChange}
           />
-
+  
           <Tooltip message={this.state.passwordError} />
           <input
             name='password'
@@ -114,14 +103,7 @@ class Signin extends React.Component{
         </form>
       </div>
     )
-    //reder code here ******
-    
   }
 }
-// export default Signin
-export const mapStateToProps = (state) => ({})
 
-export const mapDispatchToProps = (dispatch) => ({login: (user) => dispatch(auth.loginRequest(user)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signin)
+export default SignInForm
