@@ -48,7 +48,6 @@ export class App extends React.Component{
               component={CookForm} />
             <Route exact path='/meal-container'
               component={MealContainer} />
-
           </div>
         </div>
       </BrowserRouter>
