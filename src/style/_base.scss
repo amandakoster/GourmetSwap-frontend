@@ -9,9 +9,15 @@ span,em,strong { display: inline; }
 em { font-style: italic; }
 strong { font-weight: bold; }
 
+header {
+  background-color: $color-primary;
+}
+
 main-nav {
   float:left;
+  background-color: $color-primary;
 }
+
 a {
   color: $color-white;
 }
@@ -39,35 +45,23 @@ h1, h2, h3 {
   padding-bottom: 2%;
 }
 
-h4, h5, li {
+h4, h5, li, p {
   color: $color-darkgrey;
   padding-bottom: 2%;
-}
-
-p {
-  color: $color-darkgrey;
-  padding-bottom: 1%;
-}
-
-blockquote {
-  border-left: $pad solid $color-lightgrey;
-  padding-left: $pad;
 }
 
 .dropdown {
   padding: $pad;
   margin-bottom: 1%;
+  width: 30%;
   color: $color-darkgrey;
   border: solid $color-lightgrey;
 }
 
-
 // form
-label {
-  font-size: 1.25em;
-  font-weight: bolder;
-  margin-bottom: $pad;
-
+form {
+  background-color: $color-white;
+  padding: 2% 10% 10% 10%;
 }
 
 textarea, input {
@@ -88,10 +82,15 @@ textarea, input {
 
 .number-box {
   border: solid purple;
+  width: 30%;
+  input[type=number]::-webkit-inner-spin-button {
+      opacity: 1
+  }
 }
 
 .radio-button {
   text-decoration: none;
+  float: left;
 }
 
 button,input[type="submit"] {
@@ -109,10 +108,6 @@ button,input[type="submit"] {
   &:active {
     background: $color-primary;
   }
-}
-
-input, label {
-    display: block;
 }
 
 input[type=file]::-webkit-file-upload-button {

@@ -1,12 +1,9 @@
-// import './meal-form.scss'
 import React from 'react'
 import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
-
-
 
 class MealForm extends React.Component{
   constructor(props){
@@ -151,6 +148,7 @@ class MealForm extends React.Component{
           />
         </h5>
         <input
+          className='number-box'
           name='portions'
           type='number'
           placeholder='portions'
