@@ -16,13 +16,6 @@ class CookContainer extends React.Component {
   render(){
     return(
       <div className='cook-container'>
-        <p>Apply to Cook</p>
-        <CookForm
-          onComplete={this.handleCookCreate} />
-        <p>Sign up</p>
-        <CookForm
-          onComplete={this.handleCookCreate} />
-        <p>Login</p>
         <CookForm
           onComplete={this.handleCookCreate} />
       </div>
