@@ -86,4 +86,3 @@ let mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CookDashboard)
->>>>>>> 50228ed0c27f9ba5c2acf09ba0fe2ec569c348b2
