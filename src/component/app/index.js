@@ -18,6 +18,7 @@ export class App extends React.Component{
     this.state = {
       token: '',
       cook: this.props.cook,
+      route: '',
     }
   }
   componentWillMount(){
@@ -28,6 +29,7 @@ export class App extends React.Component{
       this.props.userFetch(token)
     }
   }
+
 
   render() {
     return(
@@ -45,16 +47,20 @@ export class App extends React.Component{
                   <li><Link to='/signin'> Signin </Link></li>
                 )}
                 {util.renderIf(this.props.token,
-                  <li><a onClick={this.props.logout}> Logout </a></li>
+                  <li><Link to='/landing' onClick={this.props.logout}>
+                   Logout
+                  </Link></li>
                 )}
                 {util.renderIf(this.props.token && !this.props.cook,
                   <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
                 )}
-                {util.renderIf(this.props.cook,
+                {util.renderIf(this.props.token && this.props.cook,
                   <li><Link to='/meal-container'>Meals</Link></li>
                 )}
               </ul>
 
+              <Route exact path={this.props.route}
+                component={Landing}/>
               <Route exact path='/landing'
                 component={Landing} />
               <Route exact path='/signup'
@@ -76,6 +82,7 @@ export class App extends React.Component{
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
+  route: state.route,
 })
 
 let mapDispatchToProps = (dispatch) => ({

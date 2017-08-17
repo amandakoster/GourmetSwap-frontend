@@ -18,7 +18,7 @@ export const setCook = (cook) => ({
 
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
-  return { type: 'LOGOUT' }
+  return { type: 'LOGOUT', payload: '/landing' }
 }
 
 export const userFetch = (token) => (dispatch) => {
