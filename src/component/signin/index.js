@@ -1,4 +1,3 @@
-import './_signin.scss'
 import React from 'react'
 import * as _ from 'lodash'
 import * as util from '../../lib/util.js'
@@ -71,6 +70,7 @@ class Signin extends React.Component{
     let {name, value} = e.target
     this.setState({[name]: value})
   }
+
   render(){
     console.log('login', this.props)
     let googleLoginBaseURL='https://accounts.google.com/o/oauth2/v2/auth'
@@ -89,10 +89,10 @@ class Signin extends React.Component{
         <div className='google-auth'>
           <a className='loginBtn loginBtn--google' href={googleLoginURL} > login with google </a>
         </div>
-        
+
         <div className='form'>
           <form className='sign-in-form' onSubmit={this.handleSubmit}>
-        
+
 
 
 
@@ -118,9 +118,11 @@ class Signin extends React.Component{
         </div>
       </div>
     )
+    //reder code here ******
 
   }
 }
+// export default Signin
 export const mapStateToProps = (state) => ({})
 
 export const mapDispatchToProps = (dispatch) => ({login: (user) => dispatch(auth.loginRequest(user)),
