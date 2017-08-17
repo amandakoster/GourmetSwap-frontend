@@ -50,40 +50,7 @@ class MealForm extends React.Component{
     this.setState({[name]: value})
   }
 
-<<<<<<< HEAD
-    if(name === 'cuisines'){
-      this.setState({cuisines: e.target.value})
-    }
-    if(name === 'services'){
-      this.setState({services: e.target.value})
-    }
-    if(name === 'title'){
-      this.setState({title: e.target.value})
-    }
-    if(name === 'description'){
-      this.setState({description: e.target.value})
-    }
-    if(name === 'portions'){
-      this.setState({portions: e.target.value})
-    }
-    if(name === 'ingredients'){
-      this.setState({ingredients: e.target.value})
-    }
-    if(name === 'price'){
-      this.setState({price: e.target.value})
-    }
-    if(name === 'location'){
-      this.setState({location: e.target.value})
-    }
-    if(name === 'photoURL'){
-      let {files} = e.target
-      let photo = files[0]
-      this.setState({photo})
-      util.photoToDataURL(photo)
-        .then(preview => this.setState({preview}))
-        .catch(console.error)
-    }
-=======
+
   handlePhotoUpload(e) {
     let {files} = e.target
     let photo = files[0]
@@ -91,7 +58,6 @@ class MealForm extends React.Component{
     util.photoToDataURL(photo)
       .then(preview => this.setState({preview}))
       .catch(console.error)
->>>>>>> 5f706525c2dc82b2fdc9023d0c5c56c4c76b5a47
   }
 
   handleStartDate(e) {
