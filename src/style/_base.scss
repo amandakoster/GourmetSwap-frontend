@@ -23,12 +23,23 @@ body {
   width: 100%;
 }
 
+h1 {
+  font-weight: 300;
+  font-style: normal;
+  line-height: 66px;
+  font-size: 4em;
+  padding-left: 10%;
+}
+
+h3 {
+  font-size: 2em;
+}
 h1, h2, h3 {
   color: $color-primary;
   padding-bottom: 2%;
 }
 
-h4, h5 {
+h4, h5, li {
   color: $color-darkgrey;
   padding-bottom: 2%;
 }
@@ -50,11 +61,6 @@ blockquote {
   border: solid $color-lightgrey;
 }
 
-@for $i from 6 through 1 {
-  h#{$i} {
-    font-size: 9/($i + 2) * 1em;;
-  }
-}
 
 // form
 label {
@@ -81,7 +87,7 @@ textarea, input {
 }
 
 .number-box {
-  border: solid pink;
+  border: solid purple;
 }
 
 .radio-button {
@@ -103,6 +109,16 @@ button,input[type="submit"] {
   &:active {
     background: $color-primary;
   }
+}
+
+input, label {
+    display: block;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    border: none;
+    background: $color-primary;
+    color: $color-white;
 }
 
 // lists

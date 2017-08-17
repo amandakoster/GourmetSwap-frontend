@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
-import './app.scss'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
+import './app.scss'
 
 import MealContainer from '../meal-container'
 import CookForm from '../cook-container'
@@ -39,19 +39,19 @@ export class App extends React.Component{
               <ul>
                 <li><Link to='/landing'> Landing </Link></li>
                 {util.renderIf(!this.props.token,
-                <li><Link to='/signup'> Signup </Link></li>
+                  <li><Link to='/signup'> Signup </Link></li>
                 )}
                 {util.renderIf(!this.props.token,
-                <li><Link to='/signin'> Signin </Link></li>
+                  <li><Link to='/signin'> Signin </Link></li>
                 )}
                 {util.renderIf(this.props.token,
-                <li><a onClick={this.props.logout}> Logout </a></li>
+                  <li><a onClick={this.props.logout}> Logout </a></li>
                 )}
                 {util.renderIf(this.props.token && !this.props.cook,
-                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
                 )}
                 {util.renderIf(this.props.cook,
-                <li><Link to='/meal-container'>Meals</Link></li>
+                  <li><Link to='/meal-container'>Meals</Link></li>
                 )}
               </ul>
 
