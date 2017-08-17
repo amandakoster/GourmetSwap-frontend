@@ -46,14 +46,8 @@ export class App extends React.Component{
                 <li><Link to='/signin'> Signin </Link></li>
                 <li><a onClick={this.props.logout}> Logout </a></li>
               </ul>
-
-              <Route exact path='/landing'
-                component={Landing} />
-              <Route exact path='/signup'
-                component={Signup} />
-              <Route exact path='/signin'
-                component={Signin} />
             </div>
+
 
             {util.renderIf(this.state.cook,
               <div className='cook-nav'>
@@ -68,10 +62,10 @@ export class App extends React.Component{
                   component={MealContainer} />
               </div>
             )}
+
           </div>
         </BrowserRouter>
       </div>
-
     )
   }
 }

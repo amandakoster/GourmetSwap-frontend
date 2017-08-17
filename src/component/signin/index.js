@@ -114,11 +114,9 @@ class Signin extends React.Component{
         </form>
       </div>
     )
-    //reder code here ******
 
   }
 }
-// export default Signin
 export const mapStateToProps = (state) => ({})
 
 export const mapDispatchToProps = (dispatch) => ({
