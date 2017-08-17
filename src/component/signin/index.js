@@ -1,4 +1,3 @@
-import './_signin.scss'
 import React from 'react'
 import * as _ from 'lodash'
 import * as util from '../../lib/util.js'
@@ -73,6 +72,7 @@ class Signin extends React.Component{
     if(name === 'username')
       this.usernameCheckAvailable()
   }
+
   render(){
     console.log('login', this.props)
     let googleLoginBaseURL='https://accounts.google.com/o/oauth2/v2/auth'
@@ -87,7 +87,9 @@ class Signin extends React.Component{
     let googleLoginURL = `${googleLoginBaseURL}?${googleLoginQuery}`
     return(
       <div className='login'>
-        <a className='loginBtn loginBtn--google' href={googleLoginURL} > login with google </a>
+        <a className='login-with-google' href={googleLoginURL} > login with google </a>
+
+
         <form className='sign-in-form' onSubmit={this.handleSubmit}>
 
 
@@ -113,9 +115,11 @@ class Signin extends React.Component{
         </form>
       </div>
     )
+    //reder code here ******
 
   }
 }
+// export default Signin
 export const mapStateToProps = (state) => ({})
 
 export const mapDispatchToProps = (dispatch) => ({
