@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
-import './app.scss'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
+import './app.scss'
 
 import MealContainer from '../meal-container'
 import CookForm from '../cook-container'
@@ -18,6 +18,7 @@ export class App extends React.Component{
     this.state = {
       token: '',
       cook: this.props.cook,
+      route: '',
     }
   }
   componentWillMount(){
@@ -29,6 +30,7 @@ export class App extends React.Component{
     }
   }
 
+
   render() {
     return(
       <div className='app'>
@@ -39,22 +41,26 @@ export class App extends React.Component{
               <ul>
                 <li><Link to='/landing'> Landing </Link></li>
                 {util.renderIf(!this.props.token,
-                <li><Link to='/signup'> Signup </Link></li>
+                  <li><Link to='/signup'> Signup </Link></li>
                 )}
                 {util.renderIf(!this.props.token,
-                <li><Link to='/signin'> Signin </Link></li>
+                  <li><Link to='/signin'> Signin </Link></li>
                 )}
                 {util.renderIf(this.props.token,
-                <li><a onClick={this.props.logout}> Logout </a></li>
+                  <li><Link to='/landing' onClick={this.props.logout}>
+                   Logout
+                  </Link></li>
                 )}
                 {util.renderIf(this.props.token && !this.props.cook,
-                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
                 )}
-                {util.renderIf(this.props.cook,
-                <li><Link to='/meal-container'>Meals</Link></li>
+                {util.renderIf(this.props.token && this.props.cook,
+                  <li><Link to='/meal-container'>Meals</Link></li>
                 )}
               </ul>
 
+              <Route exact path={this.props.route}
+                component={Landing}/>
               <Route exact path='/landing'
                 component={Landing} />
               <Route exact path='/signup'
@@ -76,6 +82,7 @@ export class App extends React.Component{
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
+  route: state.route,
 })
 
 let mapDispatchToProps = (dispatch) => ({

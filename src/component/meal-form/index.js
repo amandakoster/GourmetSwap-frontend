@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
 
 
+
 class MealForm extends React.Component{
   constructor(props){
     super(props)
@@ -46,10 +47,13 @@ class MealForm extends React.Component{
     })
     console.log('deliveryOffered: ', !this.state.deliveryOffered)
   }
-  handleChange(e){
-    // console.log(this.state)
-    let {type, name, checked, value} = e.target
 
+  handleChange(e){
+    let {name, value} = e.target
+    this.setState({[name]: value})
+  }
+
+<<<<<<< HEAD
     if(name === 'cuisines'){
       this.setState({cuisines: e.target.value})
     }
@@ -82,6 +86,15 @@ class MealForm extends React.Component{
         .then(preview => this.setState({preview}))
         .catch(console.error)
     }
+=======
+  handlePhotoUpload(e) {
+    let {files} = e.target
+    let photo = files[0]
+    this.setState({photo})
+    util.photoToDataURL(photo)
+      .then(preview => this.setState({preview}))
+      .catch(console.error)
+>>>>>>> 5f706525c2dc82b2fdc9023d0c5c56c4c76b5a47
   }
 
   handleStartDate(e) {
@@ -98,6 +111,7 @@ class MealForm extends React.Component{
     e.preventDefault()
     let {onComplete} = this.props
     let result = onComplete(this.state)
+    console.log(this.state)
     if(result instanceof Promise){
       result.then(() => this.setState({error:null}))
         .catch(error => {
@@ -206,10 +220,10 @@ class MealForm extends React.Component{
         <input
           type='file'
           name='photoURL'
-          onChange={this.handleChange}
+          onChange={this.handlePhotoUpload}
         />
         <img src={this.state.preview} />
-        <button type='submit'> Submit </button>
+        <button id="file-upload" type='submit'> Submit </button>
       </form>
     )
   }

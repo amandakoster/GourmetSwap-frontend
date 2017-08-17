@@ -18,7 +18,7 @@ export const setCook = (cook) => ({
 
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
-  return { type: 'LOGOUT' }
+  return { type: 'LOGOUT', payload: '/landing' }
 }
 
 export const userFetch = (token) => (dispatch) => {
@@ -34,13 +34,13 @@ export const userFetch = (token) => (dispatch) => {
 
 export const loginRequest = (user) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/signin`)
-    .withCredentials()
     .auth(user.email, user.password)
     .then(res => {
-      let token = util.cookieFetch('Gourmet-Swap-Token')
-      if(token){
-        dispatch(userFetch(token))
-        dispatch(login(token))
+      console.log('res', res)
+      let token = util.cookieCreate('Gourmet-Swap-Token', res.text, 7)
+      if(res.text){
+        dispatch(userFetch(res.text))
+        dispatch(login(res.text))
       }
       return res
     })
@@ -49,13 +49,19 @@ export const loginRequest = (user) => (dispatch) => {
 
 export const signupRequest = (user) => (dispatch) => {
   return superagent.post(`${__API_URL__}/api/signup`)
-    .withCredentials()
     .send(user)
     .then(res => {
-      let token = util.cookieFetch('Gourmet-Swap-Token')
-      if(token)
-        dispatch(login(token))
+      util.cookieCreate('Gourmet-Swap-Token', res.text, 7)
+      // let token = util.cookieFetch('Gourmet-Swap-Token')
+      if(res.text)
+        dispatch(login(res.text))
       return res
     })
     .catch(util.logError)
 }
+
+
+// use export const cookieCreate = (name, value, days) => {
+//   let expires = days ? ` ${cookieTime(days)};` : ''
+//   document.cookie = `${name}=${value};${expires} path='/'`
+// }
