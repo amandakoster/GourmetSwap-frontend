@@ -26,27 +26,27 @@ class Signin extends React.Component{
       emailError: null,
       passswordError: null,
     }
-  
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.validateChange = this.validateChange.bind(this)
   }
-  
+
   handleSubmit(e){
     e.preventDefault()
     if(!this.state.passwordError && !this.state.emailError){
       return this.props.login({
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password,
       })
     }
   }
-  
+
   validateChange(e){
     let {name, value} = e.target
     let error = null
 
-  
+
     if(name === 'email'){
       if(!value){
         error = 'email cannot be empty'
@@ -54,7 +54,7 @@ class Signin extends React.Component{
         error = 'username can only contain letters and numbers'
       }
     }
-  
+
     if(name === 'password'){
       if(!value){
         error = 'password cannot be empty'
@@ -62,12 +62,12 @@ class Signin extends React.Component{
         error = 'password can only contain letters and numbers'
       }
     }
-  
+
     this.setState({[`${name}Error`]: error})
   }
-  
+
   handleChange(e){
-  
+
     let {name, value} = e.target
     this.setState({[name]: value})
     if(name === 'username')
@@ -88,11 +88,9 @@ class Signin extends React.Component{
     return(
       <div className='login'>
         <a className='loginBtn loginBtn--google' href={googleLoginURL} > login with google </a>
-     
-      
         <form className='sign-in-form' onSubmit={this.handleSubmit}>
 
-        
+
 
           <Tooltip message={this.state.emailError} />
           <input
@@ -115,14 +113,13 @@ class Signin extends React.Component{
         </form>
       </div>
     )
-    //reder code here ******
-    
+
   }
 }
-// export default Signin
 export const mapStateToProps = (state) => ({})
 
-export const mapDispatchToProps = (dispatch) => ({login: (user) => dispatch(auth.loginRequest(user)),
+export const mapDispatchToProps = (dispatch) => ({
+  login: (user) => dispatch(auth.loginRequest(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin)
