@@ -1,7 +1,6 @@
 import React from 'react'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
-import * as auth from '..'
 import * as _ from 'lodash'
 
 import {connect} from 'react-redux'
