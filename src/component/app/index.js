@@ -46,12 +46,12 @@ export class App extends React.Component{
                 <li><Link to='/signin'> Signin </Link></li>
               )}
               {util.renderIf(this.props.token,
-                <li><a onClick={this.props.logout}> Logout </a></li>
+                <li><Link to='/landing' onClick={this.props.logout}> Logout </Link></li>
               )}
               {util.renderIf(this.props.token && !this.props.cook,
                 <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
               )}
-              {util.renderIf(this.props.cook,
+              {util.renderIf(this.props.cook && this.props.token,
                 <li><Link to='/meal-container'>Meals</Link></li>
               )}
             </ul>
