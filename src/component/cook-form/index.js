@@ -10,10 +10,8 @@ class CookForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      dishOne:'',
-      dishTwo:'',
-      dishThree:'',
-      method: 'entrepreneur',
+      signatureDishes:'',
+      bestDescribes: '',
       otherInfo: '',
       numDishes:'',
       otherServices:'',
@@ -28,9 +26,9 @@ class CookForm extends React.Component{
 
   setMethod(e) {
     this.setState({
-      method: e.currentTarget.value,
+      bestDescribes: e.currentTarget.value,
     })
-    console.log(this.state.method)
+
   }
 
   handleChange(e){
@@ -38,9 +36,9 @@ class CookForm extends React.Component{
     this.setState({[name]: value})
   }
 
-
   handleSubmit(e){
     e.preventDefault()
+    console.log(this.state.bestDescribes)
     let {onComplete} = this.props
     console.log(this.state, 'COOK FORM STATE')
     let result = onComplete(this.state)
@@ -55,7 +53,7 @@ class CookForm extends React.Component{
   }
 
   render(){
-    let {method} = this.state
+    let {bestDescribes} = this.state
     return(
 
       <form onSubmit={this.handleSubmit}>
@@ -63,22 +61,10 @@ class CookForm extends React.Component{
           <h2> Tell us about your cooking! </h2>
           <p> List your three favorite signature dishes or cuisines. These are the type of dishes your friends and family beg for when there is a party or family gathering.</p>
           <input
-            name='dish-one'
+            name='signatureDishes'
             type='text'
-            placeholder='dish one'
-            value={this.state.dishOne}
-            onChange={this.handleChange} />
-          <input
-            name='dish-two'
-            type='text'
-            placeholder='dish two'
-            value={this.state.title}
-            onChange={this.handleChange} />
-          <input
-            name='dish-three'
-            type='text'
-            placeholder='dish three'
-            value={this.state.title}
+            placeholder='signature dishes'
+            value={this.state.signatureDishes}
             onChange={this.handleChange} />
         </div>
 
@@ -86,63 +72,63 @@ class CookForm extends React.Component{
           <h2> Tell us about your cooking experience! </h2>
           <p> How many resturants have you cooked in? </p>
           <input
-            name='numResturants'
+            name='restaurantsCookedIn'
             type='number'
             placeholder='number of resturants'
-            value={this.state.numResturants}
+            value={this.state.restaurantsCookedIn}
             onChange={this.handleChange} />
         </div>
 
         <div className='radio-button'>
+          <p> Which of the following best describes you?</p>
           <label>
+          Food Entrepreneur looking to build a brand?
             <input
-              name='method'
-              title='entrepreneur'
+              name='bestDescribes'
               type='radio'
-              checked={method == 'entrepreneur'}
               onChange={this.setMethod}
               value='entrepreneur'
-            /> Food Entrepreneur looking to build a brand?
+            />
           </label>
 
           <label>
+          Food Professional looking to make money on own terms?
             <input
-              name='method'
+              name='bestDescribes'
               type='radio'
-              checked={method == 'professional'}
               onChange={this.setMethod}
               value='professional'
-            /> Food Professional looking to make money on own terms?
+            />
           </label>
 
           <label>
+          Stay at home parent &sol person looking for flexible work?
             <input
-              name='method'
+              name='bestDescribes'
               type='radio'
-              checked={method == 'flexible'}
               onChange={this.setMethod}
               value='flexible'
-            /> Stay at home parent &sol person looking for flexible work?
+            />
           </label>
 
           <label>
+          Culinary arts student looking to hone your craft?
             <input
-              name='method'
+              name='bestDescribes'
               type='radio'
-              checked={method == 'student'}
               onChange={this.setMethod}
               value='student'
-            /> Cullinary arts student looking to hone your craft?
+            />
           </label>
 
           <label>
+          Already selling food to local community via social media?
             <input
-              name='method'
+              name='bestDescribes'
               type='radio'
-              checked={method == 'selling'}
               onChange={this.setMethod}
               value='selling'
-            /> Already selling food to local community via social media?
+            />
           </label>
         </div>
 
@@ -164,9 +150,9 @@ class CookForm extends React.Component{
         </div>
 
         <div className='dropdown'>
-          <p> Would you like to deliver your own food to customers to earn extra cash? </p>
+          <p> What type of services would you like to provide on our platform? </p>
           <select
-            name='service'
+            name='services'
             onChange={this.handleChange}>
             <option value="meal-prep"> meal-prep </option>
             <option value="meal-prep recipes"> meal-prep recipes </option>
@@ -182,7 +168,7 @@ class CookForm extends React.Component{
         </div>
 
         <div className='dropdown'>
-          <p> Would you like to deliver your own food to customers to earn extra cash? </p>
+          <p> Please choose between six cuisines that you would liketo cook the most on our platform! </p>
           <select
             name='cuisine'
             onChange={this.handleChange}>
