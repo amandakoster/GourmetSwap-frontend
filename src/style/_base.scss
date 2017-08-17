@@ -20,6 +20,7 @@ body {
   padding-right: 10%;
   padding-bottom: 10%;
   font-size: 16px;
+  width: 100%;
 }
 
 h2 {
@@ -36,7 +37,6 @@ blockquote {
     font-size: 9/($i + 2) * 1em;;
   }
 }
-
 
 // form
 label {
@@ -89,7 +89,6 @@ img {
 }
 
 .cook-nav {
-  float: left;
   border: solid yellow;
   color: $color-white;
 }
