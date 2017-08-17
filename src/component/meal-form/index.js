@@ -1,3 +1,4 @@
+// import './meal-form.scss'
 import React from 'react'
 import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
@@ -5,7 +6,6 @@ import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
 
-import './meal-form.scss'
 
 
 class MealForm extends React.Component{
@@ -171,7 +171,7 @@ class MealForm extends React.Component{
           onChange={this.handlePhotoUpload}
         />
         <img src={this.state.preview} />
-        <button type='submit'> Submit </button>
+        <button id="file-upload" type='submit'> Submit </button>
       </form>
     )
   }
