@@ -8,6 +8,7 @@ import {mealCreate} from '../../action/meal.js'
 import './meal-form.scss'
 
 
+
 class MealForm extends React.Component{
   constructor(props){
     super(props)
@@ -186,7 +187,7 @@ class MealForm extends React.Component{
           onChange={this.handleChange}
         />
         <img src={this.state.preview} />
-        <button type='submit'> Submit </button>
+        <button id="file-upload" type='submit'> Submit </button>
       </form>
     )
   }

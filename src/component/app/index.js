@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
-import './app.scss'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
+import './app.scss'
 
 import MealContainer from '../meal-container'
 import CookForm from '../cook-container'
@@ -54,18 +54,17 @@ export class App extends React.Component{
                 component={CookForm} />
             </div>
 
-            {util.renderIf(this.props.cook,
-              <div className='cook-nav'>
-                <h1> Cook Nav </h1>
-                <ul>
+            <div className='cook-nav'>
+              <h1> </h1>
+              <ul>
 
-                  <li><Link to='/meal-container'>Meals</Link></li>
-                </ul>
+                <li><Link to='/meal-container'>Meals</Link></li>
+              </ul>
 
-                <Route exact path='/meal-container'
-                  component={MealContainer} />
-              </div>
-            )}
+              <Route exact path='/meal-container'
+                component={MealContainer} />
+            </div>
+
 
           </div>
         </BrowserRouter>
