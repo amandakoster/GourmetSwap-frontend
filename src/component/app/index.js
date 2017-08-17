@@ -24,15 +24,13 @@ export class App extends React.Component{
   componentWillMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
+      this.props.setToken(token)
       this.props.login(token)
       this.props.userFetch(token)
     }
   }
 
   render() {
-    console.log('HIT APP', this.props)
-    console.log('this.state.cook', this.props.cook)
-
     return(
       <div className='app'>
         <BrowserRouter>
@@ -89,6 +87,7 @@ let mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),
+  setToken: (token) => dispatch(auth.setToken(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
