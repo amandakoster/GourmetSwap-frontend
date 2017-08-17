@@ -11,9 +11,10 @@ describe('MealForm', () => {
     expect(wrapper.state('pickupOffered')).toBe(false)
     expect(wrapper.state('deliveryOffered')).toBe(false)
     expect(wrapper.state('portions')).toBe('')
-    expect(wrapper.state('photo')).toBe(null)
+    expect(wrapper.state('photoURL')).toBe(null)
     expect(wrapper.state('previewImg')).toBe('')
     expect(wrapper.state('ingredients')).toBe('')
+    // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     expect(wrapper.state('location')).toBe('')
     expect(wrapper.state('price')).toBe('')
@@ -36,8 +37,32 @@ describe('MealForm', () => {
       price: '4.56',
     }
 
-    let wrapper = mount(<MealForm meal={mockMeal} />)
+    let wrapper = mount(<MealForm />)
     expect(wrapper.state()).toEqual(mockMeal)
+  })
+
+  test('description input  can update the state', () => {
+    let wrapper = mount(<MealForm />)
+    wrapper.find('input[name="description"]').simulate('change', {
+      target: { 
+        name: 'description',
+        value: 'i love testing react',
+      },
+    })
+
+    expect(wrapper.state('description')).toEqual('i love testing react')
+  })
+
+  test('cuisines input  can update the state', () => {
+    let wrapper = mount(<MealForm />)
+    wrapper.find('input[name="price"]').simulate('change', {
+      target: { 
+        name: 'price',
+        value: '4.56',
+      },
+    })
+
+    expect(wrapper.state('price')).toEqual('4.56')
   })
 
 })
