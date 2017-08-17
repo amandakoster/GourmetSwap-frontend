@@ -18,6 +18,7 @@ export class App extends React.Component{
     this.state = {
       token: '',
       cook: this.props.cook,
+      route: '',
     }
   }
   componentWillMount(){
@@ -28,6 +29,7 @@ export class App extends React.Component{
       this.props.userFetch(token)
     }
   }
+
 
   render() {
     return(
@@ -74,6 +76,7 @@ export class App extends React.Component{
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
+  route: state.route,
 })
 
 let mapDispatchToProps = (dispatch) => ({
