@@ -54,6 +54,9 @@ export class App extends React.Component{
                 component={Signin} />
             </div>
 
+
+
+
             {util.renderIf(this.state.cook,
               <div className='cook-nav'>
                 <h1> Cook Nav </h1>
@@ -67,10 +70,10 @@ export class App extends React.Component{
                   component={MealContainer} />
               </div>
             )}
+
           </div>
         </BrowserRouter>
       </div>
-
     )
   }
 }

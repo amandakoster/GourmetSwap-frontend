@@ -61,11 +61,17 @@ textarea, input {
 .user-nav {
   float: left;
   border: solid red;
+  color: $color-white;
+  background: $color-primary;
+  width: 100%;
+  margin: none;
 }
 
 .cook-nav {
   float: left;
   border: solid yellow;
+  background: $color-primary;
+  color: $color-white;
 }
 
 .cook-cuisines {
