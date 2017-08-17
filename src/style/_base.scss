@@ -16,9 +16,8 @@ main-nav {
 body {
   background: $color-white;
   border: solid green;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 10%;
+  width: 100%;
+
   font-size: 16px;
 }
 
@@ -36,7 +35,6 @@ blockquote {
     font-size: 9/($i + 2) * 1em;;
   }
 }
-
 
 // form
 label {
@@ -89,7 +87,7 @@ img {
 }
 
 .cook-nav {
-  float: left;
+
   border: solid yellow;
   color: $color-white;
 }
