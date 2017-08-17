@@ -21,21 +21,18 @@ export class App extends React.Component{
       cook: this.props.cook,
     }
   }
-  componentDidMount(){
-    // console.log('Comp Did Mount', this.props)
+  componentWillMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
-      // console.log('token', token)
       this.props.login(token)
       this.props.userFetch(token)
-      // this.setState({
-      //   cook: this.props.cook,
-      // })
     }
   }
 
   render() {
     console.log('HIT APP', this.props)
+    console.log('this.state.cook', this.props.cook)
+
     return(
       <div className='app'>
         <BrowserRouter>
@@ -63,7 +60,7 @@ export class App extends React.Component{
 
 
 
-            {util.renderIf(this.state.cook,
+            {util.renderIf(this.props.cook,
               <div className='cook-nav'>
                 <h1> Cook Nav </h1>
                 <ul>
