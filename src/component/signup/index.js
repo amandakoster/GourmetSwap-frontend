@@ -58,8 +58,11 @@ class Signup extends React.Component{
         username: this.state.username,
         password: this.state.password,
       })
+<<<<<<< HEAD
     } else {
       
+=======
+>>>>>>> db7a1f1e0ecaef5325efc3c6f560374f5752c2c1
     }
   }
 
@@ -82,13 +85,13 @@ class Signup extends React.Component{
       }
     }
 
-    if(name === 'username'){
-      if(!value){
-        error = 'username cannot be empty'
-      } else if (!validator.isAlphanumeric(value)) {
-        error = 'username can only contain letters and numbers'
-      }
-    }
+    // if(name === 'username'){
+    //   if(!value){
+    //     error = 'username cannot be empty'
+    //   } else if (!validator.isAlphanumeric(value)) {
+    //     error = 'username can only contain letters and numbers'
+    //   }
+    // }
 
     if(name === 'email'){
       if(!value){
@@ -128,8 +131,6 @@ class Signup extends React.Component{
   handleChange(e){
     let {name, value} = e.target
     this.setState({[name]: value})
-    if(name === 'username')
-      this.usernameCheckAvailable()
   }
 
   render(){
@@ -155,7 +156,7 @@ class Signup extends React.Component{
             onChange={this.handleChange}
           />
 
-          <Tooltip message={this.state.usernameError} />
+          {/*<Tooltip message={this.state.usernameError} />
           <input
             name='username'
             type='text'
@@ -172,7 +173,7 @@ class Signup extends React.Component{
                 {this.state.usernameAvailable ? ' available' : ' taken'}
               </span>
             )}
-          </div>
+          </div>*/}
 
           <Tooltip message={this.state.emailError} />
           <input
