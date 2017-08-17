@@ -33,6 +33,7 @@ class MealForm extends React.Component{
     this.setPickup = this.setPickup.bind(this)
     this.setDelivery = this.setDelivery.bind(this)
     this.handleDate = this.handleDate.bind(this)
+    this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
   }
 
   setPickup(e) {
@@ -47,36 +48,19 @@ class MealForm extends React.Component{
     })
     console.log('deliveryOffered: ', !this.state.deliveryOffered)
   }
-  handleChange(e){
-    // console.log(this.state)
-    let {type, name, checked, value} = e.target
 
-    if(name === 'title'){
-      this.setState({title: e.target.value})
-    }
-    if(name === 'description'){
-      this.setState({description: e.target.value})
-    }
-    if(name === 'portions'){
-      this.setState({portions: e.target.value})
-    }
-    if(name === 'ingredients'){
-      this.setState({ingredients: e.target.value})
-    }
-    if(name === 'price'){
-      this.setState({price: e.target.value})
-    }
-    if(name === 'location'){
-      this.setState({location: e.target.value})
-    }
-    if(name === 'photoURL'){
-      let {files} = e.target
-      let photo = files[0]
-      this.setState({photo})
-      util.photoToDataURL(photo)
-        .then(preview => this.setState({preview}))
-        .catch(console.error)
-    }
+  handleChange(e){
+    let {name, value} = e.target
+    this.setState({[name]: value})
+  }
+
+  handlePhotoUpload(e) {
+    let {files} = e.target
+    let photo = files[0]
+    this.setState({photo})
+    util.photoToDataURL(photo)
+      .then(preview => this.setState({preview}))
+      .catch(console.error)
   }
 
   handleDate(e) {
@@ -88,6 +72,7 @@ class MealForm extends React.Component{
     e.preventDefault()
     let {onComplete} = this.props
     let result = onComplete(this.state)
+    console.log(this.state)
     if(result instanceof Promise){
       result.then(() => this.setState({error:null}))
         .catch(error => {
@@ -183,7 +168,7 @@ class MealForm extends React.Component{
         <input
           type='file'
           name='photoURL'
-          onChange={this.handleChange}
+          onChange={this.handlePhotoUpload}
         />
         <img src={this.state.preview} />
         <button id="file-upload" type='submit'> Submit </button>
