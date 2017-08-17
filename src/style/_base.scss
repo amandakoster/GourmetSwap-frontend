@@ -59,6 +59,7 @@ textarea, input {
 
 .user-nav {
   float: left;
+  background-color: $color-primary;
   color: $color-white;
   width: 100%;
   margin-top: 0px;
@@ -67,12 +68,16 @@ textarea, input {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    background-color: $color-secondary;
   }
-  li {
-    margin: 20px;
-    display: block;
+  li  {
     float: left;
-    text-align: center;
+    width: 10%;
+    display: inline-block;;
+  }
+  li a {
+    padding: 14px;
   }
 }
 
