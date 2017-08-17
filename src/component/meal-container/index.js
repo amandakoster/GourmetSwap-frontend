@@ -2,18 +2,24 @@ import React from 'react'
 import {connect} from 'react-redux'
 import MealForm from '../meal-form'
 import {mealCreateRequest} from '../../action/meal.js'
+import MealList from '../meal-list'
 
 class MealContainer extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      meals: [],
+    }
     this.handleMealCreate = this.handleMealCreate.bind(this)
   }
 
   handleMealCreate(meal){
+    console.log('meal', meal)
     return this.props.mealCreate(meal)
       .catch(console.error)
   }
   render(){
+    console.log(this.state.meals)
     return(
       <div className='meal-container'>
         <h1>Post Your Meal</h1>
@@ -25,7 +31,7 @@ class MealContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-  meal: state.meal,
+  meals: state.meals,
 })
 
 let mapDispatchToProps = (dispatch) => ({
