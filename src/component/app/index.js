@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import './_app.scss'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
@@ -59,9 +60,6 @@ export class App extends React.Component{
               <Route exact path='/cook-form'
                 component={CookForm} />
             </div>
-
-
-
 
             {util.renderIf(this.state.cook,
               <div className='cook-nav'>
