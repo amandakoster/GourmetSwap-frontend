@@ -4,6 +4,7 @@ import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
 import * as _ from 'lodash'
 import {cookCreate} from '../../action/cook-form.js'
+import './cook-form.scss'
 
 class CookForm extends React.Component{
   constructor(props){
