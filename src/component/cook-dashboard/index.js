@@ -18,7 +18,7 @@ class CookDashboard extends React.Component {
         <h2>cook dashboard</h2>
         <ul>
           <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
-          <li><a onClick={this.prop.goToMealForm}>meal form</a></li
+          <li><a onClick={this.prop.goToMealForm}>meal form</a></li>
                 <li><a onClick={this.props.goToCookApplication}>cook application</a></li>
         </ul>
 
