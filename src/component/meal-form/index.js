@@ -66,7 +66,7 @@ class MealForm extends React.Component{
     if(name === 'location'){
       this.setState({location: e.target.value})
     }
-    if(name === 'photo'){
+    if(name === 'photoURL'){
       let {files} = e.target
       let photo = files[0]
       this.setState({photo})
@@ -98,6 +98,25 @@ class MealForm extends React.Component{
     const {deliveryOffered} = this.state
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
+        <h1> 1. The Service </h1>
+        <div className='dropdown'>
+          <h2>What Service will you provide?</h2>
+          <p> Pick the services you would like to provide on our gourmet swap platform </p>
+          <select
+            name='services'
+            onChange={this.handleChange}>
+            <option value="meal-prep"> meal-prep </option>
+            <option value="meal-prep recipes"> meal-prep recipes </option>
+            <option value="baked goods"> baked goods </option>
+            <option value="catering"> catering </option>
+            <option value="cooking classes"> cooking classes </option>
+            <option value="personal chefs"> personal chefs </option>
+            <option value="special diets"> special diets </option>
+            <option value="free food experience"> free food experience </option>
+            <option value="event chefs"> event chefs </option>
+          </select>
+        </div>
+
         <input
           name='title'
           type='text'
@@ -155,7 +174,7 @@ class MealForm extends React.Component{
           onChange={this.handleDate} />
         <input
           type='file'
-          name='photo'
+          name='photoURL'
           onChange={this.handleChange}
         />
         <img src={this.state.preview} />
