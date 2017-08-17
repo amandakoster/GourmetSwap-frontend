@@ -6,14 +6,15 @@ export const login = (token) => ({
   payload: token,
 })
 
-export const setCook = (cook) => {
+export const setToken = (token) => ({
+  payload: token,
+  type: 'SET_TOKEN',
+})
 
-  console.log('setCook cook', cook)
-  return {
-    type: 'SET_COOK',
-    payload: cook,
-  }
-}
+export const setCook = (cook) => ({
+  type: 'SET_COOK',
+  payload: cook,
+})
 
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
@@ -21,7 +22,6 @@ export const logout = () => {
 }
 
 export const userFetch = (token) => (dispatch) => {
-  console.log('hit userFetch', token)
   return superagent.get(`${__API_URL__}/api/users/auth`)
   .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
@@ -33,8 +33,6 @@ export const userFetch = (token) => (dispatch) => {
 
 
 export const loginRequest = (user) => (dispatch) => {
-  console.log('user.email: ', user.email)
-  console.log('user.password: ', user.password)
   return superagent.get(`${__API_URL__}/api/signin`)
     .withCredentials()
     .auth(user.email, user.password)
@@ -50,7 +48,6 @@ export const loginRequest = (user) => (dispatch) => {
 }
 
 export const signupRequest = (user) => (dispatch) => {
-  console.log('user', user)
   return superagent.post(`${__API_URL__}/api/signup`)
     .withCredentials()
     .send(user)
