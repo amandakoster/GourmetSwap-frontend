@@ -16,22 +16,22 @@ class MealForm extends React.Component{
       description: '',
       pickupOffered: false,
       deliveryOffered: false,
-      portions: '',
+      portions: null,
       photoURL: null,
-      previewImg: '',
+      // previewImg: '',
       ingredients: '',
       startDate: moment(),
       endDate: moment().add(2, 'months'),
-      // endDate: moment(),
       location: '',
-      price: '',
+      price: null,
     }
     console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setPickup = this.setPickup.bind(this)
     this.setDelivery = this.setDelivery.bind(this)
-    this.handleDate = this.handleDate.bind(this)
+    this.handleStartDate = this.handleStartDate.bind(this)
+    this.handleEndDate = this.handleEndDate.bind(this)
   }
 
   setPickup(e) {
@@ -78,9 +78,14 @@ class MealForm extends React.Component{
     }
   }
 
-  handleDate(e) {
-    this.setState({date: e})
-    console.log(this.state.date)
+  handleStartDate(e) {
+    this.setState({startDate: e})
+    console.log(this.state.startDate)
+  }
+
+  handleEndDate(e) {
+    this.setState({endDate: e})
+    console.log(this.state.endDate)
   }
 
   handleSubmit(e){
@@ -163,7 +168,7 @@ class MealForm extends React.Component{
           onChange={this.handleChange} />
         <input
           name='price'
-          type='text'
+          type='number'
           placeholder='price'
           value={this.state.price}
           onChange={this.handleChange} />
@@ -175,10 +180,10 @@ class MealForm extends React.Component{
           onChange={this.handleChange} />
         <DatePicker
           selected={this.state.startDate}
-          onChange={this.handleDate} />
+          onChange={this.handleStartDate} />
         <DatePicker
           selected={this.state.endDate}
-          onChange={this.handleDate} />
+          onChange={this.handleStartDate} />
         <input
           type='file'
           name='photoURL'
