@@ -70,8 +70,6 @@ class Signin extends React.Component{
 
     let {name, value} = e.target
     this.setState({[name]: value})
-    if(name === 'username')
-      this.usernameCheckAvailable()
   }
   render(){
     console.log('login', this.props)
@@ -118,8 +116,7 @@ class Signin extends React.Component{
 }
 export const mapStateToProps = (state) => ({})
 
-export const mapDispatchToProps = (dispatch) => ({
-  login: (user) => dispatch(auth.loginRequest(user)),
+export const mapDispatchToProps = (dispatch) => ({login: (user) => dispatch(auth.loginRequest(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin)
