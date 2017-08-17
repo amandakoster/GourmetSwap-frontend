@@ -1,4 +1,5 @@
 import superagent from 'superagent'
+import * as auth from './auth.js'
 
 export const cookCreate = (cook) => ({
   type: 'COOK_CREATE',
@@ -16,12 +17,12 @@ export const cookDelete = (cook) => ({
 })
 
 export const cookCreateRequest = (cook, token) => (dispatch, getState) => {
-
   return superagent.post(`${__API_URL__}/api/cooks`)
     .set('Authorization', `Bearer ${token}`)
     .send(cook)
     .then(res => {
       console.log('cookCreateRequest res.body', res.body)
+      dispatch(auth.userFetch(token))
     })
     .catch()
 }
