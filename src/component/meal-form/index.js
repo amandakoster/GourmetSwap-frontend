@@ -5,6 +5,8 @@ import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
 
+import './meal-form.scss'
+
 
 class MealForm extends React.Component{
   constructor(props){
@@ -85,7 +87,6 @@ class MealForm extends React.Component{
     const {method} = this.state
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
-        <h1> Ninja </h1>
         <input
           name='title'
           type='text'

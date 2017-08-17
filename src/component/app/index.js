@@ -28,7 +28,6 @@ export class App extends React.Component{
       console.log('token', token)
       this.props.login(token)
       this.props.userFetch(token)
-
     }
   }
 
