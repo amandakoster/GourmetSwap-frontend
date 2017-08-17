@@ -7,7 +7,6 @@ import * as querystring from 'querystring'
 import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
-// import zipcode from 'react-zipcode'
 
 const Tooltip = (props) => {
   return (

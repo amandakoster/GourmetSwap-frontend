@@ -34,36 +34,10 @@ class CookForm extends React.Component{
   }
 
   handleChange(e){
-    let {type, name, checked, value} = e.target
-
-    if(name === 'dish-one'){
-      this.setState({dishOne: e.target.value})
-    }
-    if(name === 'dish-two'){
-      this.setState({dishTwo: e.target.value})
-    }
-    if(name === 'dish-three'){
-      this.setState({dishThree: e.target.value})
-    }
-    if(name === 'other-info'){
-      this.setState({otherInfo: e.target.value})
-    }
-    if(name === 'numResturants'){
-      this.setState({numResturants: e.target.value})
-    }
-    if(name === 'numDishes'){
-      this.setState({numDishes: e.target.value})
-    }
-    if(name === 'service'){
-      this.setState({service: e.target.value})
-    }
-    if(name === 'cuisine'){
-      this.setState({cuisine: e.target.value})
-    }
-    if(name === 'deliver'){
-      this.setState({deliver: e.target.value})
-    }
+    let {name,value} = e.target
+    this.setState({[name]: value})
   }
+
 
   handleSubmit(e){
     e.preventDefault()

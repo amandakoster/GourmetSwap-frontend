@@ -17,7 +17,7 @@ export const mealDelete = (meal) => ({
 
 export const mealCreatRequest = (meal) => (dispatch, getState) => {
   let {auth} = getState()
-  return superagent.post(`${__API_URL__}/meals`)
+  return superagent.post(`${__API_URL__}/api/meals`)
     .set('Authorization', `Bearer ${auth}`)
     .then(res => {
       dispatch(mealCreate(res.body))
