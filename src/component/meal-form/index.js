@@ -12,7 +12,8 @@ class MealForm extends React.Component{
     this.state = {
       title: '',
       description: '',
-      method: 'pickup',
+      pickupOffered: false,
+      deliveryOffered: false,
       portions: '',
       photo: null,
       previewImg: '',
@@ -21,19 +22,28 @@ class MealForm extends React.Component{
       location: '',
       price: '',
     }
+    console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.setMethod = this.setMethod.bind(this)
+    this.setPickup = this.setPickup.bind(this)
+    this.setDelivery = this.setDelivery.bind(this)
     this.handleDate = this.handleDate.bind(this)
   }
 
-  setMethod(e) {
+  setPickup(e) {
     this.setState({
-      method: e.currentTarget.value,
+      pickupOffered: !this.state.pickupOffered,
     })
-    console.log(this.state.method)
+    console.log('pickupOffered: ', !this.state.pickupOffered)
+  }
+  setDelivery(e) {
+    this.setState({
+      deliveryOffered: !this.state.deliveryOffered,
+    })
+    console.log('deliveryOffered: ', !this.state.deliveryOffered)
   }
   handleChange(e){
+    // console.log(this.state)
     let {type, name, checked, value} = e.target
 
     if(name === 'title'){
@@ -82,10 +92,10 @@ class MealForm extends React.Component{
     }
   }
   render(){
-    const {method} = this.state
+    const {pickupOffered} = this.state
+    const {deliveryOffered} = this.state
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
-        <h1> Ninja </h1>
         <input
           name='title'
           type='text'
@@ -98,23 +108,21 @@ class MealForm extends React.Component{
           placeholder='description'
           value={this.state.description}
           onChange={this.handleChange} />
-        <label>
+        <label>Offer Pickup?
           <input
-            name='method'
-            type='radio'
-            checked={method == 'pickup'}
-            onChange={this.setMethod}
-            value='pickup'
-          /> Pickup
+            name='pickupOffered'
+            type='checkbox'
+            checked={this.state.pickupOffered}
+            onChange={this.setPickup}
+          />
         </label>
-        <label>
+        <label> Offer Delivery?
           <input
-            name='method'
-            type='radio'
-            checked={method == 'delivery'}
-            onChange={this.setMethod}
-            value='delivery'
-          /> Delivery
+            name='deliveryOffered'
+            type='checkbox'
+            checked={this.state.deliveryOffered}
+            onChange={this.setDelivery}
+          />
         </label>
         <input
           name='portions'
