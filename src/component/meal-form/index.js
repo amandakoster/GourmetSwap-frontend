@@ -13,14 +13,17 @@ class MealForm extends React.Component{
     super(props)
     this.state = {
       title: '',
+      cuisines: '',
       description: '',
       pickupOffered: false,
       deliveryOffered: false,
       portions: '',
-      photo: null,
+      photoURL: null,
       previewImg: '',
       ingredients: '',
-      date: moment(),
+      startDate: moment(),
+      endDate: moment().add(2, 'months'),
+      // endDate: moment(),
       location: '',
       price: '',
     }
@@ -155,7 +158,10 @@ class MealForm extends React.Component{
           value={this.state.location}
           onChange={this.handleChange} />
         <DatePicker
-          selected={this.state.date}
+          selected={this.state.startDate}
+          onChange={this.handleDate} />
+        <DatePicker
+          selected={this.state.endDate}
           onChange={this.handleDate} />
         <input
           type='file'
