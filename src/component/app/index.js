@@ -38,10 +38,21 @@ export class App extends React.Component{
               <img src='src/assets/logo.svg'></img>
               <ul>
                 <li><Link to='/landing'> Landing </Link></li>
-                <li><Link to='/signup'> Signup </Link></li>
-                <li><Link to='/signin'> Signin </Link></li>
-                <li><a onClick={this.props.logout}> Logout </a></li>
-                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                {util.renderIf(!this.props.token,
+                  <li><Link to='/signup'> Signup </Link></li>
+                )}
+                {util.renderIf(!this.props.token,
+                  <li><Link to='/signin'> Signin </Link></li>
+                )}
+                {util.renderIf(this.props.token,
+                  <li><a onClick={this.props.logout}> Logout </a></li>
+                )}
+                {util.renderIf(this.props.token && !this.props.cook,
+                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                )}
+                {util.renderIf(this.props.cook,
+                  <li><Link to='/meal-container'>Meals</Link></li>
+                )}
               </ul>
 
               <Route exact path='/landing'
@@ -52,20 +63,9 @@ export class App extends React.Component{
                 component={Signin} />
               <Route exact path='/cook-form'
                 component={CookForm} />
-            </div>
-
-            <div className='cook-nav'>
-              <h1> </h1>
-              <ul>
-
-                <li><Link to='/meal-container'>Meals</Link></li>
-              </ul>
-
               <Route exact path='/meal-container'
                 component={MealContainer} />
             </div>
-
-
           </div>
         </BrowserRouter>
       </div>
