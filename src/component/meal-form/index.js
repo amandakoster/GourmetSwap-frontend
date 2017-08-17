@@ -10,27 +10,26 @@ class MealForm extends React.Component{
     super(props)
     this.state = {
       title: '',
+      services: '',
       cuisines: '',
       description: '',
       pickupOffered: false,
       deliveryOffered: false,
-      portions: '',
-      photoURL: null,
-      previewImg: '',
+      portions: 0,
+      // previewImg: '',
       ingredients: '',
       startDate: moment(),
       endDate: moment().add(2, 'months'),
-      // endDate: moment(),
       location: '',
-      price: '',
+      price: 0,
     }
     console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setPickup = this.setPickup.bind(this)
     this.setDelivery = this.setDelivery.bind(this)
-    this.handleDate = this.handleDate.bind(this)
-    this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
+    this.handleStartDate = this.handleStartDate.bind(this)
+    this.handleEndDate = this.handleEndDate.bind(this)
   }
 
   setPickup(e) {
@@ -51,6 +50,40 @@ class MealForm extends React.Component{
     this.setState({[name]: value})
   }
 
+<<<<<<< HEAD
+    if(name === 'cuisines'){
+      this.setState({cuisines: e.target.value})
+    }
+    if(name === 'services'){
+      this.setState({services: e.target.value})
+    }
+    if(name === 'title'){
+      this.setState({title: e.target.value})
+    }
+    if(name === 'description'){
+      this.setState({description: e.target.value})
+    }
+    if(name === 'portions'){
+      this.setState({portions: e.target.value})
+    }
+    if(name === 'ingredients'){
+      this.setState({ingredients: e.target.value})
+    }
+    if(name === 'price'){
+      this.setState({price: e.target.value})
+    }
+    if(name === 'location'){
+      this.setState({location: e.target.value})
+    }
+    if(name === 'photoURL'){
+      let {files} = e.target
+      let photo = files[0]
+      this.setState({photo})
+      util.photoToDataURL(photo)
+        .then(preview => this.setState({preview}))
+        .catch(console.error)
+    }
+=======
   handlePhotoUpload(e) {
     let {files} = e.target
     let photo = files[0]
@@ -58,11 +91,17 @@ class MealForm extends React.Component{
     util.photoToDataURL(photo)
       .then(preview => this.setState({preview}))
       .catch(console.error)
+>>>>>>> 5f706525c2dc82b2fdc9023d0c5c56c4c76b5a47
   }
 
-  handleDate(e) {
-    this.setState({date: e})
-    console.log(this.state.date)
+  handleStartDate(e) {
+    this.setState({startDate: e})
+    console.log(this.state.startDate)
+  }
+
+  handleEndDate(e) {
+    this.setState({endDate: e})
+    console.log(this.state.endDate)
   }
 
   handleSubmit(e){
@@ -132,6 +171,19 @@ class MealForm extends React.Component{
             onChange={this.setDelivery}
           />
         </h5>
+        <div className='dropdown'>
+          <p> Please choose between six cuisines that you would liketo cook the most on our platform! </p>
+          <select
+            name='cuisines'
+            onChange={this.handleChange}>
+            <option value="cuisine1"> cuisine1. </option>
+            <option value="cuisine2"> cuisine2. </option>
+            <option value="cuisine3"> cuisine3. </option>
+            <option value="cuisine4"> cuisine4. </option>
+            <option value="cuisine5"> cuisine5. </option>
+            <option value="cuisine6"> cuisine6. </option>
+          </select>
+        </div>
         <input
           className='number-box'
           name='portions'
@@ -147,7 +199,7 @@ class MealForm extends React.Component{
           onChange={this.handleChange} />
         <input
           name='price'
-          type='text'
+          type='number'
           placeholder='price'
           value={this.state.price}
           onChange={this.handleChange} />
@@ -159,10 +211,10 @@ class MealForm extends React.Component{
           onChange={this.handleChange} />
         <DatePicker
           selected={this.state.startDate}
-          onChange={this.handleDate} />
+          onChange={this.handleStartDate} />
         <DatePicker
           selected={this.state.endDate}
-          onChange={this.handleDate} />
+          onChange={this.handleStartDate} />
         <input
           type='file'
           name='photoURL'
