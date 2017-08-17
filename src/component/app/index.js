@@ -5,14 +5,13 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import * as route from '../../action/route.js'
 import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import './app.scss'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
 
 import MealContainer from '../meal-container'
 import CookForm from '../cook-container'
-
-
 export class App extends React.Component{
   constructor(props){
     super(props)
@@ -24,15 +23,13 @@ export class App extends React.Component{
   componentWillMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
+      this.props.setToken(token)
       this.props.login(token)
       this.props.userFetch(token)
     }
   }
 
   render() {
-    console.log('HIT APP', this.props)
-    console.log('this.state.cook', this.props.cook)
-
     return(
       <div className='app'>
         <BrowserRouter>
@@ -56,9 +53,6 @@ export class App extends React.Component{
               <Route exact path='/cook-form'
                 component={CookForm} />
             </div>
-
-
-
 
             {util.renderIf(this.props.cook,
               <div className='cook-nav'>
@@ -89,6 +83,7 @@ let mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),
+  setToken: (token) => dispatch(auth.setToken(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

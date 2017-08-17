@@ -12,14 +12,17 @@ class MealForm extends React.Component{
     super(props)
     this.state = {
       title: '',
+      cuisines: '',
       description: '',
       pickupOffered: false,
       deliveryOffered: false,
       portions: '',
-      photo: null,
+      photoURL: null,
       previewImg: '',
       ingredients: '',
-      date: moment(),
+      startDate: moment(),
+      endDate: moment().add(2, 'months'),
+      // endDate: moment(),
       location: '',
       price: '',
     }
@@ -97,13 +100,14 @@ class MealForm extends React.Component{
     const {deliveryOffered} = this.state
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
-        <h1> 1. The Service </h1>
-        <div className='dropdown'>
-          <h2>What Service will you provide?</h2>
-          <p> Pick the services you would like to provide on our gourmet swap platform </p>
+        <h3> 1. The Service </h3>
+        <h5>What Service will you provide?</h5>
+        <p> Pick the services you would like to provide on our Gourmet Swap platform </p>
+        <div className="dropdown">
           <select
             name='services'
             onChange={this.handleChange}>
+            <option value="none"> none selected </option>
             <option value="meal-prep"> meal-prep </option>
             <option value="meal-prep recipes"> meal-prep recipes </option>
             <option value="baked goods"> baked goods </option>
@@ -128,22 +132,23 @@ class MealForm extends React.Component{
           placeholder='description'
           value={this.state.description}
           onChange={this.handleChange} />
-        <label>Offer Pickup?
+
+        <h5>Will your meal be for pick up?
           <input
             name='pickupOffered'
             type='checkbox'
             checked={this.state.pickupOffered}
             onChange={this.setPickup}
           />
-        </label>
-        <label> Offer Delivery?
+        </h5>
+        <h5> Will your meal be for delivery?
           <input
             name='deliveryOffered'
             type='checkbox'
             checked={this.state.deliveryOffered}
             onChange={this.setDelivery}
           />
-        </label>
+        </h5>
         <input
           name='portions'
           type='number'
@@ -169,7 +174,10 @@ class MealForm extends React.Component{
           value={this.state.location}
           onChange={this.handleChange} />
         <DatePicker
-          selected={this.state.date}
+          selected={this.state.startDate}
+          onChange={this.handleDate} />
+        <DatePicker
+          selected={this.state.endDate}
           onChange={this.handleDate} />
         <input
           type='file'

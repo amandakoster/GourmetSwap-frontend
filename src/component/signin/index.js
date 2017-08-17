@@ -73,7 +73,6 @@ class Signin extends React.Component{
   }
 
   render(){
-    console.log('login', this.props)
     let googleLoginBaseURL='https://accounts.google.com/o/oauth2/v2/auth'
     let googleLoginQuery = querystring.stringify({
       client_id: __GOOGLE_CLIENT_ID__,
@@ -119,11 +118,10 @@ class Signin extends React.Component{
         </div>
       </div>
     )
-    //reder code here ******
 
   }
 }
-// export default Signin
+
 export const mapStateToProps = (state) => ({})
 
 export const mapDispatchToProps = (dispatch) => ({login: (user) => dispatch(auth.loginRequest(user)),
