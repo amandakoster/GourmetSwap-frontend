@@ -12,6 +12,9 @@ strong { font-weight: bold; }
 main-nav {
   float:left;
 }
+a {
+  color: $color-white;
+}
 
 body {
   background: $color-white;
@@ -20,13 +23,31 @@ body {
   width: 100%;
 }
 
-h2 {
+h1, h2, h3 {
   color: $color-primary;
+  padding-bottom: 2%;
+}
+
+h4, h5 {
+  color: $color-darkgrey;
+  padding-bottom: 2%;
+}
+
+p {
+  color: $color-darkgrey;
+  padding-bottom: 1%;
 }
 
 blockquote {
   border-left: $pad solid $color-lightgrey;
   padding-left: $pad;
+}
+
+.dropdown {
+  padding: $pad;
+  margin-bottom: 1%;
+  color: $color-darkgrey;
+  border: solid $color-lightgrey;
 }
 
 @for $i from 6 through 1 {
@@ -40,6 +61,7 @@ label {
   font-size: 1.25em;
   font-weight: bolder;
   margin-bottom: $pad;
+
 }
 
 textarea, input {
@@ -47,6 +69,7 @@ textarea, input {
   border: 1px solid $color-lightgrey;
   margin-bottom: $pad;
   resize: none;
+  overflow: hidden;
 
   &:focus {
     border: 1px solid $color-darkgrey;
@@ -55,43 +78,6 @@ textarea, input {
   &::placeholder {
     color: $color-grey;
   }
-}
-
-.user-nav {
-  float: left;
-  background-color: $color-primary;
-  color: $color-white;
-  width: 100%;
-  margin-top: 0px;
-  margin: none;
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: $color-secondary;
-  }
-  li  {
-    float: left;
-    width: 10%;
-    display: inline-block;;
-  }
-  li a {
-    padding: 14px;
-  }
-}
-
-img {
-  width: 10em;
-}
-
-.cook-nav {
-  border: solid yellow;
-  color: $color-white;
-}
-
-.cook-cuisines {
-  border: solid orange;
 }
 
 .number-box {
@@ -106,9 +92,8 @@ button,input[type="submit"] {
   background: $color-primary;
   color: $color-white;
   padding: $pad;
-  border-radius: 5%;
   width: 30%;
-  transition-delay:1s;
+  transition-delay: 1s;
   border: none;
 
   &:hover {
@@ -124,7 +109,5 @@ button,input[type="submit"] {
 ul,ol,li { margin-left: $pad * 2; }
 li { display: list-item; }
 ol li { list-style: decimal; }
-// ol ol li , ul ol li { list-style: lower-alpha; }
-// ol ul li , ul ul li { list-style: square; }
 
 .hide { display: none; }
