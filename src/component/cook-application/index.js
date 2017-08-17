@@ -37,6 +37,12 @@ class CookApplication extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
+    if(!this.state.passwordError && !this.state.emailError){
+      return this.props.cookCreate({
+        email: this.state.email,
+        password: this.state.password,
+      })
+    }
   }
 
   handleChange(e){
@@ -215,4 +221,10 @@ class CookApplication extends React.Component{
 }
 
 
-export default CookApplication
+export const mapStateToProps = (state) => ({})
+
+export const mapDispatchToProps = (dispatch) => ({
+  cookCreate: (user) => dispatch(auth.cookCreate(user)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CookApplication)
