@@ -12,18 +12,18 @@ class MealForm extends React.Component{
     super(props)
     this.state = {
       title: '',
+      services: '',
       cuisines: '',
       description: '',
       pickupOffered: false,
       deliveryOffered: false,
-      portions: null,
-      photoURL: null,
+      portions: 0,
       // previewImg: '',
       ingredients: '',
       startDate: moment(),
       endDate: moment().add(2, 'months'),
       location: '',
-      price: null,
+      price: 0,
     }
     console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
@@ -50,6 +50,12 @@ class MealForm extends React.Component{
     // console.log(this.state)
     let {type, name, checked, value} = e.target
 
+    if(name === 'cuisines'){
+      this.setState({cuisines: e.target.value})
+    }
+    if(name === 'services'){
+      this.setState({services: e.target.value})
+    }
     if(name === 'title'){
       this.setState({title: e.target.value})
     }
@@ -154,6 +160,19 @@ class MealForm extends React.Component{
             onChange={this.setDelivery}
           />
         </h5>
+        <div className='dropdown'>
+          <p> Please choose between six cuisines that you would liketo cook the most on our platform! </p>
+          <select
+            name='cuisines'
+            onChange={this.handleChange}>
+            <option value="cuisine1"> cuisine1. </option>
+            <option value="cuisine2"> cuisine2. </option>
+            <option value="cuisine3"> cuisine3. </option>
+            <option value="cuisine4"> cuisine4. </option>
+            <option value="cuisine5"> cuisine5. </option>
+            <option value="cuisine6"> cuisine6. </option>
+          </select>
+        </div>
         <input
           name='portions'
           type='number'

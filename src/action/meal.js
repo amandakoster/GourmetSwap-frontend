@@ -17,12 +17,24 @@ export const mealDelete = (meal) => ({
 
 export const mealCreateRequest = (meal) => (dispatch, getState) => {
   console.log('mealCreateRequest: ', meal)
-  let {auth} = getState()
+  let {token} = getState()
+  console.log(token)
   return superagent.post(`${__API_URL__}/api/meals`)
-    .set('Authorization', `Bearer ${auth}`)
+    .set('Authorization', `Bearer ${token}`)
+    .field('title', meal.title)
+    .field('cuisines', meal.cuisines)
+    .field('description', meal.description)
+    .field('pickupOffered', meal.pickupOffered)
+    .field('deliveryOffered', meal.deliveryOffered)
+    .field('portions', meal.portions)
+    .field('ingredients', meal.ingredients)
+    .field('startDate', meal.startDate._d)
+    .field('endDate', meal.endDate._d)
+    .field('location', meal.location)
+    .field('price', meal.price)
+    .attach('photoURL', meal.photo)
     .then(res => {
-      dispatch(mealCreate(res.body))
-      console.log('posting to back end', res.body)
-      return res
+      console.log('posted to back end: ', res.body)
     })
+    .catch()
 }
