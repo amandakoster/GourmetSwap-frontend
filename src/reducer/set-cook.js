@@ -1,5 +1,5 @@
-export default (state=true, {type, payload}) => {
-
+export default (state=false, {type, payload}) => {
+  console.log('set-cook payload', payload)
   switch(type){
   case 'SET_COOK': return payload
   default: return state

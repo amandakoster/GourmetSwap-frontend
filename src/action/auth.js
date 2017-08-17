@@ -23,7 +23,7 @@ export const userFetch = (token) => (dispatch) => {
     .then(res => {
       console.log('userFetch res', res.text)
       if(res.text === 'true') {
-        dispatch(setCook(true))
+        setCook(true)
       }
     })
 }

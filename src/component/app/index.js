@@ -28,6 +28,9 @@ export class App extends React.Component{
       // console.log('token', token)
       this.props.login(token)
       this.props.userFetch(token)
+      // this.setState({
+      //   cook: this.props.cook,
+      // })
     }
   }
 
@@ -44,6 +47,7 @@ export class App extends React.Component{
                 <li><Link to='/signup'> Signup </Link></li>
                 <li><Link to='/signin'> Signin </Link></li>
                 <li><a onClick={this.props.logout}> Logout </a></li>
+                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
               </ul>
 
               <Route exact path='/landing'
@@ -52,6 +56,8 @@ export class App extends React.Component{
                 component={Signup} />
               <Route exact path='/signin'
                 component={Signin} />
+              <Route exact path='/cook-form'
+                component={CookForm} />
             </div>
 
 
@@ -61,11 +67,10 @@ export class App extends React.Component{
               <div className='cook-nav'>
                 <h1> Cook Nav </h1>
                 <ul>
-                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+
                   <li><Link to='/meal-container'>Meals</Link></li>
                 </ul>
-                <Route exact path='/cook-form'
-                  component={CookForm} />
+
                 <Route exact path='/meal-container'
                   component={MealContainer} />
               </div>
