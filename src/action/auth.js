@@ -34,13 +34,13 @@ export const userFetch = (token) => (dispatch) => {
 
 export const loginRequest = (user) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/signin`)
-    .withCredentials()
     .auth(user.email, user.password)
     .then(res => {
-      let token = util.cookieFetch('Gourmet-Swap-Token')
-      if(token){
-        dispatch(userFetch(token))
-        dispatch(login(token))
+      console.log('res', res)
+      let token = util.cookieCreate('Gourmet-Swap-Token', res.text, 7)
+      if(res.text){
+        dispatch(userFetch(res.text))
+        dispatch(login(res.text))
       }
       return res
     })
@@ -51,7 +51,6 @@ export const signupRequest = (user) => (dispatch) => {
   return superagent.post(`${__API_URL__}/api/signup`)
     .send(user)
     .then(res => {
-      console.log('res', res)
       util.cookieCreate('Gourmet-Swap-Token', res.text, 7)
       // let token = util.cookieFetch('Gourmet-Swap-Token')
       if(res.text)
