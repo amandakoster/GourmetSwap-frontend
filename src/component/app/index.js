@@ -22,10 +22,10 @@ export class App extends React.Component{
     }
   }
   componentDidMount(){
-    console.log('Comp Did Mount', this.props)
+    // console.log('Comp Did Mount', this.props)
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
-      console.log('token', token)
+      // console.log('token', token)
       this.props.login(token)
       this.props.userFetch(token)
     }

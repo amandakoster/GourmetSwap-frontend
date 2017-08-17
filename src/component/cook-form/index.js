@@ -11,14 +11,14 @@ class CookForm extends React.Component{
     super(props)
     this.state = {
       signatureDishes: '',
-      restaurantsCookedIn: '',
+      restaurantsCookedIn: 0,
       bestDescribes: '',
-      mealsPerWeek: '',
-      services: [],
-      cuisines: [],
+      mealsPerWeek: 0,
+      services: '',
+      cuisines: '',
       offerDelivery: false,
       community: '',
-      hoursPerWeek: 0,
+      hoursPerWeek: '',
       moreInfo: '',
       howDidYouHear: '',
     }
@@ -41,11 +41,11 @@ class CookForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.state.bestDescribes)
+    // console.log(this.state.bestDescribes)
     let {onComplete} = this.props
-    console.log(this.state, 'COOK FORM STATE')
+    // console.log(this.state, 'COOK FORM STATE')
     let result = onComplete(this.state)
-    console.log(result, 'cookForm result')
+    // console.log(result, 'cookForm result')
     if(result instanceof Promise){
       result.then(() => this.setState({error:null}))
         .catch(error => {
@@ -252,5 +252,11 @@ class CookForm extends React.Component{
   }
 }
 
+export const mapStateToProps = (state) => ({
+})
 
-export default CookForm
+export const mapDispatchToProps = (dispatch) => ({
+  cookCreateRequest: (cook) => dispatch(auth.cookCreateRequest(cook)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CookForm)

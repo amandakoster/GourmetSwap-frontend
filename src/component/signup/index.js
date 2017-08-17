@@ -58,11 +58,6 @@ class Signup extends React.Component{
         username: this.state.username,
         password: this.state.password,
       })
-<<<<<<< HEAD
-    } else {
-      
-=======
->>>>>>> db7a1f1e0ecaef5325efc3c6f560374f5752c2c1
     }
   }
 
