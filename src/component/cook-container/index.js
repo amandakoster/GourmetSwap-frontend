@@ -14,17 +14,13 @@ class CookContainer extends React.Component {
   }
 
   componentDidMount(){
-    console.log('hit componentDidMount')
     let token = util.cookieFetch('Gourmet-Swap-Token')
-    console.log('token', token)
     this.setState({
       tokenAuth: token,
     })
-    console.log('this.state', this.state)
   }
 
   handleCookCreate(cook){
-    console.log('handleCookCreate', this.state.tokenAuth)
     let token = this.state.tokenAuth
     return this.props.cookCreateRequest(cook, token)
   }
