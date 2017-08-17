@@ -38,7 +38,7 @@ export class App extends React.Component{
         <BrowserRouter>
           <div className='browser-router'>
             <div className='user-nav'>
-              <img src='../../assets/logo.svg'></img>
+              <img src='src/assets/logo.svg'></img>
               <ul>
                 <li><Link to='/landing'> Landing </Link></li>
                 <li><Link to='/signup'> Signup </Link></li>
