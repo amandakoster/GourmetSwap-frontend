@@ -54,7 +54,7 @@ class CookForm extends React.Component{
     let {bestDescribes} = this.state
     return(
 
-      <body>
+      <main>
         <form onSubmit={this.handleSubmit}>
           <div className='cook-cuisines'>
             <h1> Tell us about your cooking! </h1>
@@ -252,7 +252,7 @@ class CookForm extends React.Component{
 
           <button type='submit'> Submit </button>
         </form>
-      </body>
+      </main>
     )
   }
 }

@@ -1,0 +1,28 @@
+
+
+.meal-card {
+  height: 20em;
+  width: 15%;
+  border: 1px solid blue;
+  background: white;
+  display: inline-block;
+  margin: 1.5%;
+  overflow-y: auto;
+}
+
+.meal-image{
+  // max-width: 90%;
+  height: 8em;
+  margin: 0 auto;
+  padding-top: 1%;
+}
+
+.meal-price{
+  display: inline-block;
+  width: auto;
+}
+
+.meal-title{
+  display: inline-block;
+  width: auto;
+}

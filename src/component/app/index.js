@@ -10,6 +10,7 @@ import MealList from '../meal-list'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
+import Meals from '../meals'
 import './app.scss'
 
 import MealContainer from '../meal-container'
@@ -26,7 +27,7 @@ export class App extends React.Component{
   }
 
   componentWillMount(){
-    this.props.mealsFetch()
+    // this.props.mealsFetch()
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
       this.props.setToken(token)
@@ -74,28 +75,31 @@ export class App extends React.Component{
               component={CookForm} />
             <Route exact path='/meal-container'
               component={MealContainer} />
+
+              <Meals />
           </div>
         </BrowserRouter>
-        <div className='meals'>
-        {this.props.meals.map(meal =>
-          <MealList key={meal._id} meal={meal}
-          />
-        )}
-        </div>
       </nav>
     </div>
     )}
 }
 
+// <div className='meals'>
+// {this.props.meals.map(meal =>
+//   <MealList key={meal._id} meal={meal}
+//   />
+// )}
+// </div>
+
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
   route: state.route,
-  meals: state.meals,
+  // meals: state.meals,
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  mealsFetch: () => dispatch(mealFetchRequest()),
+  // mealsFetch: () => dispatch(mealFetchRequest()),
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),

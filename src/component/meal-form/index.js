@@ -88,8 +88,8 @@ class MealForm extends React.Component{
     const {pickupOffered} = this.state
     const {deliveryOffered} = this.state
     return(
-      <div>
-        <body>
+      <main>
+        <div>
           <form className='meal-form' onSubmit={this.handleSubmit}>
             <h1> Post Your Meal </h1>
             <h2> 1. The Service </h2>
@@ -266,8 +266,8 @@ class MealForm extends React.Component{
             <img src={this.state.preview} />
             <button id="file-upload" type='submit'> Submit </button>
           </form>
-        </body>
-      </div>
+        </div>
+      </main>
 
     )
   }
