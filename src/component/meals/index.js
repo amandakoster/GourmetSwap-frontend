@@ -46,10 +46,10 @@ class Meals extends React.Component {
 
       <div className='profile'>
         <div className='meals'>
-        {this.props.meals.map(meal =>
-          <MealList key={meal._id} meal={meal}
-          />
-        )}
+          {this.props.meals.map(meal =>
+            <MealList key={meal._id} meal={meal}
+            />
+          )}
         </div>
       </div>
     )

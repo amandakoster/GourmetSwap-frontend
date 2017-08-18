@@ -4,27 +4,41 @@
   height: 20em;
   width: 15%;
   min-width: 10em;
-  border: 1px solid blue;
   background: white;
   display: inline-block;
   margin: 1.5%;
   border-radius: 1%;
   overflow-y: auto;
+
 }
 
 .meal-image{
   // max-width: 90%;
   height: 8em;
+  width: 95%;
   margin: 0 auto;
   padding-top: 1%;
+}
+
+.meal-text{
+  padding-left: 1em;
+
 }
 
 .meal-price{
   display: inline-block;
   width: auto;
+  color: #cf3d27;
+  font-weight: bold;
 }
 
 .meal-title{
   display: inline-block;
   width: auto;
+  padding-left: .5em;
+  font-weight: bold;
+}
+
+.meal-date{
+  color: darkgrey;
 }
