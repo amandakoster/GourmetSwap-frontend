@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
-import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
 import './datepicker.scss'
 
@@ -31,6 +30,7 @@ class MealForm extends React.Component{
     this.setDelivery = this.setDelivery.bind(this)
     this.handleStartDate = this.handleStartDate.bind(this)
     this.handleEndDate = this.handleEndDate.bind(this)
+    this.handlePhotoUpload = this.handlePhotoUpload.bind(this)
   }
 
   setPickup(e) {
@@ -89,25 +89,25 @@ class MealForm extends React.Component{
     const {deliveryOffered} = this.state
     return(
       <form className='meal-form' onSubmit={this.handleSubmit}>
-        <h3> 1. The Service </h3>
+        <h1> Post Your Meal </h1>
+        <h2> 1. The Service </h2>
         <h5>What Service will you provide?</h5>
         <p> Pick the services you would like to provide on our Gourmet Swap platform </p>
-        <div className="dropdown">
-          <select
-            name='services'
-            onChange={this.handleChange}>
-            <option value="none"> none selected </option>
-            <option value="meal-prep"> meal-prep </option>
-            <option value="meal-prep recipes"> meal-prep recipes </option>
-            <option value="baked goods"> baked goods </option>
-            <option value="catering"> catering </option>
-            <option value="cooking classes"> cooking classes </option>
-            <option value="personal chefs"> personal chefs </option>
-            <option value="special diets"> special diets </option>
-            <option value="free food experience"> free food experience </option>
-            <option value="event chefs"> event chefs </option>
-          </select>
-        </div>
+        <select
+          className="dropdown"
+          name='services'
+          onChange={this.handleChange}>
+          <option value="none"> --- </option>
+          <option value="meal-prep"> meal-prep </option>
+          <option value="meal-prep recipes"> meal-prep recipes </option>
+          <option value="baked goods"> baked goods </option>
+          <option value="catering"> catering </option>
+          <option value="cooking classes"> cooking classes </option>
+          <option value="personal chefs"> personal chefs </option>
+          <option value="special diets"> special diets </option>
+          <option value="free food experience"> free food experience </option>
+          <option value="event chefs"> event chefs </option>
+        </select>
 
         <input
           name='title'
@@ -138,57 +138,68 @@ class MealForm extends React.Component{
             onChange={this.setDelivery}
           />
         </h5>
-        <div className='dropdown'>
-          <p> Please choose between six cuisines that you would liketo cook the most on our platform! </p>
-          <select
-            name='cuisines'
-            onChange={this.handleChange}>
-            <option value="cuisine1"> cuisine1. </option>
-            <option value="cuisine2"> cuisine2. </option>
-            <option value="cuisine3"> cuisine3. </option>
-            <option value="cuisine4"> cuisine4. </option>
-            <option value="cuisine5"> cuisine5. </option>
-            <option value="cuisine6"> cuisine6. </option>
-          </select>
-        </div>
+        <p> Please choose between six cuisines that you would liketo cook the most on our platform! </p>
+        <select
+          className='dropdown'
+          name='cuisines'
+          onChange={this.handleChange}>
+          <option value='null'> --- </option>
+          <option value="cuisine1"> cuisine1. </option>
+          <option value="cuisine2"> cuisine2. </option>
+          <option value="cuisine3"> cuisine3. </option>
+          <option value="cuisine4"> cuisine4. </option>
+          <option value="cuisine5"> cuisine5. </option>
+          <option value="cuisine6"> cuisine6. </option>
+        </select>
+
+        <h5> What items are going to be for sale for your service?</h5>
+
+        <p>Enter your meal items here, and how many of each your planning to make. If your meal has an entree please enter it first</p>
+
         <input
           className='number-box'
+          min="0"
           name='portions'
           type='number'
           placeholder='portions'
           value={this.state.portions}
           onChange={this.handleChange} />
         <input
+          className='number-box'
+          min="0"
           name='ingredients'
           type='text'
           placeholder='ingredients'
           value={this.state.ingredients}
           onChange={this.handleChange} />
         <input
+          className='number-box'
+          min="0"
           name='price'
           type='number'
           placeholder='price'
           value={this.state.price}
           onChange={this.handleChange} />
         <input
+          className='number-box'
+          min="0"
           name='location'
           type='text'
           placeholder='location'
           value={this.state.location}
           onChange={this.handleChange} />
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleStartDate} />
-        <DatePicker
-          selected={this.state.endDate}
-          onChange={this.handleStartDate} />
+
+        <p> Upload photos of your meals here: </p>
         <input
+          className='photo-upload'
           type='file'
           name='photoURL'
           onChange={this.handlePhotoUpload}
         />
+        <p> Submit your meal! </p>
         <img src={this.state.preview} />
         <button id="file-upload" type='submit'> Submit </button>
+
       </form>
     )
   }

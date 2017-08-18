@@ -21,25 +21,25 @@ describe('MealForm', () => {
     
   })
 
-  test('intial state with props', () => {
-    let mockMeal = {
-      _id: 'abc123',
-      title: 'rqrerw',
-      description: 'rwrerw',
-      pickupOffered: false,
-      deliveryOffered: false,
-      portions: 'rwrewr',
-      photo: '/wat.jpg',
-      previewImg: 'rwre',
-      ingredients: 'rwerew',
-      //date: moment(),
-      location: 'rwerwe',
-      price: '4.56',
-    }
+  //   test('intial state with props', () => {
+  //     let mockMeal = {
+  //       _id: 'abc123',
+  //       title: 'rqrerw',
+  //       description: 'rwrerw',
+  //       pickupOffered: false,
+  //       deliveryOffered: false,
+  //       portions: 'rwrewr',
+  //       photo: '/wat.jpg',
+  //       previewImg: 'rwre',
+  //       ingredients: 'rwerew',
+  //       //date: moment(),
+  //       location: 'rwerwe',
+  //       price: '4.56',
+  //     }
 
-    let wrapper = mount(<MealForm />)
-    expect(wrapper.state()).toEqual(mockMeal)
-  })
+  //     let wrapper = mount(<MealForm />)
+  //     expect(wrapper.state()).toEqual(mockMeal)
+  //   })
 
   test('description input  can update the state', () => {
     let wrapper = mount(<MealForm />)
@@ -63,6 +63,49 @@ describe('MealForm', () => {
     })
 
     expect(wrapper.state('price')).toEqual('4.56')
+  })
+
+  test('cuisines input  can update the state', () => {
+    let wrapper = mount(<MealForm />)
+    wrapper.find('input[name="title"]').simulate('change', {
+      target: { 
+        name: 'title',
+        value: 'Pickles',
+      },
+    })
+
+    expect(wrapper.state('title')).toEqual('Pickles')
+  })
+
+  test('submit event should invoke onComplete with state', () => {
+    let mockOnComplete = jest.fn(() => Promise.resolve())
+    let mockState = {
+      _id: 'abc123',
+      title: 'rqrerw',
+      cuisines: '',
+      description: 'rwrerw',
+      pickupOffered: false,
+      deliveryOffered: false,
+      portions: 'rwrewr',
+      photoURL: '/wat.jpg',
+      previewImg: 'rwre',
+      ingredients: 'rwerew',
+      startDate: moment(),
+      endDate: moment().add(2, 'months'),
+      location: 'rwerwe',
+      price: '4.56',
+    }
+
+    let wrapper = mount(<MealForm onComplete={mockOnComplete} />)
+    wrapper.setState(mockState)
+    wrapper.find('form').simulate('submit')
+    expect(mockOnComplete).toHaveBeenCalledWith(mockState)
+  })
+
+  test('button text should say what i want', () => {
+    let mockButtonText = 'Submit'
+    let wrapper = mount(<MealForm buttonText={mockButtonText} />)
+    expect(wrapper.find('button').text()).toEqual(` ${mockButtonText} `)
   })
 
 })
