@@ -24,11 +24,16 @@ main-nav {
 
 a {
   color: $color-white;
+
+  &:hover {
+    background: $color-secondary;
+    color: $color-lightgrey;
+    transition: all 0.3s ease;
+  }
 }
 
 body {
   background: $color-white;
-  border: solid green;
   font-size: 16px;
   width: 100%;
 }
@@ -60,7 +65,7 @@ h4, h5, li, p {
   border: solid $color-lightgrey;
 }
 
-form {
+form, .meal-form  {
   background-color: $color-white;
   padding: 2% 10% 10% 10%;
 }
@@ -84,6 +89,7 @@ textarea, input {
 .number-box {
   width: 30%;
   input[type=number]::-webkit-inner-spin-button {
+    transition: all 0.3s ease;
       opacity: 1
   }
 }
@@ -98,15 +104,12 @@ button,input[type="submit"] {
   color: $color-white;
   padding: $pad;
   width: 30%;
-  transition-delay: 1s;
   border: none;
 
   &:hover {
     background: $color-secondary;
-  }
-
-  &:active {
-    background: $color-primary;
+    color: $color-lightgrey;
+    transition: all 0.5s ease;
   }
 }
 
@@ -114,6 +117,11 @@ input[type=file]::-webkit-file-upload-button {
     border: none;
     background: $color-primary;
     color: $color-white;
+
+    &:hover {
+      background: $color-secondary;
+      color: $color-lightgrey;
+    }
 }
 
 .logo {

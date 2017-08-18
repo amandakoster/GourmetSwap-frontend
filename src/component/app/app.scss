@@ -21,6 +21,12 @@
   }
   li a {
     padding: 14px;
+
+    &:hover {
+      background: $color-secondary;
+      color: $color-lightgrey;
+    }
+
   }
 }
 
