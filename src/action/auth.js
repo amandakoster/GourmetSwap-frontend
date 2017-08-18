@@ -16,6 +16,11 @@ export const setCook = (cook) => ({
   payload: cook,
 })
 
+export const cookProfile = (profile) => ({
+  type: 'COOK_PROFILE',
+  payload: profile,
+})
+
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
   return { type: 'LOGOUT', payload: '/landing' }
@@ -42,6 +47,7 @@ export const cookFetch = (token) => (dispatch) => {
       return superagent.get(`${__API_URL__}/api/cooks/${auth}`)
       .then(res => {
         console.log('cookFetch cook profile res', res.body)
+        dispatch(cookProfile(res.body))
       })
     })
 }
