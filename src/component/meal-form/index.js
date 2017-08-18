@@ -88,7 +88,7 @@ class MealForm extends React.Component{
     const {pickupOffered} = this.state
     const {deliveryOffered} = this.state
     return(
-      <body>
+      <main>
         <div>
           <form className='meal-form' onSubmit={this.handleSubmit}>
             <h1> Post Your Meal </h1>
@@ -267,7 +267,7 @@ class MealForm extends React.Component{
             <button id="file-upload" type='submit'> Submit </button>
           </form>
         </div>
-      </body>
+      </main>
 
     )
   }

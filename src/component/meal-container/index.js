@@ -11,8 +11,10 @@ class MealContainer extends React.Component {
     super(props)
     this.state = {
       meals: [],
+      form: false,
     }
     this.handleMealCreate = this.handleMealCreate.bind(this)
+    this.toggleForm = this.toggleForm.bind(this)
   }
 
   componentDidMount(){
@@ -25,15 +27,31 @@ class MealContainer extends React.Component {
     return this.props.mealCreate(meal)
       .catch(console.error)
   }
+
+  toggleForm(){
+    if(this.state.form === false){
+      this.setState({
+        form: true,
+      })
+    } else if (this.state.form === true){
+      this.setState({
+        form: false,
+      })
+    }
+  }
+
   render(){
     console.log('this.state.meals', this.props.meals)
     return(
+
       <div className='main-nav'>
-        <MealForm
-          onComplete={this.handleMealCreate} />
-
-
-
+      <button onClick={this.toggleForm}>Create a meal</button>
+        {util.renderIf(this.state.form === true,
+        <div className='meal-form'>
+          <MealForm
+            onComplete={this.handleMealCreate} />
+        </div>
+        )}
       </div>
     )
   }
