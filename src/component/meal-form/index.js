@@ -4,6 +4,7 @@ import * as util from '../../lib/util.js'
 import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
+// import './meal-form.scss'
 
 class MealForm extends React.Component{
   constructor(props){
