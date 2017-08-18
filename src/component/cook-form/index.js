@@ -30,7 +30,6 @@ class CookForm extends React.Component{
     this.setState({
       bestDescribes: e.currentTarget.value,
     })
-
   }
 
   handleChange(e){
@@ -69,13 +68,13 @@ class CookForm extends React.Component{
               onChange={this.handleChange} />
           </div>
 
-
           <h5> Tell us about your cooking experience! </h5>
           <p> How many resturants have you cooked in? </p>
           <div className='number-box'>
             <input
               name='restaurantsCookedIn'
               type='number'
+              min="0"
               placeholder='number of resturants'
               value={this.state.restaurantsCookedIn}
               onChange={this.handleChange} />
@@ -104,7 +103,7 @@ class CookForm extends React.Component{
             </label>
 
             <label>
-              <p>Stay at home parent &sol person looking for flexible work?</p>
+              <p>Stay at home parent/person looking for flexible work?</p>
               <input
                 name='bestDescribes'
                 type='radio'
@@ -134,8 +133,8 @@ class CookForm extends React.Component{
             </label>
           </div>
 
+          <p>Other?</p>
           <label>
-          Other?
             <input
               name='other'
               type='text'
@@ -144,22 +143,26 @@ class CookForm extends React.Component{
               onChange={this.handleChange} />
           </label>
 
-          <div className='num-dish'>
-            <p>How many dishes do you plan on preparing a week?</p>
+
+          <p>How many dishes do you plan on preparing a week?</p>
+          <div className='number-box'>
             <input
+              className='number-box'
               name='mealsPerWeek'
+              min="0"
+              onfocus="this.type='number;"
               type='number'
-              placeholder='number of dishes'
               value={this.state.mealsPerWeek}
               onChange={this.handleChange} />
           </div>
 
-
           <p> What type of services would you like to provide on our platform? </p>
-          <div className='dropdown'>
+          <div>
             <select
+              className='dropdown'
               name='services'
               onChange={this.handleChange}>
+              <option value="0"> --- </option>
               <option value="meal-prep"> meal-prep </option>
               <option value="meal-prep recipes"> meal-prep recipes </option>
               <option value="baked goods"> baked goods </option>
@@ -173,20 +176,20 @@ class CookForm extends React.Component{
             </select>
           </div>
 
-
           <p> Please choose between six cuisines that you would like to cook the most on our platform! </p>
-          <div className='dropdown'>
-            <select
-              name='cuisines'
-              onChange={this.handleChange}>
-              <option value="cuisine1"> cuisine1. </option>
-              <option value="cuisine2"> cuisine2. </option>
-              <option value="cuisine3"> cuisine3. </option>
-              <option value="cuisine4"> cuisine4. </option>
-              <option value="cuisine5"> cuisine5. </option>
-              <option value="cuisine6"> cuisine6. </option>
-            </select>
-          </div>
+
+          <select
+            className='dropdown'
+            name='cuisines'
+            onChange={this.handleChange}>
+            <option value="0"> ---  </option>
+            <option value="cuisine1"> cuisine1. </option>
+            <option value="cuisine2"> cuisine2. </option>
+            <option value="cuisine3"> cuisine3. </option>
+            <option value="cuisine4"> cuisine4. </option>
+            <option value="cuisine5"> cuisine5. </option>
+            <option value="cuisine6"> cuisine6. </option>
+          </select>
 
 
           <p> Would you like to deliver your own food to customers to earn extra cash? </p>
@@ -194,6 +197,7 @@ class CookForm extends React.Component{
             <select
               name='offerDelivery'
               onChange={this.handleChange}>
+              <option value="0"> --- </option>
               <option value="deliverYes"> Yes, I do. </option>
               <option value="deliverNo"> No, I do not. </option>
             </select>
@@ -214,6 +218,7 @@ class CookForm extends React.Component{
               <select
                 name='hoursPerWeek'
                 onChange={this.handleChange}>
+                <option value="0"> --- </option>
                 <option value="0-3 hours per week"> 0-3 hours per week </option>
                 <option value="4-6 hours per week"> 4-6 hours per week </option>
                 <option value="7-9 hours per week"> 7-9 hours per week
@@ -234,7 +239,6 @@ class CookForm extends React.Component{
               onChange={this.handleChange}>
             </input>
           </div>
-
 
           <div className='howDidYouHear'>
             <p> How did you hear about Gourmet Swap? </p>
