@@ -12,6 +12,11 @@ header {
   background-color: $color-primary;
 }
 
+footer{
+  width: 100%;
+  background: $color-black;
+  height: 10%;
+}
 main-nav {
   float:left;
   background-color: $color-primary;
@@ -109,6 +114,10 @@ input[type=file]::-webkit-file-upload-button {
     border: none;
     background: $color-primary;
     color: $color-white;
+}
+
+.logo {
+    width: 10em;
 }
 
 // lists

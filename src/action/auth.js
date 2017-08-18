@@ -16,6 +16,11 @@ export const setCook = (cook) => ({
   payload: cook,
 })
 
+export const cookProfile = (profile) => ({
+  type: 'COOK_PROFILE',
+  payload: profile,
+})
+
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
   return { type: 'LOGOUT', payload: '/landing' }
@@ -26,8 +31,24 @@ export const userFetch = (token) => (dispatch) => {
     .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
       if(res.text === 'true') {
-        dispatch(setCook())
+        dispatch(setCook(true))
+      } else if (res.text === 'false') {
+        dispatch(setCook(false))
       }
+    })
+}
+
+export const cookFetch = (token) => (dispatch) => {
+  return superagent.get(`${__API_URL__}/api/cook-profile/auth`)
+    .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
+    .then(res => {
+      let auth = JSON.parse(res.text)._id
+      console.log('cookFetch res', JSON.parse(res.text))
+      return superagent.get(`${__API_URL__}/api/cooks/${auth}`)
+      .then(res => {
+        console.log('cookFetch cook profile res', res.body)
+        dispatch(cookProfile(res.body))
+      })
     })
 }
 

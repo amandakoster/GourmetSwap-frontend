@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MealForm from '../meal-form'
+import './_meal-list.scss'
 
 class MealList extends React.Component {
   constructor(props){
@@ -9,16 +10,29 @@ class MealList extends React.Component {
 
   render(){
     let {meal} = this.props
+    console.log('meal-list meal', this.props)
     return(
-      <div>
-        {meal}
+      <div className="meal-card">
+        <img className="meal-image" src={meal.photoURL} />
+        <div>
+          <p className="meal-price">${meal.price}  </p>
+          <p className="meal-title">{meal.title}</p>
+        </div>
+        <div>
+          <p className="meal-date">{meal.endDate}</p>
+          <p className="meal-date">{meal.endDate}</p>
+        </div>
+        <p> {meal.description} </p>
       </div>
     )
   }
 }
 
-let mapStateToProps = () => ({})
+let mapStateToProps = (state) => ({
 
-let mapDispatchToProps = () => ({})
+})
+
+let mapDispatchToProps = () => ({
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(MealList)

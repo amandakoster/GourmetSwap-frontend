@@ -93,9 +93,6 @@ class Signin extends React.Component{
         <div className='form'>
           <form className='sign-in-form' onSubmit={this.handleSubmit}>
 
-
-
-
             <Tooltip message={this.state.emailError} />
             <input
               name='email'
