@@ -63,12 +63,11 @@ class MealContainer extends React.Component {
         )}
 
         <h2>Bio</h2>
-        <p>My story: {test.bestDescribes}</p>
-        <p>I have previously cooked at {test.restaurantsCookedIn}     restaurants</p>
+        <p>I have worked as a cook in {test.restaurantsCookedIn}     restaurants</p>
         <p>I specialize in {test.cuisines}</p>
         <p>My Signature dishes are {test.signatureDishes}</p>
-        <p>I cook {test.mealsPerWeek} meals per week</p>
-        <p>Check out my meals below and please send me any questions</p>
+        <p>I am available to cook {test.mealsPerWeek} meals per week</p>
+        <p>Check out my meals below!</p>
       </div>
     )
   }

@@ -23,11 +23,14 @@ class MealList extends React.Component {
           <p className="meal-title">{meal.title}</p>
         </div>
         <div>
-          <p className="meal-date">{meal.startDateFormatted}</p>
-          <p className="meal-date">{meal.endDateFormatted}</p>
+          <span className="to-from-dates">from:</span><p className="meal-date">{meal.startDateFormatted}</p>
+          <span className="to-from-dates">to:</span><p className="meal-date">{meal.endDateFormatted}</p>
           <br/>
         </div>
           <p> {meal.description} </p>
+          <div className="order-button">
+            Order
+          </div>
         </div>
       </div>
     )
