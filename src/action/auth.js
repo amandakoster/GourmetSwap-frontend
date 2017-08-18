@@ -37,9 +37,13 @@ export const cookFetch = (token) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/cook-profile/auth`)
     .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
+      let auth = JSON.parse(res.text)._id
       console.log('cookFetch res', JSON.parse(res.text))
+      return superagent.get(`${__API_URL__}/api/cooks/${auth}`)
+      .then(res => {
+        console.log('cookFetch cook profile res', res.body)
+      })
     })
-  
 }
 
 
