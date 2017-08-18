@@ -55,13 +55,12 @@ class MealContainer extends React.Component {
 
       <div className='meal-form'>
 
-        <h2>Cook Bio</h2>
-        <h4>My story: {test.bestDescribes}</h4>
-        <p>I have previously cooked at {test.restaurantsCookedIn}restaurants</p>
+        <h2>Bio</h2>
+        <p>I have worked as a cook in {test.restaurantsCookedIn}     restaurants</p>
         <p>I specialize in {test.cuisines}</p>
         <p>My Signature dishes are {test.signatureDishes}</p>
-        <p>I cook {test.mealsPerWeek} meals per week</p>
-        <p>Check out my meals below and please send me any questions</p><button onClick={this.toggleForm}>Create a meal</button>
+        <p>I am available to cook {test.mealsPerWeek} meals per week</p>
+        <p>Check out my meals below!</p>
 
         {util.renderIf(this.state.form === true,
           <div>
@@ -69,6 +68,8 @@ class MealContainer extends React.Component {
               onComplete={this.handleMealCreate} />
           </div>
         )}
+        <button onClick={this.toggleForm}>Create a meal</button>
+
       </div>
     )
   }
