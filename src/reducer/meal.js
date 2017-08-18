@@ -1,6 +1,5 @@
 export default (state=[], action) => {
   let {type, payload} = action
-  console.log('READ THIS ALSO MEAL', type)
   switch(type){
   case 'MEAL_CREATE':
     return [payload, ...state]
