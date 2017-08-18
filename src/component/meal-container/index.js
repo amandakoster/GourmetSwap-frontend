@@ -23,12 +23,20 @@ class MealContainer extends React.Component {
       .catch(console.error)
   }
   render(){
-    console.log(this.state.meals)
+    console.log('this.state.meals', this.props.meals)
     return(
       <div className='meal-container'>
         <h1>Post Your Meal</h1>
         <MealForm
           onComplete={this.handleMealCreate} />
+
+
+        <div className='meals'>
+        {this.props.meals.map(meal =>
+          <MealList key={meal._id} meal={meal}
+          />
+        )}
+        </div>
       </div>
     )
   }

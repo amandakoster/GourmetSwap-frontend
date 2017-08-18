@@ -7,22 +7,27 @@ class MealList extends React.Component {
     super(props)
   }
 
-  componentDidMount(){
-    //request for meals
-  }
-
   render(){
     let {meal} = this.props
+    console.log('meal-list meal', meal)
     return(
-      <div>
-        <p> meal </p>
-        <img src={meal.url} />
+      <div className="meal-card">
+        <img src={meal.photoURL} />
+        <div>
+          <p className="meal-price">{meal.price}</p>
+          <p className="meal-title">{meal.title}</p>
+        </div>
+        <div>
+          <p className="meal-date">{meal.endDate}</p>
+          <p className="meal-date">{meal.endDate}</p>
+        </div>
+        <p> {meal.description} </p>
       </div>
     )
   }
 }
 
-let mapStateToProps = () => ({})
+let mapStateToProps = (state) => ({})
 
 let mapDispatchToProps = () => ({
 })
