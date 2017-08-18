@@ -4,6 +4,7 @@ import * as util from '../../lib/util.js'
 import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import {mealCreate} from '../../action/meal.js'
+import './datepicker.scss'
 
 class MealForm extends React.Component{
   constructor(props){
@@ -50,7 +51,6 @@ class MealForm extends React.Component{
     this.setState({[name]: value})
   }
 
-
   handlePhotoUpload(e) {
     let {files} = e.target
     let photo = files[0]
@@ -58,6 +58,7 @@ class MealForm extends React.Component{
     util.photoToDataURL(photo)
       .then(preview => this.setState({preview}))
       .catch(console.error)
+
   }
 
   handleStartDate(e) {
