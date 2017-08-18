@@ -28,8 +28,7 @@ class MealContainer extends React.Component {
   render(){
     console.log('this.state.meals', this.props.meals)
     return(
-      <div className='meal-container'>
-        <h1>Post Your Meal</h1>
+      <div className='main-nav'>
         <MealForm
           onComplete={this.handleMealCreate} />
 
