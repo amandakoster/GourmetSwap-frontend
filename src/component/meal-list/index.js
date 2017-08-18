@@ -18,15 +18,15 @@ class MealList extends React.Component {
       <div className="meal-card">
         <img className="meal-image" src={meal.photoURL} />
         <div className="meal-text">
-        <div>
-          <p className="meal-price">${meal.price}  </p>
-          <p className="meal-title">{meal.title}</p>
-        </div>
-        <div>
-          <span className="to-from-dates">from:</span><p className="meal-date">{meal.startDateFormatted}</p>
-          <span className="to-from-dates">to:</span><p className="meal-date">{meal.endDateFormatted}</p>
-          <br/>
-        </div>
+          <div>
+            <p className="meal-price">${meal.price}  </p>
+            <p className="meal-title">{meal.title}</p>
+          </div>
+          <div>
+            <span className="to-from-dates">from:</span><p className="meal-date">{meal.startDateFormatted}</p>
+            <span className="to-from-dates">to:</span><p className="meal-date">{meal.endDateFormatted}</p>
+            <br/>
+          </div>
           <p> {meal.description} </p>
           <div className="order-button">
             Order
