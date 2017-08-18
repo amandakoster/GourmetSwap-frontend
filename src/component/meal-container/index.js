@@ -53,12 +53,12 @@ class MealContainer extends React.Component {
     return(
 
       <div className='main-nav'>
-      <button onClick={this.toggleForm}>Create a meal</button>
+        <button onClick={this.toggleForm}>Create a meal</button>
         {util.renderIf(this.state.form === true,
-        <div className='meal-form'>
-          <MealForm
-            onComplete={this.handleMealCreate} />
-        </div>
+          <div className='meal-form'>
+            <MealForm
+              onComplete={this.handleMealCreate} />
+          </div>
         )}
 
         <h2>Your profile!</h2>
