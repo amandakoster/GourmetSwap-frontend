@@ -2,9 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
+import {mealFetchRequest} from '../../action/meal.js'
 import * as route from '../../action/route.js'
-import * as util from '../../lib/util.js'
 import * as auth from '../../action/auth.js'
+import * as util from '../../lib/util.js'
+import MealList from '../meal-list'
 import Landing from '../landing'
 import Signup from '../signup'
 import Signin from '../signin'
@@ -19,9 +21,12 @@ export class App extends React.Component{
       token: '',
       cook: this.props.cook,
       route: '',
+      meals: [],
     }
   }
+
   componentWillMount(){
+    this.props.mealsFetch()
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
       this.props.setToken(token)
@@ -56,6 +61,7 @@ export class App extends React.Component{
               )}
             </ul>
 
+
             <Route exact path='/landing'
               component={Landing} />
             <Route exact path='/signup'
@@ -68,6 +74,12 @@ export class App extends React.Component{
               component={MealContainer} />
           </div>
         </BrowserRouter>
+        <div className='meals'>
+        {this.props.meals.map(meal =>
+          <MealList key={meal._id} meal={meal}
+          />
+        )}
+        </div>
       </nav>
     )
   }
@@ -77,9 +89,11 @@ let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
   route: state.route,
+  meals: state.meals,
 })
 
 let mapDispatchToProps = (dispatch) => ({
+  mealsFetch: () => dispatch(mealFetchRequest()),
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),

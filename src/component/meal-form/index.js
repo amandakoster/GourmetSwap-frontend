@@ -49,16 +49,6 @@ class MealForm extends React.Component{
   handleChange(e){
     let {name, value} = e.target
     this.setState({[name]: value})
-    //
-    // if(name === 'photoURL'){
-    //   let {files} = e.target
-    //   let photo = files[0]
-    //   this.setState({photo})
-    //   util.photoToDataURL(photo)
-    //     .then(preview => this.setState({preview}))
-    //     .catch(console.error)
-    // } else {
-    // }
   }
 
   handlePhotoUpload(e) {
