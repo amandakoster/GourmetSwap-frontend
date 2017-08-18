@@ -23,7 +23,7 @@ export const logout = () => {
 
 export const userFetch = (token) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/users/auth`)
-  .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
+    .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
       if(res.text === 'true') {
         dispatch(setCook())

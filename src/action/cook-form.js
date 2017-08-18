@@ -17,6 +17,7 @@ export const cookDelete = (cook) => ({
 })
 
 export const cookCreateRequest = (cook, token) => (dispatch, getState) => {
+  console.log('cookCreateRequest', token)
   return superagent.post(`${__API_URL__}/api/cooks`)
     .set('Authorization', `Bearer ${token}`)
     .send(cook)
