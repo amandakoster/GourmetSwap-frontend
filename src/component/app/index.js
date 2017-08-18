@@ -26,7 +26,7 @@ export class App extends React.Component{
   }
 
   componentWillMount(){
-    this.props.mealsFetch()
+    // this.props.mealsFetch()
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
       this.props.setToken(token)
@@ -74,7 +74,7 @@ export class App extends React.Component{
               component={MealContainer} />
           </div>
         </BrowserRouter>
-      
+
       </nav>
     )
   }

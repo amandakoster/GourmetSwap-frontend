@@ -17,7 +17,7 @@ class MealContainer extends React.Component {
 
   componentDidMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
-    this.props.cookFetch(token)
+    // this.props.cookFetch(token)
   }
 
   handleMealCreate(meal){
