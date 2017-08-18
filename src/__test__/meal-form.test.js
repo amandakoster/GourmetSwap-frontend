@@ -7,17 +7,19 @@ describe('MealForm', () => {
   test('intial state with out props', () => {
     let wrapper = mount(<MealForm />)
     expect(wrapper.state('title')).toBe('')
+    expect(wrapper.state('services')).toBe('')
+    expect(wrapper.state('cuisines')).toBe('')
     expect(wrapper.state('description')).toBe('')
     expect(wrapper.state('pickupOffered')).toBe(false)
     expect(wrapper.state('deliveryOffered')).toBe(false)
-    expect(wrapper.state('portions')).toBe('')
-    expect(wrapper.state('photoURL')).toBe(null)
-    expect(wrapper.state('previewImg')).toBe('')
+    expect(wrapper.state('portions')).toBe(0)
+  
+    // expect(wrapper.state('previewImg')).toBe('')
     expect(wrapper.state('ingredients')).toBe('')
     // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     expect(wrapper.state('location')).toBe('')
-    expect(wrapper.state('price')).toBe('')
+    expect(wrapper.state('price')).toBe(0)
     
   })
 
@@ -81,19 +83,19 @@ describe('MealForm', () => {
     let mockOnComplete = jest.fn(() => Promise.resolve())
     let mockState = {
       _id: 'abc123',
-      title: 'rqrerw',
-      cuisines: '',
-      description: 'rwrerw',
+      title: 'fdsfs',
+      services: 'fsfds',
+      cuisines: 'fsdfs',
+      description: 'fsdfd',
       pickupOffered: false,
       deliveryOffered: false,
-      portions: 'rwrewr',
-      photoURL: '/wat.jpg',
-      previewImg: 'rwre',
-      ingredients: 'rwerew',
+      portions: 3434,
+      // previewImg: '',
+      ingredients: 'rewrr',
       startDate: moment(),
       endDate: moment().add(2, 'months'),
-      location: 'rwerwe',
-      price: '4.56',
+      location: 'rwere',
+      price: 455,
     }
 
     let wrapper = mount(<MealForm onComplete={mockOnComplete} />)

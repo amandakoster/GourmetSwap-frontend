@@ -23,4 +23,38 @@ describe('CookForm', () => {
     // expect(wrapper.state('price')).toBe('')
     
   })
+  test('description input  can update the state', () => {
+    let wrapper = mount(<CookForm />)
+    wrapper.find('input[name="moreInfo"]').simulate('change', {
+      target: { 
+        name: 'moreInfo',
+        value: 'i love testing react',
+      },
+    })
+
+    expect(wrapper.state('moreInfo')).toEqual('i love testing react')
+  })
+
+  test('submit event should invoke onComplete with state', () => {
+    let mockOnComplete = jest.fn(() => Promise.resolve())
+    let mockState = {
+      _id: 'abc123',
+      signatureDishes: 'fsdfsdf',
+      restaurantsCookedIn: 4,
+      bestDescribes: 'fdsfssd',
+      mealsPerWeek: 5,
+      services: 'fsfsfs',
+      cuisines: 'fdsfsdf',
+      offerDelivery: false,
+      community: 'fsdfd',
+      hoursPerWeek: 'fsdfs',
+      moreInfo: 'fsf',
+      howDidYouHear: 'fsdfdf',
+    }
+
+    let wrapper = mount(<CookForm onComplete={mockOnComplete} />)
+    wrapper.setState(mockState)
+    wrapper.find('form').simulate('submit')
+    expect(mockOnComplete).toHaveBeenCalledWith(mockState)
+  })
 })
