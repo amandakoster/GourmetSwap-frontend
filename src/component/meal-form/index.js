@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
 import {mealCreate} from '../../action/meal.js'
-// import './meal-form.scss'
+import './datepicker.scss'
 
 class MealForm extends React.Component{
   constructor(props){
@@ -58,6 +58,7 @@ class MealForm extends React.Component{
     util.photoToDataURL(photo)
       .then(preview => this.setState({preview}))
       .catch(console.error)
+
   }
 
   handleStartDate(e) {
