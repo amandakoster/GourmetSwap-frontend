@@ -5,6 +5,7 @@ import {mealCreateRequest, mealFetchRequest} from '../../action/meal.js'
 import MealList from '../meal-list'
 import {mealsFetch} from '../../action/auth.js'
 import * as util from '../../lib/util.js'
+import './_meals.scss'
 
 class Meals extends React.Component {
   constructor(props){
