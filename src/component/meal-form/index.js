@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
 import {mealCreate} from '../../action/meal.js'
+import DatePicker from 'react-datepicker'
 import './datepicker.scss'
 
 class MealForm extends React.Component{
@@ -188,7 +189,12 @@ class MealForm extends React.Component{
           placeholder='location'
           value={this.state.location}
           onChange={this.handleChange} />
-
+        <DatePicker
+          selected={this.state.startDate}
+          onChange={this.handleDate} />
+        <DatePicker
+          selected={this.state.endDate}
+          onChange={this.handleDate} />
         <p> Upload photos of your meals here: </p>
         <input
           className='photo-upload'
