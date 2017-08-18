@@ -4,3 +4,5 @@ node_modules
 #coverage folder
 coverage
 /coverage
+.nyc_output
+/.nyc_output

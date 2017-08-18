@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as util from '../../lib/util.js'
 import moment from 'moment'
 import {mealCreate} from '../../action/meal.js'
-import './datepicker.scss'
+// import './datepicker.scss'
 
 class MealForm extends React.Component{
   constructor(props){
