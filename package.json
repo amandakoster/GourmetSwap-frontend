@@ -6,9 +6,12 @@
   "engines": {
     "node": "6.11.0"
   },
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
     "start": "node index.js",
-    "test": "nyc jest",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "build": "webpack",
     "watch": "webpack-dev-server --inline --hot",
