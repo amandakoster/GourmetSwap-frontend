@@ -9,7 +9,7 @@ class MealList extends React.Component {
 
   render(){
     let {meal} = this.props
-    console.log('meal-list meal', meal)
+    console.log('meal-list meal', this.props)
     return(
       <div className="meal-card">
         <img src={meal.photoURL} />
@@ -27,7 +27,9 @@ class MealList extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({})
+let mapStateToProps = (state) => ({
+
+})
 
 let mapDispatchToProps = () => ({
 })

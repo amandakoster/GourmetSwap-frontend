@@ -10,7 +10,6 @@ class Meals extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      profile: null,
       meals: [],
       form: false,
     }
@@ -45,7 +44,7 @@ class Meals extends React.Component {
     console.log('this.state.meals', this.props.meals)
     return(
 
-      <div className='meals'>
+      <div className='profile'>
         <div className='meals'>
         {this.props.meals.map(meal =>
           <MealList key={meal._id} meal={meal}
@@ -60,7 +59,6 @@ class Meals extends React.Component {
 
 let mapStateToProps = (state) => ({
   meals: state.meals,
-  profile: state.cookProfile,
 })
 
 let mapDispatchToProps = (dispatch) => ({

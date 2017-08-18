@@ -5,11 +5,14 @@ import {mealCreateRequest, mealFetchRequest} from '../../action/meal.js'
 import MealList from '../meal-list'
 import {cookFetch} from '../../action/auth.js'
 import * as util from '../../lib/util.js'
+import createFragment from 'react-addons-create-fragment'
+
 
 class MealContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      profile: null,
       meals: [],
       form: false,
     }
@@ -42,7 +45,11 @@ class MealContainer extends React.Component {
   }
 
   render(){
-    console.log('this.state.meals', this.props.meals)
+    // let test = Object.assign(...this.props.profile)
+    // console.log('test', test)
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
+
     return(
 
       <div className='main-nav'>
@@ -53,6 +60,9 @@ class MealContainer extends React.Component {
             onComplete={this.handleMealCreate} />
         </div>
         )}
+
+        <h2>Your profile!</h2>
+        <p>{this.props.profiles}</p>
 
       </div>
     )
@@ -66,9 +76,12 @@ class MealContainer extends React.Component {
 // )}
 // </div>
 
-let mapStateToProps = (state) => ({
-  // meals: state.meals,
-})
+let mapStateToProps = (state) => {
+  console.log('mapStateToProps', state)
+  return{
+    profile: state.cookProfile,
+  }
+}
 
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
