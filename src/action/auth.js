@@ -26,7 +26,9 @@ export const userFetch = (token) => (dispatch) => {
     .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
       if(res.text === 'true') {
-        dispatch(setCook())
+        dispatch(setCook(true))
+      } else if (res.text === 'false') {
+        dispatch(setCook(false))
       }
     })
 }
