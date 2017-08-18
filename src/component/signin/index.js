@@ -85,34 +85,31 @@ class Signin extends React.Component{
     let googleLoginURL = `${googleLoginBaseURL}?${googleLoginQuery}`
     return(
       <div className='login'>
-        <h3 className='h3-sign-in'>Returning Customer</h3>
-        <div className='google-auth'>
-          <a className='loginBtn loginBtn--google' href={googleLoginURL} > login with google </a>
-        </div>
+        <form className='sign-in-form' onSubmit={this.handleSubmit}>
 
-        <div className='form'>
-          <form className='sign-in-form' onSubmit={this.handleSubmit}>
+          <div className='google-auth'>
+            <a className='loginBtn loginBtn--google' href={googleLoginURL} > login with google </a>
+          </div>
 
-            <Tooltip message={this.state.emailError} />
-            <input
-              name='email'
-              type='text'
-              placeholder='email'
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
+          <Tooltip message={this.state.emailError} />
+          <input
+            name='email'
+            type='text'
+            placeholder='email'
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
 
-            <Tooltip message={this.state.passwordError} />
-            <input
-              name='password'
-              type='password'
-              placeholder='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <button type='submit' className='signin-form-button'> sign in </button>
-          </form>
-        </div>
+          <Tooltip message={this.state.passwordError} />
+          <input
+            name='password'
+            type='password'
+            placeholder='password'
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <button type='submit' className='signin-form-button'> sign in </button>
+        </form>
       </div>
     )
 

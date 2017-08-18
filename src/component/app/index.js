@@ -44,7 +44,7 @@ export class App extends React.Component{
             <div className='main-nav'>
               <img
                 className='logo'
-                src='src/assets/logo.png'>
+                src="http://i.imgur.com/0CvCXeA.png">
               </img>
               <ul>
                 <li><Link to='/landing'> Home </Link></li>

@@ -183,12 +183,12 @@ class CookForm extends React.Component{
             name='cuisines'
             onChange={this.handleChange}>
             <option value="0"> ---  </option>
-            <option value="cuisine1"> cuisine1. </option>
-            <option value="cuisine2"> cuisine2. </option>
-            <option value="cuisine3"> cuisine3. </option>
-            <option value="cuisine4"> cuisine4. </option>
-            <option value="cuisine5"> cuisine5. </option>
-            <option value="cuisine6"> cuisine6. </option>
+            <option value="cuisine1"> Vietnamese </option>
+            <option value="cuisine2"> Thai </option>
+            <option value="cuisine3"> Schezuan </option>
+            <option value="cuisine4"> Indian </option>
+            <option value="cuisine5"> Korean </option>
+            <option value="cuisine6"> Laotia </option>
           </select>
 
 
