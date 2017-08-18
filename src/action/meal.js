@@ -15,6 +15,14 @@ export const mealDelete = (meal) => ({
   payload: meal,
 })
 
+export const mealsToState = (meals) => {
+  console.log('meals', meals)
+  return {
+    type: 'MEAL_FETCH',
+    payload: meals,
+  }
+}
+
 export const mealCreateRequest = (meal) => (dispatch, getState) => {
   console.log('mealCreateRequest: ', meal)
   let {token} = getState()
@@ -37,4 +45,13 @@ export const mealCreateRequest = (meal) => (dispatch, getState) => {
       console.log('posted to back end: ', res.body)
     })
     .catch()
+}
+
+
+export const mealFetchRequest = () => (dispatch, getState) => {
+  return superagent.get(`${__API_URL__}/api/meals`)
+  .then(res => {
+    console.log('res', res)
+    dispatch(mealsToState(res.body))
+  })
 }

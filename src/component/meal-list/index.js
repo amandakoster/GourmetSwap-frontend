@@ -7,11 +7,16 @@ class MealList extends React.Component {
     super(props)
   }
 
+  componentDidMount(){
+    //request for meals
+  }
+
   render(){
     let {meal} = this.props
     return(
       <div>
-        {meal}
+        <p> meal </p>
+        <img src={meal.url} />
       </div>
     )
   }
@@ -19,6 +24,7 @@ class MealList extends React.Component {
 
 let mapStateToProps = () => ({})
 
-let mapDispatchToProps = () => ({})
+let mapDispatchToProps = () => ({
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(MealList)

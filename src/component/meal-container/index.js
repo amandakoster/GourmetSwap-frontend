@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MealForm from '../meal-form'
-import {mealCreateRequest} from '../../action/meal.js'
+import {mealCreateRequest, mealFetchRequest} from '../../action/meal.js'
 import MealList from '../meal-list'
 
 class MealContainer extends React.Component {
@@ -11,6 +11,10 @@ class MealContainer extends React.Component {
       meals: [],
     }
     this.handleMealCreate = this.handleMealCreate.bind(this)
+  }
+
+  componentDidMount(){
+    this.props.mealsFetch()
   }
 
   handleMealCreate(meal){
@@ -36,6 +40,7 @@ let mapStateToProps = (state) => ({
 
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
+  mealsFetch: () => dispatch(mealFetchRequest()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MealContainer)
