@@ -44,7 +44,7 @@ export class App extends React.Component{
             <div className='main-nav'>
               <img
                 className='logo'
-                src='src/assets/logo.svg'>
+                src='src/assets/logo.png'>
               </img>
               <ul>
                 <li><Link to='/landing'> Home </Link></li>
@@ -65,22 +65,22 @@ export class App extends React.Component{
                 )}
               </ul>
 
-            <Route exact path='/landing'
-              component={Landing} />
-            <Route exact path='/signup'
-              component={Signup} />
-            <Route exact path='/signin'
-              component={Signin} />
-            <Route exact path='/cook-form'
-              component={CookForm} />
-            <Route exact path='/meal-container'
-              component={MealContainer} />
+              <Route exact path='/landing'
+                component={Landing} />
+              <Route exact path='/signup'
+                component={Signup} />
+              <Route exact path='/signin'
+                component={Signin} />
+              <Route exact path='/cook-form'
+                component={CookForm} />
+              <Route exact path='/meal-container'
+                component={MealContainer} />
 
               <Meals />
-          </div>
-        </BrowserRouter>
-      </nav>
-    </div>
+            </div>
+          </BrowserRouter>
+        </nav>
+      </div>
     )}
 }
 
