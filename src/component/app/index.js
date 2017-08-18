@@ -64,23 +64,6 @@ export class App extends React.Component{
                 )}
               </ul>
 
-              <Route exact path='/landing'
-                component={Landing} />
-              <Route exact path='/signup'
-                component={Signup} />
-              <Route exact path='/signin'
-                component={Signin} />
-              <Route exact path='/cook-form'
-                component={CookForm} />
-              <Route exact path='/meal-container'
-                component={MealContainer} />
-            </div>
-          </BrowserRouter>
-        </nav>
-        <footer> </footer>
-      </div>
-
-
             <Route exact path='/landing'
               component={Landing} />
             <Route exact path='/signup'
@@ -100,8 +83,8 @@ export class App extends React.Component{
         )}
         </div>
       </nav>
-    )
-  }
+    </div>
+    )}
 }
 
 let mapStateToProps = (state) => ({
