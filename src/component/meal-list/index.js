@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MealForm from '../meal-form'
+import './_meal-list.scss'
 
 class MealList extends React.Component {
   constructor(props){
@@ -12,9 +13,9 @@ class MealList extends React.Component {
     console.log('meal-list meal', this.props)
     return(
       <div className="meal-card">
-        <img src={meal.photoURL} />
+        <img className="meal-image" src={meal.photoURL} />
         <div>
-          <p className="meal-price">{meal.price}</p>
+          <p className="meal-price">${meal.price}  </p>
           <p className="meal-title">{meal.title}</p>
         </div>
         <div>
