@@ -15,7 +15,7 @@ header {
 footer {
   width: 100%;
   background: $color-black;
-  height: 10%;
+  height: 40%;
 }
 main-nav {
   float:left;
@@ -105,12 +105,17 @@ button,input[type="submit"] {
   padding: $pad;
   width: 30%;
   border: none;
+  border-radius: 3px;
 
   &:hover {
     background: $color-secondary;
     color: $color-lightgrey;
     transition: all 0.5s ease;
   }
+}
+
+meals {
+  background-color: $color-white;
 }
 
 input[type=file]::-webkit-file-upload-button {

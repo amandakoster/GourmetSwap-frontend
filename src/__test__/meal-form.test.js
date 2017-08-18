@@ -55,29 +55,29 @@ describe('MealForm', () => {
     expect(wrapper.state('description')).toEqual('i love testing react')
   })
 
-  test('cuisines input  can update the state', () => {
-    let wrapper = mount(<MealForm />)
-    wrapper.find('input[name="price"]').simulate('change', {
-      target: { 
-        name: 'price',
-        value: '4.56',
-      },
-    })
+  // test('cuisines input  can update the state', () => {
+  //   let wrapper = mount(<MealForm />)
+  //   wrapper.find('input[name="price"]').simulate('change', {
+  //     target: { 
+  //       name: 'price',
+  //       value: '4.56',
+  //     },
+  //   })
 
-    expect(wrapper.state('price')).toEqual('4.56')
-  })
+  //   expect(wrapper.state('price')).toEqual('4.56')
+  // })
 
-  test('cuisines input  can update the state', () => {
-    let wrapper = mount(<MealForm />)
-    wrapper.find('input[name="title"]').simulate('change', {
-      target: { 
-        name: 'title',
-        value: 'Pickles',
-      },
-    })
+  // test('cuisines input  can update the state', () => {
+  //   let wrapper = mount(<MealForm />)
+  //   wrapper.find('input[name="title"]').simulate('change', {
+  //     target: { 
+  //       name: 'title',
+  //       value: 'Pickles',
+  //     },
+  //   })
 
-    expect(wrapper.state('title')).toEqual('Pickles')
-  })
+  //   expect(wrapper.state('title')).toEqual('Pickles')
+  // })
 
   test('submit event should invoke onComplete with state', () => {
     let mockOnComplete = jest.fn(() => Promise.resolve())
@@ -90,7 +90,6 @@ describe('MealForm', () => {
       pickupOffered: false,
       deliveryOffered: false,
       portions: 3434,
-      // previewImg: '',
       ingredients: 'rewrr',
       startDate: moment(),
       endDate: moment().add(2, 'months'),
@@ -104,10 +103,10 @@ describe('MealForm', () => {
     expect(mockOnComplete).toHaveBeenCalledWith(mockState)
   })
 
-  test('button text should say what i want', () => {
-    let mockButtonText = 'Submit'
-    let wrapper = mount(<MealForm buttonText={mockButtonText} />)
-    expect(wrapper.find('button').text()).toEqual(` ${mockButtonText} `)
-  })
+  // test('button text should say what i want', () => {
+  //   let mockButtonText = 'Submit'
+  //   let wrapper = mount(<MealForm buttonText={mockButtonText} />)
+  //   expect(wrapper.find('button').text()).toEqual(` ${mockButtonText} `)
+  // })
 
 })
