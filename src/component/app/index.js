@@ -30,45 +30,51 @@ export class App extends React.Component{
     }
   }
 
-
   render() {
     return(
-      <nav className='app'>
-        <BrowserRouter>
-          <div className='user-nav'>
-            <img src='src/assets/logo.svg'></img>
-            <ul>
-              <li><Link to='/landing'> Home </Link></li>
-              {util.renderIf(!this.props.token,
-                <li><Link to='/signup'> Signup </Link></li>
-              )}
-              {util.renderIf(!this.props.token,
-                <li><Link to='/signin'> Signin </Link></li>
-              )}
-              {util.renderIf(this.props.token,
-                <li><Link to='/landing' onClick={this.props.logout}> Logout </Link></li>
-              )}
-              {util.renderIf(this.props.token && !this.props.cook,
-                <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
-              )}
-              {util.renderIf(this.props.cook && this.props.token,
-                <li><Link to='/meal-container'>Meals</Link></li>
-              )}
-            </ul>
+      <div>
+        <nav className='app'>
+          <BrowserRouter>
+            <div className='main-nav'>
+              <img
+                className='logo'
+                src='src/assets/logo.svg'>
+              </img>
+              <ul>
+                <li><Link to='/landing'> Home </Link></li>
+                {util.renderIf(!this.props.token,
+                  <li><Link to='/signup'> Signup </Link></li>
+                )}
+                {util.renderIf(!this.props.token,
+                  <li><Link to='/signin'> Signin </Link></li>
+                )}
+                {util.renderIf(this.props.token,
+                  <li><Link to='/landing' onClick={this.props.logout}> Logout </Link></li>
+                )}
+                {util.renderIf(this.props.token && !this.props.cook,
+                  <li><Link to='/cook-form'>Apply to Cook With Us!</Link></li>
+                )}
+                {util.renderIf(this.props.cook && this.props.token,
+                  <li><Link to='/meal-container'>Meals</Link></li>
+                )}
+              </ul>
 
-            <Route exact path='/landing'
-              component={Landing} />
-            <Route exact path='/signup'
-              component={Signup} />
-            <Route exact path='/signin'
-              component={Signin} />
-            <Route exact path='/cook-form'
-              component={CookForm} />
-            <Route exact path='/meal-container'
-              component={MealContainer} />
-          </div>
-        </BrowserRouter>
-      </nav>
+              <Route exact path='/landing'
+                component={Landing} />
+              <Route exact path='/signup'
+                component={Signup} />
+              <Route exact path='/signin'
+                component={Signin} />
+              <Route exact path='/cook-form'
+                component={CookForm} />
+              <Route exact path='/meal-container'
+                component={MealContainer} />
+            </div>
+          </BrowserRouter>
+        </nav>
+        <footer> </footer>
+      </div>
+
     )
   }
 }
