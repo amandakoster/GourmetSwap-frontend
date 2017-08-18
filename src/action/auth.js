@@ -16,11 +16,6 @@ export const setCook = (cook) => ({
   payload: cook,
 })
 
-export const cookMeals = (meals) => ({
-  type: 'COOK_MEALS',
-  payload: meals,
-})
-
 export const logout = () => {
   util.cookieDelete('Gourmet-Swap-Token')
   return { type: 'LOGOUT', payload: '/landing' }
@@ -31,33 +26,10 @@ export const userFetch = (token) => (dispatch) => {
   .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
     .then(res => {
       if(res.text === 'true') {
-        dispatch(cookMeals())
+        dispatch(setCook())
       }
     })
 }
-
-// export const cookFetch = (token) => (dispatch) => {
-//   return superagent.get(`${__API_URL__}/api/users/cook`)
-//   .set({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token})
-//     .then(res => {
-//       console.log('cookFetch res', JSON.parse(res.text))
-//       let auth = JSON.parse(res.text)._id
-//       console.log('auth', auth)
-//       return superagent.get(`${__API_URL__}/api/cook-meals/${auth}`)
-//       .then(res => {
-//         console.log('meal res', res.body)
-//         dispatch(cookMeals(res.body))
-//       })
-//     })
-// }
-
-// mealRouter.get('/api/meals/:id', (req, res, next) => {
-//   Meal.findOne({ _id: req.params.id })
-//     .then(meal => {
-//       res.json(meal);
-//     })
-//     .catch(next);
-// });
 
 
 export const loginRequest = (user) => (dispatch) => {
