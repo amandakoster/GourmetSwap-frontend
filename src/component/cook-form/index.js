@@ -251,12 +251,13 @@ class CookForm extends React.Component{
     )
   }
 }
+export default CookForm
 
-export const mapStateToProps = (state) => ({
-})
+// export const mapStateToProps = (state) => ({
+// })
 
-export const mapDispatchToProps = (dispatch) => ({
-  cookCreateRequest: (cook) => dispatch(auth.cookCreateRequest(cook)),
-})
+// export const mapDispatchToProps = (dispatch) => ({
+//   cookCreateRequest: (cook) => dispatch(auth.cookCreateRequest(cook)),
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CookForm)
+// export default connect(mapStateToProps, mapDispatchToProps)(CookForm)
