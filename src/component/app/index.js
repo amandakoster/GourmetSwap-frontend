@@ -74,12 +74,7 @@ export class App extends React.Component{
               component={MealContainer} />
           </div>
         </BrowserRouter>
-        <div className='meals'>
-        {this.props.meals.map(meal =>
-          <MealList key={meal._id} meal={meal}
-          />
-        )}
-        </div>
+      
       </nav>
     )
   }

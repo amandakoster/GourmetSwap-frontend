@@ -18,6 +18,7 @@ export const setCook = (cook) => ({
 
 export const cookMeals = (meals) => ({
   type: 'COOK_MEALS',
+  payload: meals,
 })
 
 export const logout = () => {
@@ -45,7 +46,7 @@ export const cookFetch = (token) => (dispatch) => {
       return superagent.get(`${__API_URL__}/api/cook-meals/${auth}`)
       .then(res => {
         console.log('meal res', res.body)
-        dispatch(setMeals(res.body))
+        dispatch(cookMeals(res.body))
       })
     })
 }
