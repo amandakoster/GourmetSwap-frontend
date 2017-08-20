@@ -46,10 +46,10 @@ class Meals extends React.Component {
 
       <div className='profile'>
         <div className='meals'>
-        {this.props.meals.map(meal =>
-          <MealList key={meal._id} meal={meal}
-          />
-        )}
+          {this.props.meals.map(meal =>
+            <MealList key={meal._id} meal={meal}
+            />
+          )}
         </div>
       </div>
     )
@@ -64,8 +64,6 @@ let mapStateToProps = (state) => ({
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
   mealsFetch: () => dispatch(mealFetchRequest()),
-  // mealsFetch: () => dispatch(mealFetchRequest()),
-  // cookFetch: (token) => dispatch(cookFetch(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meals)

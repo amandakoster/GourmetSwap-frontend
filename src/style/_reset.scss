@@ -1,7 +1,6 @@
 @import "vars";
 
 * {
-  // box model
   position: static;
   display: block;
   margin: 0;
@@ -11,7 +10,6 @@
   outline: none;
   box-sizing: border-box;
 
-  // font
   font-family: $font-primary;
   font-size: 1em;
   font-weight: normal;
@@ -19,11 +17,10 @@
   text-decoration: none;
   white-space: normal;
 
-  // color
+
   background: none;
   color: $color-black;
 
-  // other
   list-style: none;
 }
 

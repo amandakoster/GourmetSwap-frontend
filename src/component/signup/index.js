@@ -7,7 +7,6 @@ import * as querystring from 'querystring'
 import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
-// import zipcode from 'react-zipcode'
 
 const Tooltip = (props) => {
   return (
@@ -80,14 +79,6 @@ class Signup extends React.Component{
       }
     }
 
-    // if(name === 'username'){
-    //   if(!value){
-    //     error = 'username cannot be empty'
-    //   } else if (!validator.isAlphanumeric(value)) {
-    //     error = 'username can only contain letters and numbers'
-    //   }
-    // }
-
     if(name === 'email'){
       if(!value){
         error = 'email cannot be empty'
@@ -150,25 +141,6 @@ class Signup extends React.Component{
             value={this.state.lastName}
             onChange={this.handleChange}
           />
-
-          {/*<Tooltip message={this.state.usernameError} />
-          <input
-            name='username'
-            type='text'
-            placeholder='username'
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-
-          <Tooltip message={this.state.usernameError} />
-          <div className='username-feedback'>
-            {util.renderIf(this.state.username,
-              <span>
-                {this.state.username} is
-                {this.state.usernameAvailable ? ' available' : ' taken'}
-              </span>
-            )}
-          </div>*/}
 
           <Tooltip message={this.state.emailError} />
           <input

@@ -65,41 +65,32 @@ export class App extends React.Component{
                 )}
               </ul>
 
-            <Route exact path='/landing'
-              component={Landing} />
-            <Route exact path='/signup'
-              component={Signup} />
-            <Route exact path='/signin'
-              component={Signin} />
-            <Route exact path='/cook-form'
-              component={CookForm} />
-            <Route exact path='/meal-container'
-              component={MealContainer} />
+              <Route exact path='/landing'
+                component={Landing} />
+              <Route exact path='/signup'
+                component={Signup} />
+              <Route exact path='/signin'
+                component={Signin} />
+              <Route exact path='/cook-form'
+                component={CookForm} />
+              <Route exact path='/meal-container'
+                component={MealContainer} />
 
               <Meals />
-          </div>
-        </BrowserRouter>
-      </nav>
-    </div>
+            </div>
+          </BrowserRouter>
+        </nav>
+      </div>
     )}
 }
-
-// <div className='meals'>
-// {this.props.meals.map(meal =>
-//   <MealList key={meal._id} meal={meal}
-//   />
-// )}
-// </div>
 
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
   route: state.route,
-  // meals: state.meals,
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  // mealsFetch: () => dispatch(mealFetchRequest()),
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),

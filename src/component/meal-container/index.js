@@ -45,20 +45,18 @@ class MealContainer extends React.Component {
   }
 
   render(){
-    // let test = Object.assign(...this.props.profile)
-    // console.log('test', test)
     console.log('this.props', this.props)
     console.log('this.state', this.state)
 
     return(
 
       <div className='main-nav'>
-      <button onClick={this.toggleForm}>Create a meal</button>
+        <button onClick={this.toggleForm}>Create a meal</button>
         {util.renderIf(this.state.form === true,
-        <div className='meal-form'>
-          <MealForm
-            onComplete={this.handleMealCreate} />
-        </div>
+          <div className='meal-form'>
+            <MealForm
+              onComplete={this.handleMealCreate} />
+          </div>
         )}
 
         <h2>Your profile!</h2>
@@ -69,13 +67,6 @@ class MealContainer extends React.Component {
   }
 }
 
-// <div className='meals'>
-// {this.props.meals.map(meal =>
-//   <MealList key={meal._id} meal={meal}
-//   />
-// )}
-// </div>
-
 let mapStateToProps = (state) => {
   console.log('mapStateToProps', state)
   return{
@@ -85,7 +76,6 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
-  // mealsFetch: () => dispatch(mealFetchRequest()),
   cookFetch: (token) => dispatch(cookFetch(token)),
 })
 

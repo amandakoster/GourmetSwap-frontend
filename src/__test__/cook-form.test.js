@@ -3,10 +3,8 @@ import {shallow, mount} from 'enzyme'
 import CookForm from '../component/cook-form'
 import moment from 'moment'
 
-
-
 describe('CookForm', () => {
-  
+
   test('intial state with out props', () => {
     let wrapper = mount(<CookForm />)
     expect(wrapper.state('signatureDishes')).toBe('')
@@ -20,13 +18,12 @@ describe('CookForm', () => {
     expect(wrapper.state('hoursPerWeek')).toBe('')
     expect(wrapper.state('moreInfo')).toBe('')
     expect(wrapper.state('howDidYouHear')).toBe('')
-    // expect(wrapper.state('price')).toBe('')
-    
   })
+  
   test('description input  can update the state', () => {
     let wrapper = mount(<CookForm />)
     wrapper.find('input[name="moreInfo"]').simulate('change', {
-      target: { 
+      target: {
         name: 'moreInfo',
         value: 'i love testing react',
       },

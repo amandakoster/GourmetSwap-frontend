@@ -13,40 +13,16 @@ describe('MealForm', () => {
     expect(wrapper.state('pickupOffered')).toBe(false)
     expect(wrapper.state('deliveryOffered')).toBe(false)
     expect(wrapper.state('portions')).toBe(0)
-  
-    // expect(wrapper.state('previewImg')).toBe('')
     expect(wrapper.state('ingredients')).toBe('')
-    // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
-    // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     expect(wrapper.state('location')).toBe('')
     expect(wrapper.state('price')).toBe(0)
-    
+
   })
-
-  //   test('intial state with props', () => {
-  //     let mockMeal = {
-  //       _id: 'abc123',
-  //       title: 'rqrerw',
-  //       description: 'rwrerw',
-  //       pickupOffered: false,
-  //       deliveryOffered: false,
-  //       portions: 'rwrewr',
-  //       photo: '/wat.jpg',
-  //       previewImg: 'rwre',
-  //       ingredients: 'rwerew',
-  //       //date: moment(),
-  //       location: 'rwerwe',
-  //       price: '4.56',
-  //     }
-
-  //     let wrapper = mount(<MealForm />)
-  //     expect(wrapper.state()).toEqual(mockMeal)
-  //   })
 
   test('description input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="description"]').simulate('change', {
-      target: { 
+      target: {
         name: 'description',
         value: 'i love testing react',
       },
@@ -58,7 +34,7 @@ describe('MealForm', () => {
   test('cuisines input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="price"]').simulate('change', {
-      target: { 
+      target: {
         name: 'price',
         value: '4.56',
       },
@@ -70,7 +46,7 @@ describe('MealForm', () => {
   test('cuisines input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="title"]').simulate('change', {
-      target: { 
+      target: {
         name: 'title',
         value: 'Pickles',
       },
@@ -90,7 +66,6 @@ describe('MealForm', () => {
       pickupOffered: false,
       deliveryOffered: false,
       portions: 3434,
-      // previewImg: '',
       ingredients: 'rewrr',
       startDate: moment(),
       endDate: moment().add(2, 'months'),

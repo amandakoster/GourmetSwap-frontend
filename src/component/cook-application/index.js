@@ -220,9 +220,7 @@ class CookApplication extends React.Component{
   }
 }
 
-
 export const mapStateToProps = (state) => ({})
-
 export const mapDispatchToProps = (dispatch) => ({
   cookCreate: (user) => dispatch(auth.cookCreate(user)),
 })

@@ -50,10 +50,10 @@ export const mealCreateRequest = (meal) => (dispatch, getState) => {
 
 export const mealFetchRequest = () => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/meals`)
-  .then(res => {
-    console.log('res', res)
-    dispatch(cookMealsToState(res.body))
-  })
+    .then(res => {
+      console.log('res', res)
+      dispatch(cookMealsToState(res.body))
+    })
 }
 
 export const cookMealsFetchRequest = (token) => (dispatch, getState) => {
