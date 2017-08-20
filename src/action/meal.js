@@ -47,7 +47,6 @@ export const mealCreateRequest = (meal) => (dispatch, getState) => {
     .catch()
 }
 
-
 export const mealFetchRequest = () => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/meals`)
     .then(res => {

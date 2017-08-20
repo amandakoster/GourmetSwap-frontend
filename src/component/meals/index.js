@@ -57,7 +57,6 @@ class Meals extends React.Component {
   }
 }
 
-
 let mapStateToProps = (state) => ({
   meals: state.meals,
 })

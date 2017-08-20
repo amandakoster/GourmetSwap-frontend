@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-=======
+
 @import "main";
-/* Shared */
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
+
 .loginBtn {
   box-sizing: border-box;
   left: 55em;
@@ -18,11 +16,8 @@
 }
 
 .loginBtn--google {
-<<<<<<< HEAD
   background: #DD4B39;
-=======
   background-color: $color-primary;
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
 }
 .loginBtn--google:before {
   border-right: #BB3F30 1px solid;
@@ -30,7 +25,6 @@
 }
 .loginBtn--google:hover,
 .loginBtn--google:focus {
-<<<<<<< HEAD
   background: #E74B37;
 }
 
@@ -56,7 +50,5 @@
 
 .login{
   border-style: solid;
-=======
   background: $color-secondary;
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
 }

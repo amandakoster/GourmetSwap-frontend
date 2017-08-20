@@ -22,7 +22,6 @@ class MealContainer extends React.Component {
 
   componentDidMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
-    // this.props.cookFetch(token)
     this.props.cookFetch(token)
   }
 
@@ -45,19 +44,6 @@ class MealContainer extends React.Component {
   }
 
   render(){
-<<<<<<< HEAD
-    console.log('this.props', this.props)
-    console.log('this.state', this.state)
-
-    return(
-
-      <div className='main-nav'>
-        <button onClick={this.toggleForm}>Create a meal</button>
-        {util.renderIf(this.state.form === true,
-          <div className='meal-form'>
-=======
-    // let test = Object.assign(...this.props.profile)
-    // console.log('test', test)
     let test = Object.assign({}, this.props.profile)
 
     console.log('test', test._id)
@@ -67,7 +53,7 @@ class MealContainer extends React.Component {
       <div className='meal-form'>
 
         <h2>Bio</h2>
-        <p>I have worked as a cook in {test.restaurantsCookedIn}     restaurants</p>
+        <p>I have worked as a cook in {test.restaurantsCookedIn}restaurants</p>
         <p>I specialize in {test.cuisines}</p>
         <p>My Signature dishes are {test.signatureDishes}</p>
         <p>I am available to cook {test.mealsPerWeek} meals per week</p>
@@ -75,7 +61,6 @@ class MealContainer extends React.Component {
 
         {util.renderIf(this.state.form === true,
           <div>
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
             <MealForm
               onComplete={this.handleMealCreate} />
           </div>
@@ -96,6 +81,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
+  // mealsFetch: () => dispatch(mealFetchRequest()),
   cookFetch: (token) => dispatch(cookFetch(token)),
 })
 

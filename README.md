@@ -1,4 +1,4 @@
-Library# Gourmet Swap Documentation
+toLibrary# Gourmet Swap Documentation
 
 ***Connecting everyone with great food cooked with love!***
 
@@ -26,30 +26,35 @@ Gourmet Swap lives on the MERN stack.  The React front-end is server agnostic an
  - To describe component's DOM representations, React uses an XML-like syntax called JSX. JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML. A simple transform is included with React that allows converting JSX into native JavaScript for browsers to digest.
 
 ##### React-Redux Reducers
-The reducer is a pure function that takes the previous state and an action, and returns the next state.
+The reducers take the previous state and an action, and returns the next state.
 - **auth**
 - **cook-form**
 - **meal**
 - **route**
 
 ##### React-Redux Actions
-Actions describe the fact that something happened, but don't specify how the application's state changes in response.
 - **cook-form**
 - **cook-register**
 - **meal-form.test**
 - **meal-reducer.test**
 
 ##### React-Redux Libraries
+- **redux-reporter**: Redux middleware for reporting actions.
+- **redux-thunk**: action creators that return a function. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
+- **store-create**: Creates a Redux store that holds the complete state tree of the app.
+- **utils**: Various reusable functions and Middleware that combine redux and immutableJS as well as make api calls using FSA conventions.
 
 ##### React Components
+- **App**
 
-- **App**: purpose
-  - The app component bridges all of the components together and renders them to Main.js which renders everything to the DOM.
+  - The app component calls all of the components renders them using Main.js which renders everything to the DOM/index.html.
 
-- **CookContainer**: purpose
-  - The cook container renders the form and inputs for the Cook Form
+- **CookContainer**
+
+  - The cook container fetches a users unique cookie (or token) and creates a new user, or 'cook'.
 
 - **CookForm**: properties
+
   - signatureDishes: (string)
   - restaurantsCookedIn: (numerical amount)
   - bestDescribes: (string)
@@ -62,8 +67,12 @@ Actions describe the fact that something happened, but don't specify how the app
   - moreInfo: (string)
   - howDidYouHear: (string)
 
-- **MealContainer**: purpose
-  - The meal container renders the form and inputs for the Meal Form
+- **CookProfile**
+This component renders the cooks Bio and has a toggle function where the Bio will only render if the user is a cook.
+
+- **MealContainer**
+
+  - This component renders the cooks Meal which links the Cook to their Meal.
 
 - **MealForm**: properties
   - title: (string)
@@ -74,13 +83,40 @@ Actions describe the fact that something happened, but don't specify how the app
   - deliveryOffered: (boolean)
   - portions: (numeric value)
   - ingredients: (string)
-  - startDate: moment() (a Javascript LIbrarby)
+  - startDate: moment() (a Javascript Library)
   - endDate: moment().add(2, 'months'),
   - location: (string)
   - price: (numeric value)
 
+- **MealList**:
+This component renders the cooks meals to the landing page.
+
+- **Meals**:
+This component renders meals to the DOM and maps meals to meal-id.
+
+- **SignIn**:
+Sign-in uses Google OAuth to allow users to sign in with Google, or email and password.
+
+- **SignUp**: properties
+
+  - firstName:(string)
+  - lastName:(string)
+  - username:(string)
+  - email:(string)
+  - password:(string)
+  - phone:(string)
+  - zipCode: (string)
+  - firstNameError: (default: null value)
+  - lastNameError: (default: null value)
+  - usernameError: (default: null value)
+  - phoneError: (default: null value)
+  - zipCodeError: (default: null value)
+  - emailError: (default: null value)
+  - passswordError: (default: null value)
+  - usernameAvailable: (boolean)
+
 ##### Stye Components
-Our client provided basic PDF wireframes. We used a color and font picker to decipher our color palette and typeface.
+Our client provided basic PDF wireframes. We used a color and font picker to decipher our color palette and typeface. We used SASS and such features as variables, nested rules and inline imports.
 
 #### Back-end
 

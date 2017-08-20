@@ -31,7 +31,6 @@ describe('MealForm', () => {
     expect(wrapper.state('description')).toEqual('i love testing react')
   })
 
-<<<<<<< HEAD
   test('cuisines input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="price"]').simulate('change', {
@@ -40,21 +39,7 @@ describe('MealForm', () => {
         value: '4.56',
       },
     })
-=======
-  // test('cuisines input  can update the state', () => {
-  //   let wrapper = mount(<MealForm />)
-  //   wrapper.find('input[name="price"]').simulate('change', {
-  //     target: { 
-  //       name: 'price',
-  //       value: '4.56',
-  //     },
-  //   })
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
 
-  //   expect(wrapper.state('price')).toEqual('4.56')
-  // })
-
-<<<<<<< HEAD
   test('cuisines input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="title"]').simulate('change', {
@@ -63,19 +48,7 @@ describe('MealForm', () => {
         value: 'Pickles',
       },
     })
-=======
-  // test('cuisines input  can update the state', () => {
-  //   let wrapper = mount(<MealForm />)
-  //   wrapper.find('input[name="title"]').simulate('change', {
-  //     target: { 
-  //       name: 'title',
-  //       value: 'Pickles',
-  //     },
-  //   })
->>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
 
-  //   expect(wrapper.state('title')).toEqual('Pickles')
-  // })
 
   test('submit event should invoke onComplete with state', () => {
     let mockOnComplete = jest.fn(() => Promise.resolve())
@@ -100,11 +73,3 @@ describe('MealForm', () => {
     wrapper.find('form').simulate('submit')
     expect(mockOnComplete).toHaveBeenCalledWith(mockState)
   })
-
-  // test('button text should say what i want', () => {
-  //   let mockButtonText = 'Submit'
-  //   let wrapper = mount(<MealForm buttonText={mockButtonText} />)
-  //   expect(wrapper.find('button').text()).toEqual(` ${mockButtonText} `)
-  // })
-
-})
