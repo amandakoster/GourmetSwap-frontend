@@ -44,7 +44,7 @@ export class App extends React.Component{
             <div className='main-nav'>
               <img
                 className='logo'
-                src='src/assets/logo.svg'>
+                src="http://i.imgur.com/0CvCXeA.png">
               </img>
               <ul>
                 <li><Link to='/landing'> Home </Link></li>
@@ -80,6 +80,10 @@ export class App extends React.Component{
             </div>
           </BrowserRouter>
         </nav>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
       </div>
     )}
 }

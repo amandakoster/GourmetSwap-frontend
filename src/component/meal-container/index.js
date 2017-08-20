@@ -45,6 +45,7 @@ class MealContainer extends React.Component {
   }
 
   render(){
+<<<<<<< HEAD
     console.log('this.props', this.props)
     console.log('this.state', this.state)
 
@@ -54,13 +55,32 @@ class MealContainer extends React.Component {
         <button onClick={this.toggleForm}>Create a meal</button>
         {util.renderIf(this.state.form === true,
           <div className='meal-form'>
+=======
+    // let test = Object.assign(...this.props.profile)
+    // console.log('test', test)
+    let test = Object.assign({}, this.props.profile)
+
+    console.log('test', test._id)
+
+    return(
+
+      <div className='meal-form'>
+
+        <h2>Bio</h2>
+        <p>I have worked as a cook in {test.restaurantsCookedIn}     restaurants</p>
+        <p>I specialize in {test.cuisines}</p>
+        <p>My Signature dishes are {test.signatureDishes}</p>
+        <p>I am available to cook {test.mealsPerWeek} meals per week</p>
+        <p>Check out my meals below!</p>
+
+        {util.renderIf(this.state.form === true,
+          <div>
+>>>>>>> 0f726f3c0ca49b7cba4806bdf6aee628a920a347
             <MealForm
               onComplete={this.handleMealCreate} />
           </div>
         )}
-
-        <h2>Your profile!</h2>
-        <p>{this.props.profiles}</p>
+        <button onClick={this.toggleForm}>Create a meal</button>
 
       </div>
     )
