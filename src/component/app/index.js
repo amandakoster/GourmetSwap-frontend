@@ -27,7 +27,6 @@ export class App extends React.Component{
   }
 
   componentWillMount(){
-    // this.props.mealsFetch()
     let token = util.cookieFetch('Gourmet-Swap-Token')
     if(token){
       this.props.setToken(token)
@@ -80,27 +79,17 @@ export class App extends React.Component{
             </div>
           </BrowserRouter>
         </nav>
-
       </div>
     )}
 }
-
-// <div className='meals'>
-// {this.props.meals.map(meal =>
-//   <MealList key={meal._id} meal={meal}
-//   />
-// )}
-// </div>
 
 let mapStateToProps = (state) => ({
   token: state.token,
   cook: state.cook,
   route: state.route,
-  // meals: state.meals,
 })
 
 let mapDispatchToProps = (dispatch) => ({
-  // mealsFetch: () => dispatch(mealFetchRequest()),
   logout: () => dispatch(auth.logout()),
   login: (token) => dispatch(auth.login(token)),
   userFetch: (token) => dispatch(auth.userFetch(token)),

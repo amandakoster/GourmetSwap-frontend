@@ -1,5 +1,6 @@
+
 @import "main";
-/* Shared */
+
 .loginBtn {
   box-sizing: border-box;
   left: 55em;
@@ -14,8 +15,8 @@
   margin-bottom: 10px;
 }
 
-/* Google */
 .loginBtn--google {
+  background: #DD4B39;
   background-color: $color-primary;
 }
 .loginBtn--google:before {
@@ -24,5 +25,30 @@
 }
 .loginBtn--google:hover,
 .loginBtn--google:focus {
+  background: #E74B37;
+}
+
+.sign-in-form{
+  box-sizing: border-box;
+  position: relative;
+  width: 20em;
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+
+.h3-sign-in{
+  color: #DD4B39;
+  margin-left: 1.7em;
+}
+
+.login{
+  border-style: solid;
   background: $color-secondary;
 }

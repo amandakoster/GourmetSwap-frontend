@@ -45,10 +45,10 @@ export const cookFetch = (token) => (dispatch) => {
       let auth = JSON.parse(res.text)._id
       console.log('cookFetch res', JSON.parse(res.text))
       return superagent.get(`${__API_URL__}/api/cooks/${auth}`)
-      .then(res => {
-        console.log('cookFetch cook profile res', res.body)
-        dispatch(cookProfile(res.body))
-      })
+        .then(res => {
+          console.log('cookFetch cook profile res', res.body)
+          dispatch(cookProfile(res.body))
+        })
     })
 }
 
@@ -80,9 +80,3 @@ export const signupRequest = (user) => (dispatch) => {
     })
     .catch(util.logError)
 }
-
-
-// use export const cookieCreate = (name, value, days) => {
-//   let expires = days ? ` ${cookieTime(days)};` : ''
-//   document.cookie = `${name}=${value};${expires} path='/'`
-// }

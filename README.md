@@ -1,9 +1,9 @@
-# Gourmet Swap Documentation
+toLibrary# Gourmet Swap Documentation
 
 ***Connecting everyone with great food cooked with love!***
 
 ## General Description
-Gourmet Swap is an online platform for connecting local chefs and their neighbors for a varierty of culinary services from preparation of nutritious home-cooked meals to cooking classes to catering.  Often our days are filled with work, kids and events leaving little time for healthy eating.  Gourmet Swap offers a convenient, healthier alternative to fast food and take-out.  Users browse meals and services available in their neighborhoods and can place orders for pickup and delivery.
+Gourmet Swap is an online platform for connecting local chefs and their neighbors for a variety of culinary services from preparation of nutritious home-cooked meals to cooking classes to catering.  Often our days are filled with work, kids and events leaving little time for healthy eating.  Gourmet Swap offers a convenient, healthier alternative to fast food and take-out.  Users browse meals and services available in their neighborhoods and can place orders for pickup and delivery.
 
 ## Technical Description
 Gourmet Swap lives on the MERN stack.  The React front-end is server agnostic and relies on an independent RESTful API back-end utilizing the Express web application framework on Node.JS with the MongoDB NoSQL database server.  The MERN stack is highly scalable within the context of Platform as a Service (PaaS) providers, such as Heroku where both the front-end and back-end are currently deployed.  Much of the static content is provided via the AWS S3 content delivery network.
@@ -17,6 +17,106 @@ Gourmet Swap lives on the MERN stack.  The React front-end is server agnostic an
 
 ##### Redux
  - Redux.js is a predictable state container that requires *actions* (plain objects) to be dispatched in order to change the application state.  The state cannot be modified directly.  This provides predictability, i.e. the same actions in the same order will produce the same results.
+
+##### React
+ - React is a JavaScript library for building user interfaces.
+
+ - React uses a declarative paradigm that makes it easier to reason about your application. React computes the minimal set of changes necessary to keep your DOM up-to-date. React works with the libraries and frameworks that you already know.
+
+ - To describe component's DOM representations, React uses an XML-like syntax called JSX. JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML. A simple transform is included with React that allows converting JSX into native JavaScript for browsers to digest.
+
+##### React-Redux Reducers
+The reducers take the previous state and an action, and returns the next state.
+- **auth**
+- **cook-form**
+- **meal**
+- **route**
+
+##### React-Redux Actions
+- **cook-form**
+- **cook-register**
+- **meal-form.test**
+- **meal-reducer.test**
+
+##### React-Redux Libraries
+- **redux-reporter**: Redux middleware for reporting actions.
+- **redux-thunk**: action creators that return a function. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
+- **store-create**: Creates a Redux store that holds the complete state tree of the app.
+- **utils**: Various reusable functions and Middleware that combine redux and immutableJS as well as make api calls using FSA conventions.
+
+##### React Components
+- **App**
+
+  - The app component calls all of the components renders them using Main.js which renders everything to the DOM/index.html.
+
+- **CookContainer**
+
+  - The cook container fetches a users unique cookie (or token) and creates a new user, or 'cook'.
+
+- **CookForm**: properties
+
+  - signatureDishes: (string)
+  - restaurantsCookedIn: (numerical amount)
+  - bestDescribes: (string)
+  - mealsPerWeek: (numerical amount)
+  - services: (string)
+  - cuisines: (string)
+  - offerDelivery: (boolean)
+  - community: (string)
+  - hoursPerWeek: (string)
+  - moreInfo: (string)
+  - howDidYouHear: (string)
+
+- **CookProfile**
+This component renders the cooks Bio and has a toggle function where the Bio will only render if the user is a cook.
+
+- **MealContainer**
+
+  - This component renders the cooks Meal which links the Cook to their Meal.
+
+- **MealForm**: properties
+  - title: (string)
+  - services: (string)
+  - cuisines: (string)
+  - description: (string)
+  - pickupOffered: (boolean)
+  - deliveryOffered: (boolean)
+  - portions: (numeric value)
+  - ingredients: (string)
+  - startDate: moment() (a Javascript Library)
+  - endDate: moment().add(2, 'months'),
+  - location: (string)
+  - price: (numeric value)
+
+- **MealList**:
+This component renders the cooks meals to the landing page.
+
+- **Meals**:
+This component renders meals to the DOM and maps meals to meal-id.
+
+- **SignIn**:
+Sign-in uses Google OAuth to allow users to sign in with Google, or email and password.
+
+- **SignUp**: properties
+
+  - firstName:(string)
+  - lastName:(string)
+  - username:(string)
+  - email:(string)
+  - password:(string)
+  - phone:(string)
+  - zipCode: (string)
+  - firstNameError: (default: null value)
+  - lastNameError: (default: null value)
+  - usernameError: (default: null value)
+  - phoneError: (default: null value)
+  - zipCodeError: (default: null value)
+  - emailError: (default: null value)
+  - passswordError: (default: null value)
+  - usernameAvailable: (boolean)
+
+##### Stye Components
+Our client provided basic PDF wireframes. We used a color and font picker to decipher our color palette and typeface. We used SASS and such features as variables, nested rules and inline imports.
 
 #### Back-end
 
@@ -163,7 +263,7 @@ Gourmet Swap started in 2016 with two entrepreneurs, Ezon and Fagner. Ezon is fr
 ### Contributors
 
 #### Amanda Koster
-Hailing from a strong creative background, I am motivated by the constraints of design and addicted to the wizardry of code. After working with several large companies I found a disconnect between producers, designers, and devs. I became a developer in order to speak both languages and bridge this gap.
+Hailing from a strong creative background, I am motivated by the constraints of design and wizardry of code. After working with several large companies I found a disconnect between producers, UX, and devs. I became a Full Stack JavaScript Developer in order to speak both languages and bridge this gap.
 
 #### Matthew Parker
 Hi, I'm Matthew Parker! I'm a writer and Full-Stack JavaScript developer. I've pursued both of these passions because I love to create, and with these skills I'm able to imagine a thing, and then write it into existence. I'd rather be doing nothing else!

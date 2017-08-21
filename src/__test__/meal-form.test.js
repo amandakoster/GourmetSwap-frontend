@@ -13,40 +13,16 @@ describe('MealForm', () => {
     expect(wrapper.state('pickupOffered')).toBe(false)
     expect(wrapper.state('deliveryOffered')).toBe(false)
     expect(wrapper.state('portions')).toBe(0)
-  
-    // expect(wrapper.state('previewImg')).toBe('')
     expect(wrapper.state('ingredients')).toBe('')
-    // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
-    // expect(wrapper.state('date')).toBe(moment('YYYY-MM-DD'))
     expect(wrapper.state('location')).toBe('')
     expect(wrapper.state('price')).toBe(0)
-    
+
   })
-
-  //   test('intial state with props', () => {
-  //     let mockMeal = {
-  //       _id: 'abc123',
-  //       title: 'rqrerw',
-  //       description: 'rwrerw',
-  //       pickupOffered: false,
-  //       deliveryOffered: false,
-  //       portions: 'rwrewr',
-  //       photo: '/wat.jpg',
-  //       previewImg: 'rwre',
-  //       ingredients: 'rwerew',
-  //       //date: moment(),
-  //       location: 'rwerwe',
-  //       price: '4.56',
-  //     }
-
-  //     let wrapper = mount(<MealForm />)
-  //     expect(wrapper.state()).toEqual(mockMeal)
-  //   })
 
   test('description input  can update the state', () => {
     let wrapper = mount(<MealForm />)
     wrapper.find('input[name="description"]').simulate('change', {
-      target: { 
+      target: {
         name: 'description',
         value: 'i love testing react',
       },
@@ -55,29 +31,24 @@ describe('MealForm', () => {
     expect(wrapper.state('description')).toEqual('i love testing react')
   })
 
-  // test('cuisines input  can update the state', () => {
-  //   let wrapper = mount(<MealForm />)
-  //   wrapper.find('input[name="price"]').simulate('change', {
-  //     target: { 
-  //       name: 'price',
-  //       value: '4.56',
-  //     },
-  //   })
+  test('cuisines input  can update the state', () => {
+    let wrapper = mount(<MealForm />)
+    wrapper.find('input[name="price"]').simulate('change', {
+      target: {
+        name: 'price',
+        value: '4.56',
+      },
+    })
 
-  //   expect(wrapper.state('price')).toEqual('4.56')
-  // })
+  test('cuisines input  can update the state', () => {
+    let wrapper = mount(<MealForm />)
+    wrapper.find('input[name="title"]').simulate('change', {
+      target: {
+        name: 'title',
+        value: 'Pickles',
+      },
+    })
 
-  // test('cuisines input  can update the state', () => {
-  //   let wrapper = mount(<MealForm />)
-  //   wrapper.find('input[name="title"]').simulate('change', {
-  //     target: { 
-  //       name: 'title',
-  //       value: 'Pickles',
-  //     },
-  //   })
-
-  //   expect(wrapper.state('title')).toEqual('Pickles')
-  // })
 
   test('submit event should invoke onComplete with state', () => {
     let mockOnComplete = jest.fn(() => Promise.resolve())
@@ -102,11 +73,3 @@ describe('MealForm', () => {
     wrapper.find('form').simulate('submit')
     expect(mockOnComplete).toHaveBeenCalledWith(mockState)
   })
-
-  // test('button text should say what i want', () => {
-  //   let mockButtonText = 'Submit'
-  //   let wrapper = mount(<MealForm buttonText={mockButtonText} />)
-  //   expect(wrapper.find('button').text()).toEqual(` ${mockButtonText} `)
-  // })
-
-})

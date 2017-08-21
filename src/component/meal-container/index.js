@@ -22,7 +22,6 @@ class MealContainer extends React.Component {
 
   componentDidMount(){
     let token = util.cookieFetch('Gourmet-Swap-Token')
-    // this.props.cookFetch(token)
     this.props.cookFetch(token)
   }
 
@@ -45,8 +44,6 @@ class MealContainer extends React.Component {
   }
 
   render(){
-    // let test = Object.assign(...this.props.profile)
-    // console.log('test', test)
     let test = Object.assign({}, this.props.profile)
 
     console.log('test', test._id)
@@ -56,7 +53,7 @@ class MealContainer extends React.Component {
       <div className='meal-form'>
 
         <h2>Bio</h2>
-        <p>I have worked as a cook in {test.restaurantsCookedIn}     restaurants</p>
+        <p>I have worked as a cook in {test.restaurantsCookedIn}restaurants</p>
         <p>I specialize in {test.cuisines}</p>
         <p>My Signature dishes are {test.signatureDishes}</p>
         <p>I am available to cook {test.mealsPerWeek} meals per week</p>
@@ -74,13 +71,6 @@ class MealContainer extends React.Component {
     )
   }
 }
-
-// <div className='meals'>
-// {this.props.meals.map(meal =>
-//   <MealList key={meal._id} meal={meal}
-//   />
-// )}
-// </div>
 
 let mapStateToProps = (state) => {
   console.log('mapStateToProps', state)

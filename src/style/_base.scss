@@ -1,6 +1,5 @@
 @import "vars";
 
-// content
 html, body { position: relative; }
 head, script, link  { display: none; }
 p { display: inline-block; }
@@ -134,7 +133,6 @@ input[type=file]::-webkit-file-upload-button {
     padding: 5%;
 }
 
-// lists
 ul,ol,li { margin-left: $pad * 2; }
 li { display: list-item; }
 ol li { list-style: decimal; }

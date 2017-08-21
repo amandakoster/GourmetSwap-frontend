@@ -6,7 +6,6 @@ import {mealCreate} from '../../action/meal.js'
 import DatePicker from 'react-datepicker'
 import './datepicker.scss'
 
-
 class MealForm extends React.Component{
   constructor(props){
     super(props)
@@ -24,7 +23,6 @@ class MealForm extends React.Component{
       location: '',
       price: 0,
     }
-    console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setPickup = this.setPickup.bind(this)

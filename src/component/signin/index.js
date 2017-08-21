@@ -9,7 +9,6 @@ import {connect} from 'react-redux'
 import superagent from 'superagent'
 import validator from 'validator'
 
-
 const Tooltip = (props) => {
   return (
     <div className='tooltip'>
@@ -112,7 +111,6 @@ class Signin extends React.Component{
         </form>
       </div>
     )
-
   }
 }
 

@@ -57,7 +57,6 @@ class Meals extends React.Component {
   }
 }
 
-
 let mapStateToProps = (state) => ({
   meals: state.meals,
 })
@@ -65,8 +64,6 @@ let mapStateToProps = (state) => ({
 let mapDispatchToProps = (dispatch) => ({
   mealCreate: (meal) => dispatch(mealCreateRequest(meal)),
   mealsFetch: () => dispatch(mealFetchRequest()),
-  // mealsFetch: () => dispatch(mealFetchRequest()),
-  // cookFetch: (token) => dispatch(cookFetch(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meals)
